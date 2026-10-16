@@ -1,1276 +1,1136 @@
 <!DOCTYPE html>
-<html lang="id" class="dark scroll-smooth">
+<html lang="id" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLDS — BlacklightDominions | United Beyond the Eclipse</title>
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-darkMode: 'class',
-theme: {
-extend: {
-colors: {
-blds: {
-black: '#050505',
-dark: '#0a0a0a',
-card: '#121212',
-border: '#262626',
-gray: '#737373',
-lightgray: '#a3a3a3',
-white: '#ffffff'
-}
-},
-fontFamily: {
-sans: ['Rajdhani', 'Inter', 'sans-serif'],
-display: ['Rajdhani', 'sans-serif']
-}
-}
-}
-}
-</script>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-<!-- FontAwesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-body {
-background-color: #050505;
-color: #ffffff;
-font-family: 'Rajdhani', 'Inter', sans-serif;
-overflow-x: hidden;
-}
-/* Custom Glows /
-.text-glow {
-text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-}
-.text-glow-lg {
-text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.2);
-}
-.box-glow {
-box-shadow: 0 0 20px rgba(255, 255, 255, 0.08), inset 0 0 15px rgba(255, 255, 255, 0.03);
-}
-.box-glow-hover:hover {
-box-shadow: 0 0 30px rgba(255, 255, 255, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.05);
-border-color: rgba(255, 255, 255, 0.6);
-}
-/ Logo Floating Animation /
-@keyframes float {
-0%, 100% { transform: translateY(0px); filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)); }
-50% { transform: translateY(-12px); filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9)); }
-}
-.animate-float {
-animation: float 4s ease-in-out infinite;
-}
-/ BLDS Button Special Interaction Effect /
-@keyframes diamondHit {
-0% { transform: scale(0) rotate(0deg); opacity: 0; }
-20% { transform: scale(1.3) rotate(20deg); opacity: 1; }
-35% { transform: scale(0.9) rotate(-10deg); opacity: 1; }
-50% { transform: scale(1.1) rotate(5deg); opacity: 1; }
-70% { transform: scale(1) rotate(0deg); opacity: 1; }
-85% { transform: scale(1.6); opacity: 0.7; }
-100% { transform: scale(2.2); opacity: 0; }
-}
-.blds-btn {
-position: relative;
-overflow: hidden;
-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.diamond-particle {
-position: absolute;
-color: #ffffff;
-font-size: 1.2rem;
-pointer-events: none;
-z-index: 10;
-animation: diamondHit 1.5s ease-out forwards;
-text-shadow: 0 0 10px #ffffff;
-}
-/ Custom Scrollbar */
-::-webkit-scrollbar {
-width: 8px;
-}
-::-webkit-scrollbar-track {
-background: #050505;
-}
-::-webkit-scrollbar-thumb {
-background: #262626;
-border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-background: #404040;
-}
-.glass-panel {
-background: rgba(18, 18, 18, 0.75);
-backdrop-filter: blur(12px);
-border: 1px solid rgba(255, 255, 255, 0.1);
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLDS (BlacklightDominions) - Official Website</title>
+  
+  <!-- Google Fonts: Inter & Orbitron -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            blds: {
+              black: '#050505',
+              card: '#0c0c0d',
+              border: '#1f1f22',
+              accent: '#ffffff',
+              muted: '#8e8e93',
+              hover: '#18181b'
+            }
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f46;
+    }
+
+    /* Glow FX Typography & Elements */
+    .glow-title {
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.2);
+    }
+    .glow-sub {
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+    .glow-box {
+      box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.15);
+    }
+    .glow-border {
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Floating Slow Animation for Logo */
+    @keyframes floatSlow {
+      0%, 100% {
+        transform: translateY(0px);
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+      }
+      50% {
+        transform: translateY(-14px);
+        filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.7));
+      }
+    }
+    .animate-float-logo {
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+
+    /* Diamond FX Click Effect Keyframes */
+    @keyframes diamondHit {
+      0% {
+        transform: scale(0.2) rotate(45deg);
+        opacity: 0;
+      }
+      20% {
+        transform: scale(1.2) rotate(45deg);
+        opacity: 1;
+      }
+      40% { transform: scale(1) rotate(43deg); }
+      50% { transform: scale(1) rotate(47deg); }
+      60% { transform: scale(1) rotate(44deg); }
+      70% { transform: scale(1) rotate(46deg); }
+      80% {
+        transform: scale(1.5) rotate(45deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(2.2) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .diamond-fx-active {
+      position: absolute;
+      pointer-events: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      animation: diamondHit 3s forwards ease-in-out;
+      z-index: 50;
+    }
+
+    /* Grid Overlay BG */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+  </style>
 </head>
-<body class="bg-blds-black text-white antialiased selection:bg-white selection:text-black">
-​<!-- PUBLIC VIEW CONTAINER -->
-<div id="public-view" class="min-h-screen flex flex-col">
-<!-- Navigation Header -->
-<header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10 transition-all duration-300">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-<!-- Brand Logo & Name -->
-<a href="#" class="flex items-center gap-3 group">
-<img src="logo.png" alt="BLDS Logo" class="h-10 w-10 object-contain animate-float" onerror="this.src='https://via.placeholder.com/40/000000/FFFFFF?text=BLDS'">
-<div class="flex flex-col">
-<span class="font-display font-bold text-xl tracking-wider text-glow uppercase">BLDS</span>
-<span class="text-[10px] tracking-widest text-blds-gray uppercase">BlacklightDominions</span>
-</div>
-</a>
-​<!-- Desktop Nav Links -->
-<nav class="hidden md:flex items-center gap-8">
-<a href="#home" class="text-sm font-semibold tracking-wider hover:text-white text-blds-gray transition-colors">HOME</a>
-<a href="#about" class="text-sm font-semibold tracking-wider hover:text-white text-blds-gray transition-colors">ABOUT</a>
-<a href="#bracket" class="text-sm font-semibold tracking-wider hover:text-white text-blds-gray transition-colors">BRACKET</a>
-<a href="#schedule" class="text-sm font-semibold tracking-wider hover:text-white text-blds-gray transition-colors">SCHEDULE</a>
-<a href="#news" class="text-sm font-semibold tracking-wider hover:text-white text-blds-gray transition-colors">NEWS</a>
-<a href="#staff" class="text-sm font-semibold tracking-wider hover:text-white text-blds-gray transition-colors">STAFF</a>
-</nav>
-​<!-- Right Action & Mobile Hamburger -->
-<div class="flex items-center gap-4">
-<a href="#admin" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 border border-white/20 hover:border-white text-xs font-bold tracking-widest uppercase transition-all blds-btn">
-<span>ADMIN PORTAL</span>
-</a>
-<button id="hamburger-btn" class="md:hidden text-white p-2 focus:outline-none" aria-label="Toggle Menu">
-<i class="fa-solid fa-bars text-xl"></i>
-</button>
-</div>
-</div>
-​<!-- Mobile Menu Dropdown -->
-<div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/10 px-6 py-6 space-y-4">
-<a href="#home" class="block text-base font-semibold tracking-wider text-blds-lightgray hover:text-white mobile-link">HOME</a>
-<a href="#about" class="block text-base font-semibold tracking-wider text-blds-lightgray hover:text-white mobile-link">ABOUT</a>
-<a href="#bracket" class="block text-base font-semibold tracking-wider text-blds-lightgray hover:text-white mobile-link">BRACKET</a>
-<a href="#schedule" class="block text-base font-semibold tracking-wider text-blds-lightgray hover:text-white mobile-link">SCHEDULE</a>
-<a href="#news" class="block text-base font-semibold tracking-wider text-blds-lightgray hover:text-white mobile-link">NEWS</a>
-<a href="#staff" class="block text-base font-semibold tracking-wider text-blds-lightgray hover:text-white mobile-link">STAFF</a>
-<a href="#admin" class="block text-center w-full py-3 border border-white text-sm font-bold tracking-widest uppercase blds-btn">ADMIN PORTAL</a>
-</div>
-</header>
-​<!-- Main Content Sections -->
-<main class="flex-grow pt-20">
-<!-- HOME / HERO SECTION -->
-<section id="home" class="relative min-h-[90vh] flex items-center justify-center px-4 overflow-hidden py-20">
-<!-- Ambient Background Lighting -->
-<div class="absolute inset-0 pointer-events-none flex items-center justify-center">
-<div class="w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl"></div>
-</div>
-<div class="max-w-5xl mx-auto text-center relative z-10 space-y-8">
-<div class="flex justify-center">
-<img src="logo.png" alt="BLDS Hero Logo" class="w-32 h-32 md:w-44 md:h-44 object-contain animate-float" onerror="this.src='https://via.placeholder.com/150/000000/FFFFFF?text=BLDS'">
-</div>
-<div class="space-y-3">
-<span class="inline-block text-xs md:text-sm tracking-[0.3em] uppercase text-blds-gray font-semibold border-y border-white/20 py-1 px-4">
-United Beyond the Eclipse
-</span>
-<h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-bold tracking-wider text-glow-lg uppercase">
-BLACKLIGHT DOMINIONS
-</h1>
-<p class="max-w-2xl mx-auto text-blds-lightgray text-sm sm:text-base leading-relaxed">
-Ekosistem kompetitif dan komunitas esports profesional yang dipersatukan oleh loyalitas, keteguhan, dan visi tanpa batas.
-</p>
-</div>
-<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-<a href="#bracket" class="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold text-sm tracking-widest uppercase hover:bg-neutral-200 transition-all blds-btn text-center">
-VIEW BRACKET
-</a>
-<a href="#schedule" class="w-full sm:w-auto px-8 py-4 border border-white/40 hover:border-white text-white font-bold text-sm tracking-widest uppercase transition-all blds-btn text-center">
-MATCH SCHEDULE
-</a>
-</div>
-</div>
-</section>
-​<!-- ABOUT SECTION -->
-<section id="about" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-24">
-<!-- Header -->
-<div class="text-center space-y-4">
-<span class="text-xs uppercase tracking-[0.3em] text-blds-gray">WHO WE ARE</span>
-<h2 class="text-3xl sm:text-5xl font-display font-bold tracking-wider text-glow uppercase">ABOUT BLDS</h2>
-<div class="w-16 h-0.5 bg-white mx-auto"></div>
-</div>
-​<!-- History Timeline -->
-<div class="space-y-12">
-<h3 class="text-2xl font-display font-bold tracking-wider text-center uppercase text-blds-lightgray">Our Timeline</h3>
-<div class="relative border-l-2 border-white/20 ml-4 md:ml-auto md:max-w-4xl space-y-10 pl-6 md:pl-10">
-<!-- Timeline Item -->
-<div class="relative group">
-<span class="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-black border-2 border-white group-hover:bg-white transition-colors"></span>
-<div class="glass-panel p-6 rounded-none border border-white/10 space-y-2 box-glow-hover transition-all">
-<span class="text-xs font-bold tracking-widest text-blds-gray">3 MEI 2023</span>
-<h4 class="text-xl font-bold tracking-wide">The Beginning</h4>
-<p class="text-blds-lightgray text-sm leading-relaxed">Awal perjalanan resmi BLDS didirikan sebagai landasan semangat kompetitif dan persaudaraan.</p>
-</div>
-</div>
-<div class="relative group">
-<span class="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-black border-2 border-white group-hover:bg-white transition-colors"></span>
-<div class="glass-panel p-6 rounded-none border border-white/10 space-y-2 box-glow-hover transition-all">
-<span class="text-xs font-bold tracking-widest text-blds-gray">15 MEI 2024</span>
-<h4 class="text-xl font-bold tracking-wide">WhatsApp Community Hub</h4>
-<p class="text-blds-lightgray text-sm leading-relaxed">Komunitas mulai menggunakan WhatsApp sebagai wadah interaksi harian dan koordinasi cepat antar-anggota.</p>
-</div>
-</div>
-<div class="relative group">
-<span class="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-black border-2 border-white group-hover:bg-white transition-colors"></span>
-<div class="glass-panel p-6 rounded-none border border-white/10 space-y-2 box-glow-hover transition-all">
-<span class="text-xs font-bold tracking-widest text-blds-gray">12 SEPTEMBER 2024</span>
-<h4 class="text-xl font-bold tracking-wide">Discord Ecosystem Expansion</h4>
-<p class="text-blds-lightgray text-sm leading-relaxed">Discord hadir untuk memperluas interaksi, aktivitas scrim, turnamen internal, dan manajemen komunitas yang lebih terstruktur.</p>
-</div>
-</div>
-<div class="relative group">
-<span class="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-black border-2 border-white group-hover:bg-white transition-colors"></span>
-<div class="glass-panel p-6 rounded-none border border-white/10 space-y-2 box-glow-hover transition-all">
-<span class="text-xs font-bold tracking-widest text-blds-gray">20 AGUSTUS 2025</span>
-<h4 class="text-xl font-bold tracking-wide">Major Overhaul & Foundation</h4>
-<p class="text-blds-lightgray text-sm leading-relaxed">Fase pembaruan besar dan penguatan fondasi identitas BLDS untuk menghadapi level kompetitif yang lebih tinggi.</p>
-</div>
-</div>
-<div class="relative group">
-<span class="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-black border-2 border-white group-hover:bg-white transition-colors"></span>
-<div class="glass-panel p-6 rounded-none border border-white/10 space-y-2 box-glow-hover transition-all">
-<span class="text-xs font-bold tracking-widest text-blds-gray">2026 & ONWARD</span>
-<h4 class="text-xl font-bold tracking-wide">Digital Ecosystem Growth</h4>
-<p class="text-blds-lightgray text-sm leading-relaxed">Pengembangan berkelanjutan ekosistem komunitas, turnamen esports berskala luas, dan inovasi digital.</p>
-</div>
-</div>
-</div>
-</div>
-​<!-- Vision, Mission & Identity Grid -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Vision -->
-<div class="glass-panel p-8 border border-white/10 space-y-4 box-glow-hover flex flex-col justify-between">
-<div class="space-y-4">
-<div class="w-12 h-12 flex items-center justify-center border border-white/20 text-xl">
-<i class="fa-solid fa-eye"></i>
-</div>
-<h3 class="text-2xl font-display font-bold tracking-wider uppercase">Vision</h3>
-<p class="text-blds-lightgray text-sm leading-relaxed">
-Menjadi komunitas yang solid, dikenal melalui identitasnya, dan terus berkembang dengan membangun lingkungan yang mendorong kebersamaan, kreativitas, kompetisi, serta potensi setiap Dominioner.
-</p>
-</div>
-</div>
-​<!-- Mission -->
-<div class="glass-panel p-8 border border-white/10 space-y-4 box-glow-hover flex flex-col justify-between">
-<div class="space-y-4">
-<div class="w-12 h-12 flex items-center justify-center border border-white/20 text-xl">
-<i class="fa-solid fa-bullseye"></i>
-</div>
-<h3 class="text-2xl font-display font-bold tracking-wider uppercase">Mission</h3>
-<ul class="space-y-3 text-blds-lightgray text-sm">
-<li class="flex items-start gap-2">
-<span class="text-white font-bold">•</span>
-<span><strong class="text-white">Build Unity:</strong> Mempererat hubungan antar-Dominioners melalui kebersamaan, rasa saling menghargai, dan loyalitas.</span>
-</li>
-<li class="flex items-start gap-2">
-<span class="text-white font-bold">•</span>
-<span><strong class="text-white">Develop Potential:</strong> Menyediakan ruang untuk belajar, berkembang, dan mengasah kemampuan.</span>
-</li>
-<li class="flex items-start gap-2">
-<span class="text-white font-bold">•</span>
-<span><strong class="text-white">Create Opportunities:</strong> Membuka peluang melalui kegiatan komunitas, kompetisi, kolaborasi, dan proyek.</span>
-</li>
-<li class="flex items-start gap-2">
-<span class="text-white font-bold">•</span>
-<span><strong class="text-white">Strengthen Identity:</strong> Menjaga karakter dan nilai BLDS.</span>
-</li>
-<li class="flex items-start gap-2">
-<span class="text-white font-bold">•</span>
-<span><strong class="text-white">Leave a Legacy:</strong> Membangun sesuatu yang bernilai dan bisa dikembangkan generasi berikutnya.</span>
-</li>
-</ul>
-</div>
-</div>
-​<!-- Identity -->
-<div class="glass-panel p-8 border border-white/10 space-y-4 box-glow-hover flex flex-col justify-between">
-<div class="space-y-4">
-<div class="w-12 h-12 flex items-center justify-center border border-white/20 text-xl">
-<i class="fa-solid fa-fingerprint"></i>
-</div>
-<h3 class="text-2xl font-display font-bold tracking-wider uppercase">Identity</h3>
-<ul class="space-y-3 text-blds-lightgray text-sm">
-<li><strong class="text-white">Black & White:</strong> Merepresentasikan dua sisi berbeda yang dapat berdampingan sebagai satu kesatuan.</li>
-<li><strong class="text-white">The Eclipse:</strong> Melambangkan perubahan, keteguhan, dan perjalanan menuju masa depan.</li>
-<li><strong class="text-white">Dominioners:</strong> Sebutan bagi para anggota resmi BLDS.</li>
-<li><strong class="text-white">United Beyond the Eclipse:</strong> Semangat untuk tetap bersatu dan berkembang bersama.</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-​<!-- BRACKET SECTION -->
-<section id="bracket" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
-<div class="text-center space-y-4">
-<span class="text-xs uppercase tracking-[0.3em] text-blds-gray">TOURNAMENT</span>
-<h2 class="text-3xl sm:text-5xl font-display font-bold tracking-wider text-glow uppercase">BRACKETS & MATCHES</h2>
-<div class="w-16 h-0.5 bg-white mx-auto"></div>
-</div>
-​<!-- Tournament Selector or Filter if multiple -->
-<div id="bracket-container" class="space-y-12">
-<!-- Dynamic Brackets rendered here -->
-<div class="glass-panel p-16 text-center space-y-4 border border-white/10">
-<i class="fa-solid fa-trophy text-4xl text-blds-gray"></i>
-<h3 class="text-xl font-bold tracking-wider uppercase">Belum Ada Turnamen Aktif</h3>
-<p class="text-blds-lightgray text-sm max-w-md mx-auto">Bagan turnamen dan pertandingan akan ditampilkan di sini saat admin menambahkannya melalui panel admin.</p>
-</div>
-</div>
-</section>
-​<!-- SCHEDULE SECTION -->
-<section id="schedule" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
-<div class="text-center space-y-4">
-<span class="text-xs uppercase tracking-[0.3em] text-blds-gray">TIMELINE</span>
-<h2 class="text-3xl sm:text-5xl font-display font-bold tracking-wider text-glow uppercase">MATCH SCHEDULE</h2>
-<div class="w-16 h-0.5 bg-white mx-auto"></div>
-</div>
-​<!-- Schedule Filter Buttons -->
-<div class="flex justify-center gap-2 flex-wrap">
-<button onclick="filterSchedule('all')" class="sched-filter-btn px-5 py-2 border border-white text-xs font-bold tracking-widest uppercase bg-white text-black transition-all">ALL</button>
-<button onclick="filterSchedule('upcoming')" class="sched-filter-btn px-5 py-2 border border-white/30 text-xs font-bold tracking-widest uppercase hover:border-white transition-all">UPCOMING</button>
-<button onclick="filterSchedule('live')" class="sched-filter-btn px-5 py-2 border border-white/30 text-xs font-bold tracking-widest uppercase hover:border-white transition-all">LIVE</button>
-<button onclick="filterSchedule('completed')" class="sched-filter-btn px-5 py-2 border border-white/30 text-xs font-bold tracking-widest uppercase hover:border-white transition-all">COMPLETED</button>
-</div>
-​<!-- Schedule List -->
-<div id="schedule-list" class="space-y-4 max-w-4xl mx-auto">
-<!-- Dynamic schedule items rendered here -->
-<div class="glass-panel p-16 text-center space-y-4 border border-white/10">
-<i class="fa-solid fa-calendar-days text-4xl text-blds-gray"></i>
-<h3 class="text-xl font-bold tracking-wider uppercase">Belum Ada Jadwal Pertandingan</h3>
-<p class="text-blds-lightgray text-sm max-w-md mx-auto">Jadwal pertandingan mendatang akan muncul di sini segera setelah dijadwalkan oleh manajemen.</p>
-</div>
-</div>
-</section>
-​<!-- NEWS SECTION -->
-<section id="news" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
-<div class="text-center space-y-4">
-<span class="text-xs uppercase tracking-[0.3em] text-blds-gray">ANNOUNCEMENTS</span>
-<h2 class="text-3xl sm:text-5xl font-display font-bold tracking-wider text-glow uppercase">LATEST NEWS</h2>
-<div class="w-16 h-0.5 bg-white mx-auto"></div>
-</div>
-​<!-- News Grid -->
-<div id="news-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Dynamic news cards rendered here -->
-<div class="col-span-full glass-panel p-16 text-center space-y-4 border border-white/10">
-<i class="fa-solid fa-newspaper text-4xl text-blds-gray"></i>
-<h3 class="text-xl font-bold tracking-wider uppercase">Belum Ada Berita</h3>
-<p class="text-blds-lightgray text-sm max-w-md mx-auto">Artikel dan pengumuman resmi akan dipublikasikan langsung melalui portal berita.</p>
-</div>
-</div>
-</section>
-​<!-- STAFF SECTION -->
-<section id="staff" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
-<div class="text-center space-y-4">
-<span class="text-xs uppercase tracking-[0.3em] text-blds-gray">LEADERSHIP & TEAM</span>
-<h2 class="text-3xl sm:text-5xl font-display font-bold tracking-wider text-glow uppercase">OUR STAFF</h2>
-<div class="w-16 h-0.5 bg-white mx-auto"></div>
-</div>
-​<!-- Staff Grid -->
-<div id="staff-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-<!-- Dynamic staff profiles rendered here -->
-<div class="col-span-full glass-panel p-16 text-center space-y-4 border border-white/10">
-<i class="fa-solid fa-users text-4xl text-blds-gray"></i>
-<h3 class="text-xl font-bold tracking-wider uppercase">Profil Staff Belum Tersedia</h3>
-<p class="text-blds-lightgray text-sm max-w-md mx-auto">Informasi pengurus dan staff inti BLDS akan ditampilkan di sini.</p>
-</div>
-</div>
-</section>
-</main>
-​<!-- Footer -->
-<footer class="glass-panel border-t border-white/10 py-16 px-4 sm:px-6 lg:px-8 mt-auto">
-<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-<div class="space-y-4 md:col-span-2">
-<div class="flex items-center gap-3">
-<img src="logo.png" alt="BLDS Logo" class="h-8 w-8 object-contain" onerror="this.src='https://via.placeholder.com/32/000000/FFFFFF?text=BLDS'">
-<span class="font-display font-bold text-lg tracking-wider text-glow uppercase">BLDS (BlacklightDominions)</span>
-</div>
-<p class="text-blds-lightgray text-sm max-w-md leading-relaxed">
-United Beyond the Eclipse. Komunitas esports dan wadah pengembangan potensi Dominioner yang solid, berkarakter, dan kompetitif.
-</p>
-</div>
-<div class="space-y-4">
-<h4 class="font-bold text-sm tracking-wider uppercase text-white">Quick Links</h4>
-<ul class="space-y-2 text-sm text-blds-lightgray">
-<li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
-<li><a href="#about" class="hover:text-white transition-colors">About</a></li>
-<li><a href="#bracket" class="hover:text-white transition-colors">Bracket</a></li>
-<li><a href="#schedule" class="hover:text-white transition-colors">Schedule</a></li>
-<li><a href="#news" class="hover:text-white transition-colors">News</a></li>
-<li><a href="#staff" class="hover:text-white transition-colors">Staff</a></li>
-</ul>
-</div>
-<div class="space-y-4">
-<h4 class="font-bold text-sm tracking-wider uppercase text-white">Official Community</h4>
-<div class="flex items-center gap-4 pt-2">
-<a href="https://discord.gg/r4dM4QFteV" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center border border-white/20 hover:border-white hover:bg-white hover:text-black transition-all">
-<i class="fa-brands fa-discord text-lg"></i>
-</a>
-<a href="https://chat.whatsapp.com/LYhSQn3vXhO6qpVWyoJEoR?s=cl&p=a&ilr=1" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center border border-white/20 hover:border-white hover:bg-white hover:text-black transition-all">
-<i class="fa-brands fa-whatsapp text-lg"></i>
-</a>
-</div>
-</div>
-</div>
-<div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/10 text-center text-xs text-blds-gray tracking-widest">
-© <span id="copyright-year">2026</span> BLDS (BlacklightDominions). All Rights Reserved. United Beyond the Eclipse.
-</div>
-</footer>
-</div>
-​<!-- ADMIN LOGIN VIEW -->
-<div id="admin-login-view" class="hidden min-h-screen flex items-center justify-center px-4 py-12 bg-blds-black">
-<div class="max-w-md w-full glass-panel p-8 border border-white/20 space-y-8 box-glow">
-<div class="text-center space-y-3">
-<img src="logo.png" alt="BLDS Logo" class="w-16 h-16 mx-auto object-contain animate-float" onerror="this.src='https://via.placeholder.com/64/000000/FFFFFF?text=BLDS'">
-<h2 class="text-2xl font-display font-bold tracking-wider text-glow uppercase">ADMIN PORTAL</h2>
-<p class="text-xs text-blds-gray tracking-widest uppercase">Restricted Access - Authorized Personnel Only</p>
-</div>
-<form id="admin-login-form" class="space-y-6">
-<div class="space-y-2">
-<label class="text-xs font-bold tracking-widest uppercase text-blds-lightgray">Admin Email</label>
-<input type="email" id="admin-email" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none transition-colors" placeholder="admin@blds.com">
-</div>
-<div class="space-y-2">
-<label class="text-xs font-bold tracking-widest uppercase text-blds-lightgray">Password</label>
-<input type="password" id="admin-password" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none transition-colors" placeholder="••••••••">
-</div>
-<div id="login-error" class="hidden text-red-400 text-xs text-center font-medium"></div>
-<button type="submit" class="w-full py-4 bg-white text-black font-bold text-sm tracking-widest uppercase hover:bg-neutral-200 transition-all blds-btn">
-SIGN IN TO DASHBOARD
-</button>
-</form>
-<div class="border-t border-white/10 pt-4 text-center">
-<a href="#" class="text-xs text-blds-gray hover:text-white tracking-widest uppercase transition-colors">← Back to Public Website</a>
-</div>
-<div class="border border-white/10 p-4 text-xs text-blds-lightgray space-y-2 bg-black/40">
-<p class="font-bold text-white uppercase"><i class="fa-solid fa-circle-info mr-1"></i> Setup Petunjuk:</p>
-<p>Pastikan Anda sudah mengonfigurasi kredensial Firebase SDK di dalam kode, membuat akun di Firebase Authentication, dan mendaftarkan UID Anda ke node <code class="text-white">/admins/{uid}</code>.</p>
-</div>
-</div>
-</div>
-​<!-- ADMIN DASHBOARD VIEW -->
-<div id="admin-dashboard-view" class="hidden min-h-screen flex flex-col md:flex-row bg-blds-black">
-<!-- Sidebar -->
-<aside class="w-full md:w-64 glass-panel border-r border-white/10 flex flex-col justify-between p-6">
-<div class="space-y-8">
-<div class="flex items-center gap-3">
-<img src="logo.png" alt="BLDS Logo" class="h-8 w-8 object-contain" onerror="this.src='https://via.placeholder.com/32/000000/FFFFFF?text=BLDS'">
-<div>
-<span class="font-display font-bold text-base tracking-wider text-glow uppercase block">BLDS ADMIN</span>
-<span class="text-[10px] text-blds-gray tracking-widest">DASHBOARD v1.0</span>
-</div>
-</div>
-<nav class="space-y-2">
-<button onclick="switchAdminTab('overview')" class="admin-tab-btn w-full text-left px-4 py-3 text-xs font-bold tracking-widest uppercase border border-white bg-white text-black transition-all flex items-center gap-3">
-<i class="fa-solid fa-chart-pie w-4"></i> Overview
-</button>
-<button onclick="switchAdminTab('brackets')" class="admin-tab-btn w-full text-left px-4 py-3 text-xs font-bold tracking-widest uppercase border border-white/20 hover:border-white transition-all flex items-center gap-3 text-blds-lightgray hover:text-white">
-<i class="fa-solid fa-trophy w-4"></i> Brackets
-</button>
-<button onclick="switchAdminTab('schedule')" class="admin-tab-btn w-full text-left px-4 py-3 text-xs font-bold tracking-widest uppercase border border-white/20 hover:border-white transition-all flex items-center gap-3 text-blds-lightgray hover:text-white">
-<i class="fa-solid fa-calendar w-4"></i> Schedule
-</button>
-<button onclick="switchAdminTab('news')" class="admin-tab-btn w-full text-left px-4 py-3 text-xs font-bold tracking-widest uppercase border border-white/20 hover:border-white transition-all flex items-center gap-3 text-blds-lightgray hover:text-white">
-<i class="fa-solid fa-newspaper w-4"></i> News
-</button>
-<button onclick="switchAdminTab('staff')" class="admin-tab-btn w-full text-left px-4 py-3 text-xs font-bold tracking-widest uppercase border border-white/20 hover:border-white transition-all flex items-center gap-3 text-blds-lightgray hover:text-white">
-<i class="fa-solid fa-users w-4"></i> Staff
-</button>
-</nav>
-</div>
-<div class="pt-6 border-t border-white/10 space-y-4">
-<div class="text-xs text-blds-gray truncate" id="admin-user-email">admin@blds.com</div>
-<button id="admin-logout-btn" class="w-full py-2 border border-red-500/50 hover:border-red-500 text-red-400 text-xs font-bold tracking-widest uppercase transition-all">
-LOGOUT
-</button>
-</div>
-</aside>
-​<!-- Main Dashboard Content Area -->
-<main class="flex-grow p-6 md:p-10 overflow-y-auto">
-<!-- TAB: OVERVIEW -->
-<div id="tab-overview" class="admin-tab-content space-y-8">
-<div class="flex justify-between items-center border-b border-white/10 pb-6">
-<div>
-<h1 class="text-3xl font-display font-bold tracking-wider text-glow uppercase">Dashboard Overview</h1>
-<p class="text-xs text-blds-gray tracking-widest uppercase mt-1">Realtime status and content metrics</p>
-</div>
-<a href="#home" class="px-4 py-2 border border-white/20 hover:border-white text-xs font-bold tracking-widest uppercase transition-all">View Public Site →</a>
-</div>
-<!-- Stats Grid -->
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-<div class="glass-panel p-6 border border-white/10 space-y-2">
-<span class="text-xs font-bold tracking-widest text-blds-gray uppercase">Total Brackets</span>
-<div id="stat-brackets" class="text-3xl font-display font-bold">0</div>
-</div>
-<div class="glass-panel p-6 border border-white/10 space-y-2">
-<span class="text-xs font-bold tracking-widest text-blds-gray uppercase">Total Matches</span>
-<div id="stat-schedule" class="text-3xl font-display font-bold">0</div>
-</div>
-<div class="glass-panel p-6 border border-white/10 space-y-2">
-<span class="text-xs font-bold tracking-widest text-blds-gray uppercase">Total News</span>
-<div id="stat-news" class="text-3xl font-display font-bold">0</div>
-</div>
-<div class="glass-panel p-6 border border-white/10 space-y-2">
-<span class="text-xs font-bold tracking-widest text-blds-gray uppercase">Total Staff</span>
-<div id="stat-staff" class="text-3xl font-display font-bold">0</div>
-</div>
-</div>
-</div>
-​<!-- TAB: BRACKETS -->
-<div id="tab-brackets" class="admin-tab-content hidden space-y-8">
-<div class="flex justify-between items-center border-b border-white/10 pb-6">
-<div>
-<h1 class="text-3xl font-display font-bold tracking-wider text-glow uppercase">Manage Brackets</h1>
-<p class="text-xs text-blds-gray tracking-widest uppercase mt-1">Add or edit tournament brackets & matches</p>
-</div>
-<button onclick="openBracketModal()" class="px-5 py-2.5 bg-white text-black text-xs font-bold tracking-widest uppercase hover:bg-neutral-200 transition-all">+ ADD TOURNAMENT</button>
-</div>
-<div id="admin-brackets-list" class="space-y-4">
-<!-- Loaded dynamically -->
-</div>
-</div>
-​<!-- TAB: SCHEDULE -->
-<div id="tab-schedule" class="admin-tab-content hidden space-y-8">
-<div class="flex justify-between items-center border-b border-white/10 pb-6">
-<div>
-<h1 class="text-3xl font-display font-bold tracking-wider text-glow uppercase">Manage Schedule</h1>
-<p class="text-xs text-blds-gray tracking-widest uppercase mt-1">Manage upcoming, live, and completed matches</p>
-</div>
-<button onclick="openScheduleModal()" class="px-5 py-2.5 bg-white text-black text-xs font-bold tracking-widest uppercase hover:bg-neutral-200 transition-all">+ ADD SCHEDULE</button>
-</div>
-<div id="admin-schedule-list" class="space-y-4">
-<!-- Loaded dynamically -->
-</div>
-</div>
-​<!-- TAB: NEWS -->
-<div id="tab-news" class="admin-tab-content hidden space-y-8">
-<div class="flex justify-between items-center border-b border-white/10 pb-6">
-<div>
-<h1 class="text-3xl font-display font-bold tracking-wider text-glow uppercase">Manage News</h1>
-<p class="text-xs text-blds-gray tracking-widest uppercase mt-1">Create, edit, and publish announcements</p>
-</div>
-<button onclick="openNewsModal()" class="px-5 py-2.5 bg-white text-black text-xs font-bold tracking-widest uppercase hover:bg-neutral-200 transition-all">+ CREATE NEWS</button>
-</div>
-<div id="admin-news-list" class="space-y-4">
-<!-- Loaded dynamically -->
-</div>
-</div>
-​<!-- TAB: STAFF -->
-<div id="tab-staff" class="admin-tab-content hidden space-y-8">
-<div class="flex justify-between items-center border-b border-white/10 pb-6">
-<div>
-<h1 class="text-3xl font-display font-bold tracking-wider text-glow uppercase">Manage Staff</h1>
-<p class="text-xs text-blds-gray tracking-widest uppercase mt-1">Organize team profiles and roles</p>
-</div>
-<button onclick="openStaffModal()" class="px-5 py-2.5 bg-white text-black text-xs font-bold tracking-widest uppercase hover:bg-neutral-200 transition-all">+ ADD STAFF</button>
-</div>
-<div id="admin-staff-list" class="space-y-4">
-<!-- Loaded dynamically -->
-</div>
-</div>
-</main>
-</div>
-​<!-- GENERIC MODALS FOR ADMIN CRUD -->
-<!-- Bracket Modal -->
-<div id="bracket-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-<div class="glass-panel p-8 max-w-lg w-full border border-white/20 space-y-6">
-<h3 id="bracket-modal-title" class="text-xl font-display font-bold uppercase tracking-wider">Add Tournament Bracket</h3>
-<form id="bracket-form" class="space-y-4">
-<input type="hidden" id="bracket-id">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Tournament Name</label>
-<input type="text" id="b-name" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Game</label>
-<input type="text" id="b-game" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none" placeholder="e.g. Mobile Legends">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Date</label>
-<input type="date" id="b-date" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Team A Name</label>
-<input type="text" id="b-teamA" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Team B Name</label>
-<input type="text" id="b-teamB" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-</div>
-<div class="grid grid-cols-3 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Score A</label>
-<input type="number" id="b-scoreA" value="0" class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Score B</label>
-<input type="number" id="b-scoreB" value="0" class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Round</label>
-<select id="b-round" class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-<option value="Quarterfinal">Quarterfinal</option>
-<option value="Semifinal">Semifinal</option>
-<option value="Final">Final</option>
-</select>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Status</label>
-<select id="b-status" class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-<option value="Upcoming">Upcoming</option>
-<option value="Live">Live</option>
-<option value="Completed">Completed</option>
-</select>
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Winner</label>
-<input type="text" id="b-winner" placeholder="Winner team name or TBD" class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-</div>
-<div class="flex justify-end gap-4 pt-4">
-<button type="button" onclick="closeModals()" class="px-5 py-2.5 border border-white/20 text-xs font-bold tracking-widest uppercase">CANCEL</button>
-<button type="submit" class="px-5 py-2.5 bg-white text-black text-xs font-bold tracking-widest uppercase">SAVE BRACKET</button>
-</div>
-</form>
-</div>
-</div>
-​<!-- Schedule Modal -->
-<div id="schedule-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-<div class="glass-panel p-8 max-w-lg w-full border border-white/20 space-y-6">
-<h3 id="schedule-modal-title" class="text-xl font-display font-bold uppercase tracking-wider">Add Match Schedule</h3>
-<form id="schedule-form" class="space-y-4">
-<input type="hidden" id="schedule-id">
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Team A</label>
-<input type="text" id="s-teamA" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Team B</label>
-<input type="text" id="s-teamB" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Event Name</label>
-<input type="text" id="s-event" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Game</label>
-<input type="text" id="s-game" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Date</label>
-<input type="date" id="s-date" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Time</label>
-<input type="time" id="s-time" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Status</label>
-<select id="s-status" class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-<option value="Upcoming">Upcoming</option>
-<option value="Live">Live</option>
-<option value="Completed">Completed</option>
-</select>
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Live Stream URL</label>
-<input type="url" id="s-stream" placeholder="https://youtube.com/..." class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-</div>
-<div class="flex justify-end gap-4 pt-4">
-<button type="button" onclick="closeModals()" class="px-5 py-2.5 border border-white/20 text-xs font-bold tracking-widest uppercase">CANCEL</button>
-<button type="submit" class="px-5 py-2.5 bg-white text-black text-xs font-bold tracking-widest uppercase">SAVE SCHEDULE</button>
-</div>
-</form>
-</div>
-</div>
-​<!-- News Modal -->
-<div id="news-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-<div class="glass-panel p-8 max-w-xl w-full border border-white/20 space-y-6">
-<h3 id="news-modal-title" class="text-xl font-display font-bold uppercase tracking-wider">Create Article</h3>
-<form id="news-form" class="space-y-4">
-<input type="hidden" id="news-id">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Title</label>
-<input type="text" id="n-title" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Category</label>
-<input type="text" id="n-category" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none" placeholder="e.g. Tournament, Announcement">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Publication Date</label>
-<input type="date" id="n-date" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Cover Image URL</label>
-<input type="url" id="n-image" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none" placeholder="https://images.unsplash.com/...">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Summary</label>
-<textarea id="n-summary" rows="2" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none"></textarea>
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Full Content</label>
-<textarea id="n-content" rows="4" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none"></textarea>
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Status</label>
-<select id="n-status" class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-<option value="Published">Published</option>
-<option value="Draft">Draft (Unpublished)</option>
-</select>
-</div>
-<div class="flex justify-end gap-4 pt-4">
-<button type="button" onclick="closeModals()" class="px-5 py-2.5 border border-white/20 text-xs font-bold tracking-widest uppercase">CANCEL</button>
-<button type="submit" class="px-5 py-2.5 bg-white text-black text-xs font-bold tracking-widest uppercase">SAVE ARTICLE</button>
-</div>
-</form>
-</div>
-</div>
-​<!-- Staff Modal -->
-<div id="staff-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-<div class="glass-panel p-8 max-w-lg w-full border border-white/20 space-y-6">
-<h3 id="staff-modal-title" class="text-xl font-display font-bold uppercase tracking-wider">Add Staff Profile</h3>
-<form id="staff-form" class="space-y-4">
-<input type="hidden" id="staff-id">
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Full Name</label>
-<input type="text" id="st-name" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Role / Title</label>
-<input type="text" id="st-role" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none" placeholder="e.g. Founder & Leader">
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Display Order</label>
-<input type="number" id="st-order" value="1" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none">
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Photo URL (Optional)</label>
-<input type="url" id="st-photo" class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none" placeholder="https://...">
-</div>
-</div>
-<div class="space-y-1">
-<label class="text-xs uppercase tracking-widest text-blds-lightgray">Short Description</label>
-<textarea id="st-desc" rows="3" required class="w-full bg-black border border-white/20 p-3 text-sm text-white focus:border-white focus:outline-none"></textarea>
-</div>
-<div class="flex justify-end gap-4 pt-4">
-<button type="button" onclick="closeModals()" class="px-5 py-2.5 border border-white/20 text-xs font-bold tracking-widest uppercase">CANCEL</button>
-<button type="submit" class="px-5 py-2.5 bg-white text-black text-xs font-bold tracking-widest uppercase">SAVE STAFF</button>
-</div>
-</form>
-</div>
-</div>
-​<!-- Article Detail Modal for Public -->
-<div id="article-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-<div class="glass-panel p-8 max-w-2xl w-full border border-white/20 space-y-6 max-h-[90vh] overflow-y-auto">
-<div class="flex justify-between items-start">
-<div>
-<span id="modal-art-cat" class="text-xs font-bold tracking-widest text-blds-gray uppercase"></span>
-<h2 id="modal-art-title" class="text-2xl font-display font-bold tracking-wider text-glow mt-1"></h2>
-<span id="modal-art-date" class="text-xs text-blds-lightgray"></span>
-</div>
-<button onclick="closeArticleModal()" class="text-white text-xl p-2"><i class="fa-solid fa-xmark"></i></button>
-</div>
-<img id="modal-art-img" src="" alt="Cover" class="w-full h-64 object-cover border border-white/10" onerror="this.src='https://via.placeholder.com/600x300/121212/FFFFFF?text=BLDS+News'">
-<div id="modal-art-content" class="text-blds-lightgray text-sm leading-relaxed whitespace-pre-line space-y-4"></div>
-</div>
-</div>
-​<!-- FIREBASE & APP LOGIC -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getDatabase, ref, onValue, push, set, update, remove, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-​// FIREBASE CONFIGURATION (Replace with your project credentials)
-const firebaseConfig = {
-apiKey: "YOUR_API_KEY",
-authDomain: "YOUR_AUTH_DOMAIN",
-databaseURL: "https://blds-official-default-rtdb.asia-southeast1.firebasedatabase.app/",
-projectId: "YOUR_PROJECT_ID",
-storageBucket: "YOUR_STORAGE_BUCKET",
-messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-appId: "YOUR_APP_ID"
-};
-​const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const auth = getAuth(app);
-​// Global State Data
-let appData = {
-brackets: {},
-schedule: {},
-news: {},
-staff: {}
-};
-​let currentFilter = 'all';
-​// Initialize App
-document.addEventListener('DOMContentLoaded', () => {
-document.getElementById('copyright-year').textContent = new Date().getFullYear();
-setupRouter();
-setupListeners();
-setupButtonEffects();
-fetchDataRealtime();
-});
-​// ROUTING SYSTEM (#admin, #admin/dashboard, etc.)
-function setupRouter() {
-window.addEventListener('hashchange', handleRoute);
-handleRoute();
-}
-​function handleRoute() {
-const hash = window.location.hash;
-const publicView = document.getElementById('public-view');
-const loginView = document.getElementById('admin-login-view');
-const dashboardView = document.getElementById('admin-dashboard-view');
-​publicView.classList.add('hidden');
-loginView.classList.add('hidden');
-dashboardView.classList.add('hidden');
-​if (hash.startsWith('#admin')) {
-// Check auth state
-const currentUser = auth.currentUser;
-if (!currentUser) {
-loginView.classList.remove('hidden');
-} else {
-verifyAndShowDashboard(currentUser);
-}
-} else {
-publicView.classList.remove('hidden');
-}
-}
-​async function verifyAndShowDashboard(user) {
-const dashboardView = document.getElementById('admin-dashboard-view');
-const loginView = document.getElementById('admin-login-view');
-​try {
-const adminRef = ref(db, admins/${user.uid});
-const snapshot = await get(adminRef);
-if (snapshot.exists() && snapshot.val() === true) {
-document.getElementById('admin-user-email').textContent = user.email;
-dashboardView.classList.remove('hidden');
-updateDashboardStats();
-} else {
-await signOut(auth);
-loginView.classList.remove('hidden');
-showLoginError("Akses ditolak: Akun ini bukan administrator terotorisasi.");
-}
-} catch (err) {
-console.error(err);
-loginView.classList.remove('hidden');
-showLoginError("Terjadi kesalahan verifikasi otorisasi admin.");
-}
-}
-​// AUTHENTICATION
-const loginForm = document.getElementById('admin-login-form');
-loginForm.addEventListener('submit', async (e) => {
-e.preventDefault();
-const email = document.getElementById('admin-email').value;
-const password = document.getElementById('admin-password').value;
-try {
-const cred = await signInWithEmailAndPassword(auth, email, password);
-verifyAndShowDashboard(cred.user);
-} catch (err) {
-showLoginError("Login gagal: Periksa email atau password Anda.");
-}
-});
-​document.getElementById('admin-logout-btn').addEventListener('click', async () => {
-await signOut(auth);
-window.location.hash = '#';
-});
-​function showLoginError(msg) {
-const errEl = document.getElementById('login-error');
-errEl.textContent = msg;
-errEl.classList.remove('hidden');
-}
-​// REALTIME DATA SYNC
-function fetchDataRealtime() {
-// Brackets
-onValue(ref(db, 'site/brackets'), (snap) => {
-appData.brackets = snap.val() || {};
-renderPublicBrackets();
-renderAdminBrackets();
-updateStats();
-});
-​// Schedule
-onValue(ref(db, 'site/schedule'), (snap) => {
-appData.schedule = snap.val() || {};
-renderPublicSchedule();
-renderAdminSchedule();
-updateStats();
-});
-​// News
-onValue(ref(db, 'site/news'), (snap) => {
-appData.news = snap.val() || {};
-renderPublicNews();
-renderAdminNews();
-updateStats();
-});
-​// Staff
-onValue(ref(db, 'site/staff'), (snap) => {
-appData.staff = snap.val() || {};
-renderPublicStaff();
-renderAdminStaff();
-updateStats();
-});
-}
-​// RENDER PUBLIC: BRACKETS
-function renderPublicBrackets() {
-const container = document.getElementById('bracket-container');
-const items = Object.entries(appData.brackets);
-if (items.length === 0) {
-container.innerHTML =  <div class="glass-panel p-16 text-center space-y-4 border border-white/10"> <i class="fa-solid fa-trophy text-4xl text-blds-gray"></i> <h3 class="text-xl font-bold tracking-wider uppercase">Belum Ada Turnamen Aktif</h3> <p class="text-blds-lightgray text-sm max-w-md mx-auto">Bagan turnamen dan pertandingan akan ditampilkan di sini saat admin menambahkannya.</p> </div>;
-return;
-}
-​container.innerHTML = items.map(([id, b]) => <div class="glass-panel p-6 sm:p-8 border border-white/10 space-y-6 box-glow-hover transition-all"> <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-white/10 pb-4"> <div> <span class="text-xs font-bold tracking-widest text-blds-gray uppercase">${b.game} &bull; ${b.date}</span> <h3 class="text-2xl font-display font-bold tracking-wider text-glow mt-1">${b.name}</h3> </div> <span class="px-3 py-1 text-xs font-bold uppercase border ${b.status === 'Live' ? 'border-red-500 text-red-400 bg-red-950/20' : b.status === 'Completed' ? 'border-white/40 text-white' : 'border-blds-gray text-blds-gray'}"> ${b.status} (${b.round}) </span> </div> <div class="grid grid-cols-1 md:grid-cols-7 gap-4 items-center py-4"> <div class="md:col-span-3 glass-panel p-4 border border-white/10 text-center space-y-1 ${b.winner === b.teamA ? 'border-white bg-white/5' : ''}"> <span class="text-xs text-blds-gray uppercase tracking-widest">Team A</span> <h4 class="text-xl font-bold tracking-wider">${b.teamA}</h4> <div class="text-3xl font-display font-bold text-glow">${b.scoreA}</div> </div> <div class="md:col-span-1 text-center font-display font-bold text-xl text-blds-gray">VS</div> <div class="md:col-span-3 glass-panel p-4 border border-white/10 text-center space-y-1 ${b.winner === b.teamB ? 'border-white bg-white/5' : ''}"> <span class="text-xs text-blds-gray uppercase tracking-widest">Team B</span> <h4 class="text-xl font-bold tracking-wider">${b.teamB}</h4> <div class="text-3xl font-display font-bold text-glow">${b.scoreB}</div> </div> </div> ${b.winner ?<div class="text-center text-xs font-bold tracking-widest uppercase text-blds-lightgray border-t border-white/10 pt-4">Winner: <span class="text-white">${b.winner}</span></div>: ''} </div>).join('');
-}
-​// RENDER PUBLIC: SCHEDULE
-window.filterSchedule = (status) => {
-currentFilter = status;
-document.querySelectorAll('.sched-filter-btn').forEach(btn => {
-btn.classList.remove('bg-white', 'text-black');
-btn.classList.add('border-white/30');
-});
-event.target.classList.add('bg-white', 'text-black');
-event.target.classList.remove('border-white/30');
-renderPublicSchedule();
-};
-​function renderPublicSchedule() {
-const container = document.getElementById('schedule-list');
-let items = Object.entries(appData.schedule);
-​if (currentFilter !== 'all') {
-items = items.filter(([_, s]) => s.status.toLowerCase() === currentFilter);
-}
-​if (items.length === 0) {
-container.innerHTML =  <div class="glass-panel p-16 text-center space-y-4 border border-white/10"> <i class="fa-solid fa-calendar-days text-4xl text-blds-gray"></i> <h3 class="text-xl font-bold tracking-wider uppercase">Tidak Ada Jadwal</h3> <p class="text-blds-lightgray text-sm max-w-md mx-auto">Tidak ada pertandingan dalam kategori ini.</p> </div>;
-return;
-}
-​container.innerHTML = items.map(([id, s]) => <div class="glass-panel p-6 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 box-glow-hover transition-all"> <div class="space-y-1 text-center sm:text-left"> <div class="flex items-center justify-center sm:justify-start gap-2"> <span class="text-xs font-bold tracking-widest text-blds-gray uppercase">${s.event} &bull; ${s.game}</span> <span class="px-2 py-0.5 text-[10px] font-bold uppercase border ${s.status === 'Live' ? 'border-red-500 text-red-400 bg-red-950/20' : s.status === 'Completed' ? 'border-white/40 text-white' : 'border-blds-gray text-blds-gray'}">${s.status}</span> </div> <h4 class="text-xl font-bold tracking-wider">${s.teamA} <span class="text-blds-gray font-normal">vs</span> ${s.teamB}</h4> <span class="text-xs text-blds-lightgray"><i class="fa-regular fa-clock mr-1"></i> ${s.date} | ${s.time}</span> </div> <div> ${s.streamUrl ?<a href="${s.streamUrl}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-white hover:bg-white hover:text-black text-xs font-bold tracking-widest uppercase transition-all inline-flex items-center gap-2"><i class="fa-solid fa-play"></i> Watch Live</a>:<span class="text-xs text-blds-gray uppercase tracking-widest">Stream TBD</span>} </div> </div> ).join('');
-}
-​// RENDER PUBLIC: NEWS
-function renderPublicNews() {
-const container = document.getElementById('news-grid');
-const items = Object.entries(appData.news).filter(([_, n]) => n.status === 'Published');
-​if (items.length === 0) {
-container.innerHTML =  <div class="col-span-full glass-panel p-16 text-center space-y-4 border border-white/10"> <i class="fa-solid fa-newspaper text-4xl text-blds-gray"></i> <h3 class="text-xl font-bold tracking-wider uppercase">Belum Ada Berita</h3> <p class="text-blds-lightgray text-sm max-w-md mx-auto">Artikel dan pengumuman resmi akan dipublikasikan langsung.</p> </div>;
-return;
-}
-​container.innerHTML = items.map(([id, n]) => <div onclick="openArticleDetail('${id}')" class="glass-panel border border-white/10 overflow-hidden box-glow-hover transition-all cursor-pointer flex flex-col justify-between group"> <div> <div class="h-48 overflow-hidden relative"> <img src="${n.image}" alt="${n.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x250/121212/FFFFFF?text=BLDS+News'"> <span class="absolute top-4 left-4 px-3 py-1 bg-black/80 border border-white/20 text-[10px] font-bold tracking-widest uppercase">${n.category}</span> </div> <div class="p-6 space-y-3"> <span class="text-xs text-blds-gray">${n.date}</span> <h3 class="text-xl font-bold tracking-wide group-hover:text-blds-lightgray transition-colors">${n.title}</h3> <p class="text-blds-lightgray text-sm leading-relaxed line-clamp-3">${n.summary}</p> </div> </div> <div class="p-6 pt-0"> <span class="text-xs font-bold tracking-widest uppercase text-white flex items-center gap-2">Read Article &rarr;</span> </div> </div>).join('');
-}
-​window.openArticleDetail = (id) => {
-const n = appData.news[id];
-if (!n) return;
-document.getElementById('modal-art-cat').textContent = ${n.category} • ${n.date};
-document.getElementById('modal-art-title').textContent = n.title;
-document.getElementById('modal-art-date').textContent = Published by BLDS Admin;
-document.getElementById('modal-art-img').src = n.image;
-document.getElementById('modal-art-content').textContent = n.content;
-document.getElementById('article-modal').classList.remove('hidden');
-document.getElementById('article-modal').classList.add('flex');
-};
-​window.closeArticleModal = () => {
-document.getElementById('article-modal').classList.add('hidden');
-document.getElementById('article-modal').classList.remove('flex');
-};
-​// RENDER PUBLIC: STAFF
-function renderPublicStaff() {
-const container = document.getElementById('staff-grid');
-let items = Object.entries(appData.staff);
-items.sort((a, b) => (parseInt(a[1].order) || 0) - (parseInt(b[1].order) || 0));
-​if (items.length === 0) {
-container.innerHTML =  <div class="col-span-full glass-panel p-16 text-center space-y-4 border border-white/10"> <i class="fa-solid fa-users text-4xl text-blds-gray"></i> <h3 class="text-xl font-bold tracking-wider uppercase">Profil Staff Belum Tersedia</h3> <p class="text-blds-lightgray text-sm max-w-md mx-auto">Informasi pengurus dan staff inti BLDS akan ditampilkan di sini.</p> </div>;
-return;
-}
-​container.innerHTML = items.map(([id, st]) => <div class="glass-panel p-6 border border-white/10 text-center space-y-4 box-glow-hover transition-all flex flex-col items-center"> <div class="w-24 h-24 rounded-full border-2 border-white/20 overflow-hidden bg-black flex items-center justify-center"> ${st.photo ?<img src="${st.photo}" alt="${st.name}" class="w-full h-full object-cover">:<i class="fa-solid fa-user text-3xl text-blds-gray"></i>} </div> <div class="space-y-1"> <h3 class="text-xl font-bold tracking-wider">${st.name}</h3> <span class="text-xs font-bold uppercase tracking-widest text-blds-gray block">${st.role}</span> </div> <p class="text-blds-lightgray text-xs leading-relaxed">${st.description}</p> </div> ).join('');
-}
-​// STATS & ADMIN UI RENDERING
-function updateStats() {
-document.getElementById('stat-brackets').textContent = Object.keys(appData.brackets).length;
-document.getElementById('stat-schedule').textContent = Object.keys(appData.schedule).length;
-document.getElementById('stat-news').textContent = Object.keys(appData.news).length;
-document.getElementById('stat-staff').textContent = Object.keys(appData.staff).length;
-}
-​window.switchAdminTab = (tabName) => {
-document.querySelectorAll('.admin-tab-content').forEach(el => el.classList.add('hidden'));
-document.querySelectorAll('.admin-tab-btn').forEach(btn => {
-btn.classList.remove('bg-white', 'text-black', 'border-white');
-btn.classList.add('border-white/20', 'text-blds-lightgray');
-});
-document.getElementById(tab-${tabName}).classList.remove('hidden');
-event.currentTarget.classList.add('bg-white', 'text-black', 'border-white');
-event.currentTarget.classList.remove('border-white/20', 'text-blds-lightgray');
-};
-​// ADMIN LISTS & FORMS CRUD
-function renderAdminBrackets() {
-const list = document.getElementById('admin-brackets-list');
-const items = Object.entries(appData.brackets);
-if (items.length === 0) {
-list.innerHTML = <div class="glass-panel p-8 text-center text-blds-gray text-sm">Belum ada data bracket.</div>;
-return;
-}
-list.innerHTML = items.map(([id, b]) => <div class="glass-panel p-4 border border-white/10 flex justify-between items-center"> <div> <h4 class="font-bold text-lg">${b.name} (${b.game})</h4> <span class="text-xs text-blds-gray">${b.teamA} (${b.scoreA}) vs ${b.teamB} (${b.scoreB}) &bull; ${b.status}</span> </div> <div class="flex gap-2"> <button onclick="editBracket('${id}')" class="px-3 py-1.5 border border-white/30 text-xs font-bold uppercase hover:border-white">Edit</button> <button onclick="deleteItem('brackets', '${id}')" class="px-3 py-1.5 border border-red-500/50 text-red-400 text-xs font-bold uppercase hover:border-red-500">Delete</button> </div> </div>).join('');
-}
-​function renderAdminSchedule() {
-const list = document.getElementById('admin-schedule-list');
-const items = Object.entries(appData.schedule);
-if (items.length === 0) {
-list.innerHTML = <div class="glass-panel p-8 text-center text-blds-gray text-sm">Belum ada data jadwal.</div>;
-return;
-}
-list.innerHTML = items.map(([id, s]) => <div class="glass-panel p-4 border border-white/10 flex justify-between items-center"> <div> <h4 class="font-bold text-lg">${s.teamA} vs ${s.teamB}</h4> <span class="text-xs text-blds-gray">${s.event} &bull; ${s.date} ${s.time} &bull; ${s.status}</span> </div> <div class="flex gap-2"> <button onclick="editSchedule('${id}')" class="px-3 py-1.5 border border-white/30 text-xs font-bold uppercase hover:border-white">Edit</button> <button onclick="deleteItem('schedule', '${id}')" class="px-3 py-1.5 border border-red-500/50 text-red-400 text-xs font-bold uppercase hover:border-red-500">Delete</button> </div> </div>).join('');
-}
-​function renderAdminNews() {
-const list = document.getElementById('admin-news-list');
-const items = Object.entries(appData.news);
-if (items.length === 0) {
-list.innerHTML = <div class="glass-panel p-8 text-center text-blds-gray text-sm">Belum ada berita.</div>;
-return;
-}
-list.innerHTML = items.map(([id, n]) => <div class="glass-panel p-4 border border-white/10 flex justify-between items-center"> <div> <h4 class="font-bold text-lg">${n.title}</h4> <span class="text-xs text-blds-gray">${n.category} &bull; ${n.date} &bull; ${n.status}</span> </div> <div class="flex gap-2"> <button onclick="editNews('${id}')" class="px-3 py-1.5 border border-white/30 text-xs font-bold uppercase hover:border-white">Edit</button> <button onclick="deleteItem('news', '${id}')" class="px-3 py-1.5 border border-red-500/50 text-red-400 text-xs font-bold uppercase hover:border-red-500">Delete</button> </div> </div>).join('');
-}
-​function renderAdminStaff() {
-const list = document.getElementById('admin-staff-list');
-const items = Object.entries(appData.staff);
-if (items.length === 0) {
-list.innerHTML = <div class="glass-panel p-8 text-center text-blds-gray text-sm">Belum ada data staff.</div>;
-return;
-}
-list.innerHTML = items.map(([id, st]) => <div class="glass-panel p-4 border border-white/10 flex justify-between items-center"> <div> <h4 class="font-bold text-lg">${st.name} - <span class="text-blds-gray">${st.role}</span></h4> <span class="text-xs text-blds-gray">Order: ${st.order}</span> </div> <div class="flex gap-2"> <button onclick="editStaff('${id}')" class="px-3 py-1.5 border border-white/30 text-xs font-bold uppercase hover:border-white">Edit</button> <button onclick="deleteItem('staff', '${id}')" class="px-3 py-1.5 border border-red-500/50 text-red-400 text-xs font-bold uppercase hover:border-red-500">Delete</button> </div> </div>).join('');
-}
-​// MODAL CONTROLLERS & SUBMISSIONS
-window.closeModals = () => {
-document.querySelectorAll('#bracket-modal, #schedule-modal, #news-modal, #staff-modal').forEach(m => {
-m.classList.add('hidden');
-m.classList.remove('flex');
-});
-};
-​window.openBracketModal = (id = null) => {
-document.getElementById('bracket-id').value = '';
-document.getElementById('bracket-form').reset();
-document.getElementById('bracket-modal-title').textContent = 'Add Tournament Bracket';
-if (id) {
-const b = appData.brackets[id];
-document.getElementById('bracket-id').value = id;
-document.getElementById('b-name').value = b.name;
-document.getElementById('b-game').value = b.game;
-document.getElementById('b-date').value = b.date;
-document.getElementById('b-teamA').value = b.teamA;
-document.getElementById('b-teamB').value = b.teamB;
-document.getElementById('b-scoreA').value = b.scoreA;
-document.getElementById('b-scoreB').value = b.scoreB;
-document.getElementById('b-round').value = b.round;
-document.getElementById('b-status').value = b.status;
-document.getElementById('b-winner').value = b.winner || '';
-document.getElementById('bracket-modal-title').textContent = 'Edit Tournament Bracket';
-}
-document.getElementById('bracket-modal').classList.remove('hidden');
-document.getElementById('bracket-modal').classList.add('flex');
-};
-window.editBracket = (id) => openBracketModal(id);
-​document.getElementById('bracket-form').addEventListener('submit', async (e) => {
-e.preventDefault();
-const id = document.getElementById('bracket-id').value;
-const data = {
-name: document.getElementById('b-name').value,
-game: document.getElementById('b-game').value,
-date: document.getElementById('b-date').value,
-teamA: document.getElementById('b-teamA').value,
-teamB: document.getElementById('b-teamB').value,
-scoreA: parseInt(document.getElementById('b-scoreA').value) || 0,
-scoreB: parseInt(document.getElementById('b-scoreB').value) || 0,
-round: document.getElementById('b-round').value,
-status: document.getElementById('b-status').value,
-winner: document.getElementById('b-winner').value
-};
-try {
-if (id) {
-await update(ref(db, site/brackets/${id}), data);
-} else {
-await push(ref(db, 'site/brackets'), data);
-}
-closeModals();
-} catch (err) {
-alert("Gagal menyimpan data: " + err.message);
-}
-});
-​window.openScheduleModal = (id = null) => {
-document.getElementById('schedule-id').value = '';
-document.getElementById('schedule-form').reset();
-document.getElementById('schedule-modal-title').textContent = 'Add Match Schedule';
-if (id) {
-const s = appData.schedule[id];
-document.getElementById('schedule-id').value = id;
-document.getElementById('s-teamA').value = s.teamA;
-document.getElementById('s-teamB').value = s.teamB;
-document.getElementById('s-event').value = s.event;
-document.getElementById('s-game').value = s.game;
-document.getElementById('s-date').value = s.date;
-document.getElementById('s-time').value = s.time;
-document.getElementById('s-status').value = s.status;
-document.getElementById('s-stream').value = s.streamUrl || '';
-document.getElementById('schedule-modal-title').textContent = 'Edit Match Schedule';
-}
-document.getElementById('schedule-modal').classList.remove('hidden');
-document.getElementById('schedule-modal').classList.add('flex');
-};
-window.editSchedule = (id) => openScheduleModal(id);
-​document.getElementById('schedule-form').addEventListener('submit', async (e) => {
-e.preventDefault();
-const id = document.getElementById('schedule-id').value;
-const data = {
-teamA: document.getElementById('s-teamA').value,
-teamB: document.getElementById('s-teamB').value,
-event: document.getElementById('s-event').value,
-game: document.getElementById('s-game').value,
-date: document.getElementById('s-date').value,
-time: document.getElementById('s-time').value,
-status: document.getElementById('s-status').value,
-streamUrl: document.getElementById('s-stream').value
-};
-try {
-if (id) {
-await update(ref(db, site/schedule/${id}), data);
-} else {
-await push(ref(db, 'site/schedule'), data);
-}
-closeModals();
-} catch (err) {
-alert("Gagal menyimpan jadwal: " + err.message);
-}
-});
-​window.openNewsModal = (id = null) => {
-document.getElementById('news-id').value = '';
-document.getElementById('news-form').reset();
-document.getElementById('news-modal-title').textContent = 'Create Article';
-if (id) {
-const n = appData.news[id];
-document.getElementById('news-id').value = id;
-document.getElementById('n-title').value = n.title;
-document.getElementById('n-category').value = n.category;
-document.getElementById('n-date').value = n.date;
-document.getElementById('n-image').value = n.image;
-document.getElementById('n-summary').value = n.summary;
-document.getElementById('n-content').value = n.content;
-document.getElementById('n-status').value = n.status;
-document.getElementById('news-modal-title').textContent = 'Edit Article';
-}
-document.getElementById('news-modal').classList.remove('hidden');
-document.getElementById('news-modal').classList.add('flex');
-};
-window.editNews = (id) => openNewsModal(id);
-​document.getElementById('news-form').addEventListener('submit', async (e) => {
-e.preventDefault();
-const id = document.getElementById('news-id').value;
-const data = {
-title: document.getElementById('n-title').value,
-category: document.getElementById('n-category').value,
-date: document.getElementById('n-date').value,
-image: document.getElementById('n-image').value,
-summary: document.getElementById('n-summary').value,
-content: document.getElementById('n-content').value,
-status: document.getElementById('n-status').value
-};
-try {
-if (id) {
-await update(ref(db, site/news/${id}), data);
-} else {
-await push(ref(db, 'site/news'), data);
-}
-closeModals();
-} catch (err) {
-alert("Gagal menyimpan berita: " + err.message);
-}
-});
-​window.openStaffModal = (id = null) => {
-document.getElementById('staff-id').value = '';
-document.getElementById('staff-form').reset();
-document.getElementById('staff-modal-title').textContent = 'Add Staff Profile';
-if (id) {
-const st = appData.staff[id];
-document.getElementById('staff-id').value = id;
-document.getElementById('st-name').value = st.name;
-document.getElementById('st-role').value = st.role;
-document.getElementById('st-order').value = st.order;
-document.getElementById('st-photo').value = st.photo || '';
-document.getElementById('st-desc').value = st.description;
-document.getElementById('staff-modal-title').textContent = 'Edit Staff Profile';
-}
-document.getElementById('staff-modal').classList.add('flex');
-document.getElementById('staff-modal').classList.remove('hidden');
-};
-window.editStaff = (id) => openStaffModal(id);
-​document.getElementById('staff-form').addEventListener('submit', async (e) => {
-e.preventDefault();
-const id = document.getElementById('staff-id').value;
-const data = {
-name: document.getElementById('st-name').value,
-role: document.getElementById('st-role').value,
-order: parseInt(document.getElementById('st-order').value) || 1,
-photo: document.getElementById('st-photo').value,
-description: document.getElementById('st-desc').value
-};
-try {
-if (id) {
-await update(ref(db, site/staff/${id}), data);
-} else {
-await push(ref(db, 'site/staff'), data);
-}
-closeModals();
-} catch (err) {
-alert("Gagal menyimpan staff: " + err.message);
-}
-});
-​window.deleteItem = async (node, id) => {
-if (confirm("Apakah Anda yakin ingin menghapus item ini secara permanen?")) {
-try {
-await remove(ref(db, site/${node}/${id}));
-} catch (err) {
-alert("Gagal menghapus: " + err.message);
-}
-}
-};
-​// UI HELPERS (Hamburger & Special Button Animation)
-function setupListeners() {
-const hamburgerBtn = document.getElementById('hamburger-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-​hamburgerBtn.addEventListener('click', () => {
-mobileMenu.classList.toggle('hidden');
-});
-​document.querySelectorAll('.mobile-link').forEach(link => {
-link.addEventListener('click', () => {
-mobileMenu.classList.add('hidden');
-});
-});
-}
-​function setupButtonEffects() {
-document.querySelectorAll('.blds-btn').forEach(button => {
-button.addEventListener('click', function(e) {
-const rect = this.getBoundingClientRect();
-const particle = document.createElement('span');
-particle.className = 'diamond-particle';
-particle.innerHTML = '♦';
-particle.style.left = ${e.clientX - rect.left}px;
-particle.style.top = ${e.clientY - rect.top}px;
-this.appendChild(particle);
-setTimeout(() => particle.remove(), 1500);
-});
-});
-}
-</script>
+
+<body class="bg-blds-black text-white font-sans antialiased selection:bg-white selection:text-black overflow-x-hidden min-h-screen flex flex-col justify-between">
+
+  <!-- Interactive Canvas Particles Background -->
+  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+  <!-- ==================== PUBLIC HEADER / NAVBAR ==================== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-40 bg-blds-black/80 backdrop-blur-md border-b border-blds-border transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo & Name -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <img src="logo.png" alt="BLDS Logo" class="h-10 w-10 object-contain animate-float-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/100/000000/FFFFFF?text=BLDS';" />
+        <div class="flex flex-col">
+          <span class="font-orbitron font-bold text-lg tracking-wider text-white group-hover:glow-sub transition-all">BLDS</span>
+          <span class="text-[10px] text-blds-muted tracking-widest uppercase hidden sm:inline">BlacklightDominions</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider font-orbitron">
+        <a href="#home" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">HOME</a>
+        <a href="#about" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">ABOUT</a>
+        <a href="#bracket" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">BRACKET</a>
+        <a href="#schedule" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">SCHEDULE</a>
+        <a href="#news" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">NEWS</a>
+        <a href="#staff" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">STAFF</a>
+      </nav>
+
+      <!-- Desktop Action & Mobile Toggle -->
+      <div class="flex items-center gap-4">
+        <a href="#admin" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-orbitron border border-blds-border rounded-lg hover:border-white hover:bg-white hover:text-black transition-all duration-300 tracking-wider">
+          ADMIN PORTAL
+        </a>
+
+        <!-- Hamburger Icon (Mobile) -->
+        <button id="menu-btn" class="md:hidden p-2 text-white hover:text-blds-muted focus:outline-none" aria-label="Toggle Menu">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Overlay -->
+    <div id="mobile-menu" class="hidden md:hidden bg-blds-black/95 border-b border-blds-border px-4 pt-4 pb-6 space-y-4 font-orbitron text-center">
+      <a href="#home" class="mobile-link block py-2 text-blds-muted hover:text-white">HOME</a>
+      <a href="#about" class="mobile-link block py-2 text-blds-muted hover:text-white">ABOUT</a>
+      <a href="#bracket" class="mobile-link block py-2 text-blds-muted hover:text-white">BRACKET</a>
+      <a href="#schedule" class="mobile-link block py-2 text-blds-muted hover:text-white">SCHEDULE</a>
+      <a href="#news" class="mobile-link block py-2 text-blds-muted hover:text-white">NEWS</a>
+      <a href="#staff" class="mobile-link block py-2 text-blds-muted hover:text-white">STAFF</a>
+      <a href="#admin" class="mobile-link block py-2 text-xs text-white border border-blds-border rounded-lg mt-4">ADMIN PORTAL</a>
+    </div>
+  </header>
+
+  <!-- ==================== PUBLIC VIEW CONTAINER ==================== -->
+  <main id="public-view" class="relative z-10 pt-20">
+
+    <!-- HERO SECTION -->
+    <section id="home" class="min-h-[calc(100vh-5rem)] flex items-center justify-center relative bg-grid-pattern py-20 px-4">
+      <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+        
+        <!-- Animated Floating Hero Logo -->
+        <div class="relative mb-8">
+          <div class="absolute inset-0 bg-white/10 rounded-full blur-3xl transform scale-150"></div>
+          <img src="logo.png" alt="BLDS Emblem" class="w-36 h-36 sm:w-48 sm:h-48 object-contain animate-float-logo relative z-10" onerror="this.onerror=null; this.src='https://via.placeholder.com/200/000000/FFFFFF?text=BLDS';" />
+        </div>
+
+        <h1 class="font-orbitron font-black text-4xl sm:text-6xl md:text-7xl tracking-widest text-white glow-title uppercase mb-4">
+          BLACKLIGHT DOMINIONS
+        </h1>
+        
+        <p class="font-orbitron text-lg sm:text-2xl text-blds-muted tracking-widest uppercase mb-8 glow-sub">
+          UNITED BEYOND THE ECLIPSE
+        </p>
+
+        <p class="max-w-2xl text-sm sm:text-base text-gray-400 mb-10 leading-relaxed">
+          Ekosistem esports dan komunitas profesional yang bergerak dalam persatuan, keteguhan, dan potensi tanpa batas.
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="#bracket" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-orbitron font-bold text-sm tracking-widest uppercase rounded-lg shadow-lg hover:bg-gray-200 transition-all duration-300 overflow-hidden">
+            <span>LIHAT BRACKET</span>
+          </a>
+          <a href="#schedule" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-transparent border border-white/30 text-white font-orbitron font-bold text-sm tracking-widest uppercase rounded-lg hover:border-white hover:bg-white/5 transition-all duration-300 overflow-hidden">
+            <span>JADWAL TANDING</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 px-4 bg-blds-black border-t border-blds-border">
+      <div class="max-w-6xl mx-auto space-y-20">
+        
+        <!-- Section Header -->
+        <div class="text-center space-y-3">
+          <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">ABOUT BLDS</h2>
+          <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
+        </div>
+
+        <!-- History Timeline -->
+        <div class="space-y-8">
+          <h3 class="font-orbitron font-semibold text-xl tracking-wider text-center text-white mb-10">JOURNEY TIMELINE</h3>
+          <div class="relative border-l-2 border-blds-border max-w-3xl mx-auto pl-6 sm:pl-10 space-y-12">
+            
+            <div class="relative group">
+              <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
+              <span class="text-xs font-orbitron text-blds-muted tracking-widest">3 MEI 2023</span>
+              <h4 class="font-orbitron font-bold text-lg text-white mt-1">THE BEGINNING</h4>
+              <p class="text-sm text-gray-400 mt-1">Langkah awal terbentuknya fondasi utama perjalanan sejarah BLDS.</p>
+            </div>
+
+            <div class="relative group">
+              <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
+              <span class="text-xs font-orbitron text-blds-muted tracking-widest">15 MEI 2024</span>
+              <h4 class="font-orbitron font-bold text-lg text-white mt-1">WHATSAPP COMMUNITY</h4>
+              <p class="text-sm text-gray-400 mt-1">Penggunaan platform WhatsApp sebagai wadah awal interaksi harian antar-anggota.</p>
+            </div>
+
+            <div class="relative group">
+              <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
+              <span class="text-xs font-orbitron text-blds-muted tracking-widest">12 SEPTEMBER 2024</span>
+              <h4 class="font-orbitron font-bold text-lg text-white mt-1">DISCORD EXPANSION</h4>
+              <p class="text-sm text-gray-400 mt-1">Peluncuran Server Discord resmi guna memperluas jangkauan komunikasi dan kegiatan esports.</p>
+            </div>
+
+            <div class="relative group">
+              <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
+              <span class="text-xs font-orbitron text-blds-muted tracking-widest">20 AGUSTUS 2025</span>
+              <h4 class="font-orbitron font-bold text-lg text-white mt-1">MAJOR IDENTITY RENEWAL</h4>
+              <p class="text-sm text-gray-400 mt-1">Fase renovasi total branding dan struktur ekosistem digital BLDS.</p>
+            </div>
+
+            <div class="relative group">
+              <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
+              <span class="text-xs font-orbitron text-blds-muted tracking-widest">2026 & BEYOND</span>
+              <h4 class="font-orbitron font-bold text-lg text-white mt-1">FUTURE HORIZON</h4>
+              <p class="text-sm text-gray-400 mt-1">Pengembangan berkelanjutan kompetisi, talent, dan ekosistem esports digital.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Vision & Mission Grid -->
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-4 hover:border-white/40 transition-all">
+            <h3 class="font-orbitron font-bold text-xl text-white tracking-wider flex items-center gap-3">
+              <span class="text-white">♦</span> VISION
+            </h3>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              Menjadi komunitas yang solid, dikenal melalui identitasnya, dan terus berkembang dengan membangun lingkungan yang mendorong kebersamaan, kreativitas, kompetisi, serta potensi setiap Dominioner.
+            </p>
+          </div>
+
+          <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-4 hover:border-white/40 transition-all">
+            <h3 class="font-orbitron font-bold text-xl text-white tracking-wider flex items-center gap-3">
+              <span class="text-white">♦</span> MISSION
+            </h3>
+            <ul class="text-sm text-gray-300 space-y-2.5 list-disc list-inside">
+              <li><strong class="text-white">Build Unity:</strong> Mempererat hubungan antar-Dominioners.</li>
+              <li><strong class="text-white">Develop Potential:</strong> Ruang belajar dan berkembang.</li>
+              <li><strong class="text-white">Create Opportunities:</strong> Peluang kegiatan dan kolaborasi.</li>
+              <li><strong class="text-white">Strengthen Identity:</strong> Menjaga nilai karakter BLDS.</li>
+              <li><strong class="text-white">Leave a Legacy:</strong> Membangun nilai untuk masa depan.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Identity Concept -->
+        <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-6">
+          <h3 class="font-orbitron font-bold text-xl text-white tracking-wider text-center">CORE IDENTITY</h3>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50">
+              <h4 class="font-orbitron text-white font-semibold text-sm mb-2">BLACK & WHITE</h4>
+              <p class="text-xs text-gray-400">Dua sisi berbeda yang bersatu menjadi kesatuan utuh.</p>
+            </div>
+            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50">
+              <h4 class="font-orbitron text-white font-semibold text-sm mb-2">THE ECLIPSE</h4>
+              <p class="text-xs text-gray-400">Melambangkan transformasi dan perjalanan menuju masa depan.</p>
+            </div>
+            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50">
+              <h4 class="font-orbitron text-white font-semibold text-sm mb-2">DOMINIONERS</h4>
+              <p class="text-xs text-gray-400">Sebutan kehormatan bagi seluruh anggota keluarga BLDS.</p>
+            </div>
+            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50">
+              <h4 class="font-orbitron text-white font-semibold text-sm mb-2">UNITED BEYOND</h4>
+              <p class="text-xs text-gray-400">Semangat untuk terus tumbuh dan bersatu melampaui batas.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BRACKET SECTION -->
+    <section id="bracket" class="py-24 px-4 bg-blds-black/50 border-t border-blds-border">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">TOURNAMENT BRACKETS</h2>
+          <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
+        </div>
+
+        <!-- Dynamic Brackets Container -->
+        <div id="brackets-container" class="space-y-12">
+          <!-- Empty State Default -->
+          <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
+            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE SECTION -->
+    <section id="schedule" class="py-24 px-4 bg-blds-black border-t border-blds-border">
+      <div class="max-w-6xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">MATCH SCHEDULE</h2>
+          <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex justify-center gap-3 font-orbitron text-xs tracking-wider">
+          <button onclick="filterSchedule('ALL')" class="schedule-tab px-4 py-2 border border-white text-white bg-white/10 rounded-lg">ALL</button>
+          <button onclick="filterSchedule('UPCOMING')" class="schedule-tab px-4 py-2 border border-blds-border text-blds-muted hover:border-white rounded-lg">UPCOMING</button>
+          <button onclick="filterSchedule('LIVE')" class="schedule-tab px-4 py-2 border border-blds-border text-blds-muted hover:border-white rounded-lg">LIVE</button>
+          <button onclick="filterSchedule('COMPLETED')" class="schedule-tab px-4 py-2 border border-blds-border text-blds-muted hover:border-white rounded-lg">COMPLETED</button>
+        </div>
+
+        <!-- Schedule Container -->
+        <div id="schedule-container" class="space-y-4">
+          <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
+            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">TIDAK ADA JADWAL PERTANDINGAN TERSEDIA</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWS SECTION -->
+    <section id="news" class="py-24 px-4 bg-blds-black/50 border-t border-blds-border">
+      <div class="max-w-6xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">NEWS & ANNOUNCEMENTS</h2>
+          <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
+        </div>
+
+        <div id="news-container" class="grid md:grid-cols-3 gap-8">
+          <div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
+            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAFF SECTION -->
+    <section id="staff" class="py-24 px-4 bg-blds-black border-t border-blds-border">
+      <div class="max-w-6xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">OFFICIAL STAFF</h2>
+          <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
+        </div>
+
+        <div id="staff-container" class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
+            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== ADMIN VIEW CONTAINER ==================== -->
+  <main id="admin-view" class="hidden relative z-10 pt-24 min-h-screen pb-20 px-4 max-w-7xl mx-auto">
+    
+    <!-- Admin Login Screen -->
+    <div id="admin-login-card" class="max-w-md mx-auto bg-blds-card border border-blds-border p-8 rounded-2xl shadow-2xl space-y-6 my-12">
+      <div class="text-center space-y-2">
+        <h2 class="font-orbitron font-bold text-2xl text-white tracking-wider glow-sub uppercase">ADMIN LOGIN</h2>
+        <p class="text-xs text-blds-muted">Otentikasi khusus pengelola portal BLDS</p>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-orbitron text-gray-400 mb-1">EMAIL ADMIN</label>
+          <input type="email" id="login-email" required class="w-full bg-blds-black border border-blds-border rounded-lg px-4 py-2.5 text-sm text-white focus:border-white focus:outline-none" placeholder="admin@blds.com" />
+        </div>
+        <div>
+          <label class="block text-xs font-orbitron text-gray-400 mb-1">PASSWORD</label>
+          <input type="password" id="login-password" required class="w-full bg-blds-black border border-blds-border rounded-lg px-4 py-2.5 text-sm text-white focus:border-white focus:outline-none" placeholder="••••••••" />
+        </div>
+
+        <div id="login-error" class="hidden text-red-500 text-xs font-orbitron text-center"></div>
+
+        <button type="submit" class="blds-btn w-full py-3 bg-white text-black font-orbitron font-bold text-xs tracking-widest rounded-lg hover:bg-gray-200 transition-all uppercase">
+          LOGIN PORTAL
+        </button>
+      </form>
+    </div>
+
+    <!-- Admin Dashboard Screen -->
+    <div id="admin-dashboard" class="hidden space-y-8">
+      
+      <!-- Top Admin Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 p-6 bg-blds-card border border-blds-border rounded-xl">
+        <div>
+          <h2 class="font-orbitron font-bold text-2xl text-white tracking-wider glow-sub">ADMIN DASHBOARD</h2>
+          <p id="admin-user-info" class="text-xs text-blds-muted mt-0.5">Logged in as: Authenticating...</p>
+        </div>
+        <button id="logout-btn" class="px-4 py-2 border border-red-500/50 text-red-400 hover:bg-red-500 hover:text-white rounded-lg text-xs font-orbitron tracking-wider transition-all">
+          LOGOUT
+        </button>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-blds-card border border-blds-border p-4 rounded-xl text-center">
+          <span class="text-xs font-orbitron text-blds-muted">BRACKETS</span>
+          <p id="stat-brackets" class="font-orbitron text-2xl text-white font-bold mt-1">0</p>
+        </div>
+        <div class="bg-blds-card border border-blds-border p-4 rounded-xl text-center">
+          <span class="text-xs font-orbitron text-blds-muted">JADWAL</span>
+          <p id="stat-schedules" class="font-orbitron text-2xl text-white font-bold mt-1">0</p>
+        </div>
+        <div class="bg-blds-card border border-blds-border p-4 rounded-xl text-center">
+          <span class="text-xs font-orbitron text-blds-muted">BERITA</span>
+          <p id="stat-news" class="font-orbitron text-2xl text-white font-bold mt-1">0</p>
+        </div>
+        <div class="bg-blds-card border border-blds-border p-4 rounded-xl text-center">
+          <span class="text-xs font-orbitron text-blds-muted">STAFF</span>
+          <p id="stat-staff" class="font-orbitron text-2xl text-white font-bold mt-1">0</p>
+        </div>
+      </div>
+
+      <!-- Admin Tabs -->
+      <div class="flex border-b border-blds-border font-orbitron text-xs tracking-wider space-x-6 overflow-x-auto pb-2">
+        <button onclick="switchAdminTab('brackets')" class="admin-tab text-white border-b-2 border-white pb-2">BRACKET MANAGEMENT</button>
+        <button onclick="switchAdminTab('schedule')" class="admin-tab text-blds-muted hover:text-white pb-2">SCHEDULE MANAGEMENT</button>
+        <button onclick="switchAdminTab('news')" class="admin-tab text-blds-muted hover:text-white pb-2">NEWS MANAGEMENT</button>
+        <button onclick="switchAdminTab('staff')" class="admin-tab text-blds-muted hover:text-white pb-2">STAFF MANAGEMENT</button>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div id="admin-tab-content" class="bg-blds-card border border-blds-border p-6 rounded-xl">
+        <!-- Content dynamically injected via JS -->
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="relative z-10 bg-blds-black border-t border-blds-border py-12 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+      
+      <!-- Brand & Copyright -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-center md:justify-start gap-3">
+          <img src="logo.png" alt="BLDS Footer Emblem" class="w-8 h-8 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/80/000000/FFFFFF?text=BLDS';" />
+          <span class="font-orbitron font-bold text-lg text-white">BLDS</span>
+        </div>
+        <p class="text-xs text-blds-muted">United Beyond the Eclipse</p>
+        <p class="text-[11px] text-gray-600">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
+      </div>
+
+      <!-- Official Social Links -->
+      <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-orbitron text-blds-muted">
+        <a href="https://discord.gg/r4dM4QFteV" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
+          <span>DISCORD</span>
+        </a>
+        <a href="https://chat.whatsapp.com/LYhSQn3vXhO6qpVWyoJEoR?s=cl&p=a&ilr=1" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
+          <span>WHATSAPP</span>
+        </a>
+        <a href="https://www.instagram.com/blacklightdominions?exln=YjZvbnRlaHd2cGU=" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
+          <span>INSTAGRAM</span>
+        </a>
+        <a href="https://www.tiktok.com/@blacklightdominions?_r=1&_t=ZS-9Ab57EC6WAM" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
+          <span>TIKTOK</span>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Modal Admin Reusable Form -->
+  <div id="admin-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-blds-card border border-blds-border w-full max-w-xl rounded-xl p-6 relative max-h-[90vh] overflow-y-auto space-y-6">
+      <div class="flex justify-between items-center border-b border-blds-border pb-4">
+        <h3 id="modal-title" class="font-orbitron font-bold text-lg text-white">FORM EDITOR</h3>
+        <button onclick="closeModal()" class="text-blds-muted hover:text-white text-xl">&times;</button>
+      </div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ==================== FIREBASE SDK & APPLICATION LOGIC ==================== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getDatabase, ref, onValue, push, set, remove, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    // Firebase Configuration
+    const firebaseConfig = {
+      databaseURL: "https://blds-official-default-rtdb.asia-southeast1.firebasedatabase.app/",
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Initialize App
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+
+    // Global State Cache
+    let appData = {
+      brackets: {},
+      schedule: {},
+      news: {},
+      staff: {}
+    };
+
+    let currentUser = null;
+    let isAdminAuthorized = false;
+    let currentScheduleFilter = 'ALL';
+
+    // Set Copyright Year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Init Dynamic Particles
+    initParticles();
+
+    // SPA Routing & Hash Handler
+    window.addEventListener('hashchange', handleRoute);
+    window.addEventListener('DOMContentLoaded', () => {
+      handleRoute();
+      setupMenu();
+      bindFirebaseListeners();
+      setupDiamondEffects();
+    });
+
+    function handleRoute() {
+      const hash = window.location.hash || '#home';
+      const publicView = document.getElementById('public-view');
+      const adminView = document.getElementById('admin-view');
+      const mainHeader = document.getElementById('main-header');
+
+      if (hash.startsWith('#admin')) {
+        publicView.classList.add('hidden');
+        adminView.classList.remove('hidden');
+        checkAdminAccess();
+      } else {
+        adminView.classList.add('hidden');
+        publicView.classList.remove('hidden');
+        
+        // Smooth scroll to section if matching ID
+        const targetSection = document.querySelector(hash);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+
+    // Hamburger Mobile Menu
+    function setupMenu() {
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // Interactive Button Diamond Hit Effect (♦)
+    function setupDiamondEffects() {
+      document.body.addEventListener('click', (e) => {
+        const btn = e.target.closest('.blds-btn, button, a');
+        if (!btn) return;
+
+        const rect = btn.getBoundingClientRect();
+        const diamond = document.createElement('span');
+        diamond.classList.add('diamond-fx-active');
+        diamond.textContent = '♦';
+        diamond.style.left = `${e.clientX - rect.left - 10}px`;
+        diamond.style.top = `${e.clientY - rect.top - 15}px`;
+
+        btn.style.position = 'relative';
+        btn.appendChild(diamond);
+
+        setTimeout(() => {
+          diamond.remove();
+        }, 3000);
+      });
+    }
+
+    // Realtime Database Listeners
+    function bindFirebaseListeners() {
+      // Brackets
+      onValue(ref(db, 'site/brackets'), (snapshot) => {
+        appData.brackets = snapshot.val() || {};
+        renderBrackets();
+        updateAdminStats();
+      });
+
+      // Schedule
+      onValue(ref(db, 'site/schedule'), (snapshot) => {
+        appData.schedule = snapshot.val() || {};
+        renderSchedule();
+        updateAdminStats();
+      });
+
+      // News
+      onValue(ref(db, 'site/news'), (snapshot) => {
+        appData.news = snapshot.val() || {};
+        renderNews();
+        updateAdminStats();
+      });
+
+      // Staff
+      onValue(ref(db, 'site/staff'), (snapshot) => {
+        appData.staff = snapshot.val() || {};
+        renderStaff();
+        updateAdminStats();
+      });
+    }
+
+    // Render Brackets
+    function renderBrackets() {
+      const container = document.getElementById('brackets-container');
+      const keys = Object.keys(appData.brackets);
+
+      if (keys.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
+            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = keys.map(key => {
+        const item = appData.brackets[key];
+        return `
+          <div class="bg-blds-card border border-blds-border p-6 rounded-xl space-y-6">
+            <div class="flex flex-wrap justify-between items-center border-b border-blds-border pb-4 gap-2">
+              <div>
+                <span class="text-xs font-orbitron text-blds-muted tracking-widest">${item.game || 'E-SPORTS'}</span>
+                <h3 class="font-orbitron font-bold text-xl text-white">${item.title || 'Tournament'}</h3>
+              </div>
+              <span class="text-xs px-3 py-1 bg-white/10 text-white rounded-full font-orbitron">${item.status || 'UPCOMING'}</span>
+            </div>
+
+            <!-- Bracket Rounds -->
+            <div class="grid md:grid-cols-3 gap-6 relative">
+              <div class="space-y-4">
+                <span class="text-xs font-orbitron text-blds-muted block text-center">QUARTERFINAL</span>
+                <div class="p-3 bg-blds-black border border-blds-border rounded-lg text-xs space-y-2">
+                  <div class="flex justify-between text-white"><span>${item.qf_t1 || 'Team A'}</span><span>${item.qf_s1 || '0'}</span></div>
+                  <div class="flex justify-between text-gray-400"><span>${item.qf_t2 || 'Team B'}</span><span>${item.qf_s2 || '0'}</span></div>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <span class="text-xs font-orbitron text-blds-muted block text-center">SEMIFINAL</span>
+                <div class="p-3 bg-blds-black border border-blds-border rounded-lg text-xs space-y-2">
+                  <div class="flex justify-between text-white"><span>${item.sf_t1 || 'TBD'}</span><span>${item.sf_s1 || '0'}</span></div>
+                  <div class="flex justify-between text-gray-400"><span>${item.sf_t2 || 'TBD'}</span><span>${item.sf_s2 || '0'}</span></div>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <span class="text-xs font-orbitron text-blds-muted block text-center">GRAND FINAL</span>
+                <div class="p-3 bg-blds-black border border-white/30 glow-border rounded-lg text-xs space-y-2">
+                  <div class="flex justify-between text-white font-bold"><span>${item.f_t1 || 'TBD'}</span><span>${item.f_s1 || '0'}</span></div>
+                  <div class="flex justify-between text-gray-400"><span>${item.f_t2 || 'TBD'}</span><span>${item.f_s2 || '0'}</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render Schedule
+    function renderSchedule() {
+      const container = document.getElementById('schedule-container');
+      let items = Object.keys(appData.schedule).map(k => ({ key: k, ...appData.schedule[k] }));
+
+      if (currentScheduleFilter !== 'ALL') {
+        items = items.filter(i => i.status === currentScheduleFilter);
+      }
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
+            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">TIDAK ADA JADWAL PERTANDINGAN TERSEDIA</p>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = items.map(item => `
+        <div class="bg-blds-card border border-blds-border p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-4 w-full md:w-auto">
+            <span class="text-xs font-orbitron px-2.5 py-1 rounded bg-white/10 text-white">${item.status}</span>
+            <div>
+              <h4 class="font-orbitron font-bold text-white text-sm">${item.eventName}</h4>
+              <p class="text-xs text-blds-muted">${item.game} • ${item.date} (${item.time})</p>
+            </div>
+          </div>
+          <div class="font-orbitron font-bold text-sm text-white flex items-center gap-6">
+            <span>${item.teamA}</span>
+            <span class="text-xs text-blds-muted">VS</span>
+            <span>${item.teamB}</span>
+          </div>
+          ${item.streamUrl ? `<a href="${item.streamUrl}" target="_blank" class="text-xs font-orbitron px-4 py-2 border border-white/20 hover:border-white rounded text-white">WATCH LIVE</a>` : ''}
+        </div>
+      `).join('');
+    }
+
+    window.filterSchedule = function(type) {
+      currentScheduleFilter = type;
+      renderSchedule();
+    }
+
+    // Render News
+    function renderNews() {
+      const container = document.getElementById('news-container');
+      const items = Object.keys(appData.news).map(k => ({ key: k, ...appData.news[k] }));
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
+            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = items.map(item => `
+        <article class="bg-blds-card border border-blds-border rounded-xl overflow-hidden flex flex-col justify-between">
+          <img src="${item.imageUrl || 'https://via.placeholder.com/600x350/0f0f10/ffffff?text=BLDS+NEWS'}" alt="Cover" class="w-full h-48 object-cover" />
+          <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-[10px] font-orbitron text-blds-muted">
+                <span>${item.category || 'ANNOUNCEMENT'}</span>
+                <span>${item.date || ''}</span>
+              </div>
+              <h3 class="font-orbitron font-bold text-lg text-white leading-snug">${item.title}</h3>
+              <p class="text-xs text-gray-400 line-clamp-3">${item.summary || ''}</p>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Render Staff
+    function renderStaff() {
+      const container = document.getElementById('staff-container');
+      const items = Object.keys(appData.staff).map(k => ({ key: k, ...appData.staff[k] }));
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
+            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = items.map(item => `
+        <div class="bg-blds-card border border-blds-border p-6 rounded-xl text-center space-y-4">
+          <img src="${item.photoUrl || 'https://via.placeholder.com/150/1f1f22/ffffff?text=STAFF'}" alt="${item.name}" class="w-24 h-24 mx-auto rounded-full object-cover border-2 border-blds-border" />
+          <div>
+            <h3 class="font-orbitron font-bold text-white text-base">${item.name}</h3>
+            <p class="text-xs font-orbitron text-blds-muted uppercase">${item.role}</p>
+          </div>
+          <p class="text-xs text-gray-400">${item.desc || ''}</p>
+        </div>
+      `).join('');
+    }
+
+    // Check Admin Authentication & Authorization
+    function checkAdminAccess() {
+      onAuthStateChanged(auth, async (user) => {
+        const loginCard = document.getElementById('admin-login-card');
+        const dashboard = document.getElementById('admin-dashboard');
+
+        if (user) {
+          currentUser = user;
+          // Verify against /admins node
+          onValue(ref(db, `admins/${user.uid}`), (snapshot) => {
+            if (snapshot.val() === true) {
+              isAdminAuthorized = true;
+              loginCard.classList.add('hidden');
+              dashboard.classList.remove('hidden');
+              document.getElementById('admin-user-info').textContent = `Logged in as: ${user.email} (UID: ${user.uid})`;
+              switchAdminTab('brackets');
+            } else {
+              isAdminAuthorized = false;
+              showLoginError("Akses Ditolak: UID Anda belum terdaftar di node /admins.");
+              signOut(auth);
+            }
+          });
+        } else {
+          loginCard.classList.remove('hidden');
+          dashboard.classList.add('hidden');
+        }
+      });
+    }
+
+    // Handle Admin Login
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const pass = document.getElementById('login-password').value;
+
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+      } catch (err) {
+        showLoginError("Gagal Login: " + err.message);
+      }
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      signOut(auth);
+    });
+
+    function showLoginError(msg) {
+      const errBox = document.getElementById('login-error');
+      errBox.textContent = msg;
+      errBox.classList.remove('hidden');
+    }
+
+    // Admin Stats Update
+    function updateAdminStats() {
+      document.getElementById('stat-brackets').textContent = Object.keys(appData.brackets).length;
+      document.getElementById('stat-schedules').textContent = Object.keys(appData.schedule).length;
+      document.getElementById('stat-news').textContent = Object.keys(appData.news).length;
+      document.getElementById('stat-staff').textContent = Object.keys(appData.staff).length;
+    }
+
+    // Admin Tab Switcher
+    window.switchAdminTab = function(tab) {
+      const container = document.getElementById('admin-tab-content');
+      let html = '';
+
+      if (tab === 'brackets') {
+        html = `
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <h3 class="font-orbitron font-bold text-white text-lg">MANAGE BRACKETS</h3>
+              <button onclick="openBracketModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded">TAMBAH BRACKET</button>
+            </div>
+            ${renderAdminTable(appData.brackets, 'brackets')}
+          </div>`;
+      } else if (tab === 'schedule') {
+        html = `
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <h3 class="font-orbitron font-bold text-white text-lg">MANAGE SCHEDULE</h3>
+              <button onclick="openScheduleModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded">TAMBAH JADWAL</button>
+            </div>
+            ${renderAdminTable(appData.schedule, 'schedule')}
+          </div>`;
+      } else if (tab === 'news') {
+        html = `
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <h3 class="font-orbitron font-bold text-white text-lg">MANAGE NEWS</h3>
+              <button onclick="openNewsModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded">TAMBAH BERITA</button>
+            </div>
+            ${renderAdminTable(appData.news, 'news')}
+          </div>`;
+      } else if (tab === 'staff') {
+        html = `
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <h3 class="font-orbitron font-bold text-white text-lg">MANAGE STAFF</h3>
+              <button onclick="openStaffModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded">TAMBAH STAFF</button>
+            </div>
+            ${renderAdminTable(appData.staff, 'staff')}
+          </div>`;
+      }
+
+      container.innerHTML = html;
+    }
+
+    function renderAdminTable(dataObj, type) {
+      const keys = Object.keys(dataObj);
+      if (keys.length === 0) return '<p class="text-xs text-blds-muted py-8 text-center">Data kosong.</p>';
+
+      return `
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-gray-300">
+            <thead class="font-orbitron text-white border-b border-blds-border">
+              <tr>
+                <th class="p-2">KEY / TITLE</th>
+                <th class="p-2">INFO</th>
+                <th class="p-2 text-right">ACTION</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-blds-border">
+              ${keys.map(k => `
+                <tr>
+                  <td class="p-2 font-bold text-white">${dataObj[k].title || dataObj[k].eventName || dataObj[k].name || k}</td>
+                  <td class="p-2 text-blds-muted">${dataObj[k].game || dataObj[k].role || dataObj[k].category || '-'}</td>
+                  <td class="p-2 text-right space-x-2">
+                    <button onclick="deleteItem('${type}', '${k}')" class="px-2 py-1 bg-red-500/20 text-red-400 rounded hover:bg-red-500 hover:text-white">HAPUS</button>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    // Modal Helpers & Handlers
+    window.openBracketModal = function() {
+      const modal = document.getElementById('admin-modal');
+      document.getElementById('modal-title').textContent = 'TAMBAH BRACKET TOURNAMENT';
+      document.getElementById('modal-body').innerHTML = `
+        <form id="form-bracket" class="space-y-3">
+          <input type="text" id="b-title" placeholder="Judul Tournament" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <input type="text" id="b-game" placeholder="Nama Game (cth: MLBB)" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="b-qf1" placeholder="Quarter Team 1" class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+            <input type="text" id="b-qf2" placeholder="Quarter Team 2" class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          </div>
+          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded">SIMPAN</button>
+        </form>
+      `;
+      modal.classList.remove('hidden');
+
+      document.getElementById('form-bracket').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await push(ref(db, 'site/brackets'), {
+          title: document.getElementById('b-title').value,
+          game: document.getElementById('b-game').value,
+          qf_t1: document.getElementById('b-qf1').value,
+          qf_t2: document.getElementById('b-qf2').value,
+          status: 'UPCOMING'
+        });
+        closeModal();
+      });
+    }
+
+    window.openScheduleModal = function() {
+      const modal = document.getElementById('admin-modal');
+      document.getElementById('modal-title').textContent = 'TAMBAH JADWAL MATCH';
+      document.getElementById('modal-body').innerHTML = `
+        <form id="form-schedule" class="space-y-3">
+          <input type="text" id="s-event" placeholder="Nama Event" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <input type="text" id="s-game" placeholder="Game" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="s-ta" placeholder="Team A" required class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+            <input type="text" id="s-tb" placeholder="Team B" required class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <input type="date" id="s-date" required class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+            <input type="time" id="s-time" required class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          </div>
+          <select id="s-status" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded">
+            <option value="UPCOMING">UPCOMING</option>
+            <option value="LIVE">LIVE</option>
+            <option value="COMPLETED">COMPLETED</option>
+          </select>
+          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded">SIMPAN JADWAL</button>
+        </form>
+      `;
+      modal.classList.remove('hidden');
+
+      document.getElementById('form-schedule').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await push(ref(db, 'site/schedule'), {
+          eventName: document.getElementById('s-event').value,
+          game: document.getElementById('s-game').value,
+          teamA: document.getElementById('s-ta').value,
+          teamB: document.getElementById('s-tb').value,
+          date: document.getElementById('s-date').value,
+          time: document.getElementById('s-time').value,
+          status: document.getElementById('s-status').value
+        });
+        closeModal();
+      });
+    }
+
+    window.openNewsModal = function() {
+      const modal = document.getElementById('admin-modal');
+      document.getElementById('modal-title').textContent = 'TAMBAH BERITA';
+      document.getElementById('modal-body').innerHTML = `
+        <form id="form-news" class="space-y-3">
+          <input type="text" id="n-title" placeholder="Judul Berita" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <input type="text" id="n-cat" placeholder="Kategori" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <input type="url" id="n-img" placeholder="URL Cover Gambar" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <textarea id="n-sum" placeholder="Ringkasan Berita" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded h-20"></textarea>
+          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded">PUBLIKASIKAN BERITA</button>
+        </form>
+      `;
+      modal.classList.remove('hidden');
+
+      document.getElementById('form-news').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await push(ref(db, 'site/news'), {
+          title: document.getElementById('n-title').value,
+          category: document.getElementById('n-cat').value,
+          imageUrl: document.getElementById('n-img').value,
+          summary: document.getElementById('n-sum').value,
+          date: new Date().toISOString().split('T')[0]
+        });
+        closeModal();
+      });
+    }
+
+    window.openStaffModal = function() {
+      const modal = document.getElementById('admin-modal');
+      document.getElementById('modal-title').textContent = 'TAMBAH STAFF';
+      document.getElementById('modal-body').innerHTML = `
+        <form id="form-staff" class="space-y-3">
+          <input type="text" id="st-name" placeholder="Nama Lengkap" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <input type="text" id="st-role" placeholder="Jabatan / Role" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <input type="url" id="st-photo" placeholder="URL Foto Profil" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <input type="text" id="st-desc" placeholder="Deskripsi Singkat" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
+          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded">SIMPAN STAFF</button>
+        </form>
+      `;
+      modal.classList.remove('hidden');
+
+      document.getElementById('form-staff').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await push(ref(db, 'site/staff'), {
+          name: document.getElementById('st-name').value,
+          role: document.getElementById('st-role').value,
+          photoUrl: document.getElementById('st-photo').value,
+          desc: document.getElementById('st-desc').value
+        });
+        closeModal();
+      });
+    }
+
+    window.deleteItem = async function(type, key) {
+      if (confirm(`Apakah Anda yakin ingin menghapus data ini?`)) {
+        await remove(ref(db, `site/${type}/${key}`));
+      }
+    }
+
+    window.closeModal = function() {
+      document.getElementById('admin-modal').classList.add('hidden');
+    }
+
+    // Dynamic Floating Background Particles
+    function initParticles() {
+      const canvas = document.getElementById('bg-particles');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      for (let i = 0; i < 50; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2 + 0.5,
+          speedY: Math.random() * 0.4 + 0.1,
+          opacity: Math.random() * 0.5 + 0.2
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ffffff';
+
+        particles.forEach(p => {
+          ctx.globalAlpha = p.opacity;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+
+          p.y -= p.speedY;
+          if (p.y < 0) {
+            p.y = canvas.height;
+            p.x = Math.random() * canvas.width;
+          }
+        });
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+  </script>
 </body>
 </html>
