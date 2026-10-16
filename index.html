@@ -59,37 +59,37 @@
     }
 
     /* Global Glow Effects for Every Text */
-    body, p, span, h1, h2, h3, h4, h5, h6, a, label, th, td {
+    body, p, span, h1, h2, h3, h4, h5, h6, a, label, th, td, li {
       text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
     }
 
     .glow-title {
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.65), 0 0 40px rgba(255, 255, 255, 0.25) !important;
+      text-shadow: 0 0 18px rgba(255, 255, 255, 0.6), 0 0 35px rgba(255, 255, 255, 0.2) !important;
     }
     .glow-sub {
-      text-shadow: 0 0 12px rgba(255, 255, 255, 0.45) !important;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.4) !important;
     }
     .glow-box {
-      box-shadow: 0 0 30px -5px rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.12);
     }
     .glow-border {
       border-color: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
     }
 
-    /* Floating Slow Animation for Logo */
-    @keyframes floatSlow {
+    /* Natural Soft Floating & Natural Glow Animation for Logo */
+    @keyframes floatSlowNatural {
       0%, 100% {
         transform: translateY(0px);
-        filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
+        filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 24px rgba(255, 255, 255, 0.1));
       }
       50% {
-        transform: translateY(-12px);
-        filter: drop-shadow(0 0 45px rgba(255, 255, 255, 0.8));
+        transform: translateY(-10px);
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 35px rgba(255, 255, 255, 0.2));
       }
     }
     .animate-float-logo {
-      animation: floatSlow 6s ease-in-out infinite;
+      animation: floatSlowNatural 6s ease-in-out infinite;
     }
 
     /* Diamond FX Click Effect (Straight Upright ♦) */
@@ -167,13 +167,8 @@
         <a href="#staff" class="hover:text-white text-blds-muted hover:glow-sub">STAFF</a>
       </nav>
 
-      <!-- Desktop Action & Mobile Toggle -->
+      <!-- Mobile Toggle Toggle Button -->
       <div class="flex items-center gap-4">
-        <a href="#admin" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-orbitron border border-blds-border rounded-lg hover:border-white hover:bg-white hover:text-black tracking-wider shadow-sm">
-          ADMIN PORTAL
-        </a>
-
-        <!-- Hamburger Icon Button (Smooth Transition) -->
         <button id="menu-btn" class="md:hidden p-2.5 text-white hover:text-blds-muted focus:outline-none rounded-lg border border-blds-border bg-blds-card active:scale-95 transition-all" aria-label="Toggle Menu">
           <svg id="hamburger-svg" class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -192,7 +187,6 @@
         <a href="#schedule" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">SCHEDULE</a>
         <a href="#news" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">NEWS</a>
         <a href="#staff" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">STAFF</a>
-        <a href="#admin" class="mobile-link block py-3 text-xs text-white border border-blds-border rounded-lg mt-4 bg-white/5">ADMIN PORTAL</a>
       </div>
     </div>
   </header>
@@ -206,7 +200,7 @@
         
         <!-- Animated Floating Hero Logo -->
         <div class="relative mb-8">
-          <div class="absolute inset-0 bg-white/15 rounded-full blur-3xl transform scale-150"></div>
+          <div class="absolute inset-0 bg-white/10 rounded-full blur-3xl transform scale-125 pointer-events-none"></div>
           <img src="logo.png" alt="BLDS Emblem" class="w-36 h-36 sm:w-48 sm:h-48 object-contain animate-float-logo relative z-10" onerror="this.onerror=null; this.src='https://via.placeholder.com/200/000000/FFFFFF?text=BLDS';" />
         </div>
 
@@ -349,7 +343,7 @@
           <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
         </div>
 
-        <!-- Dynamic Brackets Container -->
+        <!-- Dynamic Brackets Container (Firebase Loaded) -->
         <div id="brackets-container" class="space-y-12">
           <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
             <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p>
@@ -374,7 +368,7 @@
           <button onclick="filterSchedule('COMPLETED')" class="schedule-tab px-4 py-2 border border-blds-border text-blds-muted hover:border-white rounded-lg">COMPLETED</button>
         </div>
 
-        <!-- Schedule Container -->
+        <!-- Schedule Container (Firebase Loaded) -->
         <div id="schedule-container" class="space-y-4">
           <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
             <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">TIDAK ADA JADWAL PERTANDINGAN TERSEDIA</p>
@@ -391,6 +385,7 @@
           <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
         </div>
 
+        <!-- News Container (Firebase Loaded) -->
         <div id="news-container" class="grid md:grid-cols-3 gap-8">
           <div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
             <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p>
@@ -407,6 +402,7 @@
           <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
         </div>
 
+        <!-- Staff Container (Firebase Loaded) -->
         <div id="staff-container" class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
             <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p>
@@ -414,83 +410,6 @@
         </div>
       </div>
     </section>
-
-  </main>
-
-  <!-- ==================== ADMIN VIEW CONTAINER ==================== -->
-  <main id="admin-view" class="hidden relative z-10 pt-24 min-h-screen pb-20 px-4 max-w-7xl mx-auto">
-    
-    <!-- Admin Login Screen -->
-    <div id="admin-login-card" class="max-w-md mx-auto bg-blds-card border border-blds-border p-8 rounded-2xl shadow-2xl space-y-6 my-12">
-      <div class="text-center space-y-2">
-        <h2 class="font-orbitron font-bold text-2xl text-white tracking-wider glow-sub uppercase">ADMIN LOGIN</h2>
-        <p class="text-xs text-blds-muted">Otentikasi khusus pengelola portal BLDS</p>
-      </div>
-
-      <form id="login-form" class="space-y-4">
-        <div>
-          <label class="block text-xs font-orbitron text-gray-300 mb-1">EMAIL ADMIN</label>
-          <input type="email" id="login-email" required class="w-full bg-blds-black border border-blds-border rounded-lg px-4 py-2.5 text-sm text-white focus:border-white focus:outline-none" placeholder="admin@blds.com" />
-        </div>
-        <div>
-          <label class="block text-xs font-orbitron text-gray-300 mb-1">PASSWORD</label>
-          <input type="password" id="login-password" required class="w-full bg-blds-black border border-blds-border rounded-lg px-4 py-2.5 text-sm text-white focus:border-white focus:outline-none" placeholder="••••••••" />
-        </div>
-
-        <div id="login-error" class="hidden text-red-500 text-xs font-orbitron text-center"></div>
-
-        <button type="submit" class="blds-btn w-full py-3 bg-white text-black font-orbitron font-bold text-xs tracking-widest rounded-lg hover:bg-gray-200 uppercase">
-          LOGIN PORTAL
-        </button>
-      </form>
-    </div>
-
-    <!-- Admin Dashboard Screen -->
-    <div id="admin-dashboard" class="hidden space-y-8">
-      
-      <!-- Top Admin Bar -->
-      <div class="flex flex-wrap items-center justify-between gap-4 p-6 bg-blds-card border border-blds-border rounded-xl">
-        <div>
-          <h2 class="font-orbitron font-bold text-2xl text-white tracking-wider glow-sub">ADMIN DASHBOARD</h2>
-          <p id="admin-user-info" class="text-xs text-blds-muted mt-0.5">Logged in as: Authenticating...</p>
-        </div>
-        <button id="logout-btn" class="px-4 py-2 border border-red-500/50 text-red-400 hover:bg-red-500 hover:text-white rounded-lg text-xs font-orbitron tracking-wider">
-          LOGOUT
-        </button>
-      </div>
-
-      <!-- Quick Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="bg-blds-card border border-blds-border p-4 rounded-xl text-center">
-          <span class="text-xs font-orbitron text-blds-muted">BRACKETS</span>
-          <p id="stat-brackets" class="font-orbitron text-2xl text-white font-bold mt-1">0</p>
-        </div>
-        <div class="bg-blds-card border border-blds-border p-4 rounded-xl text-center">
-          <span class="text-xs font-orbitron text-blds-muted">JADWAL</span>
-          <p id="stat-schedules" class="font-orbitron text-2xl text-white font-bold mt-1">0</p>
-        </div>
-        <div class="bg-blds-card border border-blds-border p-4 rounded-xl text-center">
-          <span class="text-xs font-orbitron text-blds-muted">BERITA</span>
-          <p id="stat-news" class="font-orbitron text-2xl text-white font-bold mt-1">0</p>
-        </div>
-        <div class="bg-blds-card border border-blds-border p-4 rounded-xl text-center">
-          <span class="text-xs font-orbitron text-blds-muted">STAFF</span>
-          <p id="stat-staff" class="font-orbitron text-2xl text-white font-bold mt-1">0</p>
-        </div>
-      </div>
-
-      <!-- Admin Tabs -->
-      <div class="flex border-b border-blds-border font-orbitron text-xs tracking-wider space-x-6 overflow-x-auto pb-2">
-        <button onclick="switchAdminTab('brackets')" class="admin-tab text-white border-b-2 border-white pb-2">BRACKET MANAGEMENT</button>
-        <button onclick="switchAdminTab('schedule')" class="admin-tab text-blds-muted hover:text-white pb-2">SCHEDULE MANAGEMENT</button>
-        <button onclick="switchAdminTab('news')" class="admin-tab text-blds-muted hover:text-white pb-2">NEWS MANAGEMENT</button>
-        <button onclick="switchAdminTab('staff')" class="admin-tab text-blds-muted hover:text-white pb-2">STAFF MANAGEMENT</button>
-      </div>
-
-      <!-- Tab Content Area -->
-      <div id="admin-tab-content" class="bg-blds-card border border-blds-border p-6 rounded-xl"></div>
-
-    </div>
 
   </main>
 
@@ -534,22 +453,10 @@
     </div>
   </footer>
 
-  <!-- Modal Admin Reusable Form -->
-  <div id="admin-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-blds-card border border-blds-border w-full max-w-xl rounded-xl p-6 relative max-h-[90vh] overflow-y-auto space-y-6">
-      <div class="flex justify-between items-center border-b border-blds-border pb-4">
-        <h3 id="modal-title" class="font-orbitron font-bold text-lg text-white">FORM EDITOR</h3>
-        <button onclick="closeModal()" class="text-blds-muted hover:text-white text-xl">&times;</button>
-      </div>
-      <div id="modal-body"></div>
-    </div>
-  </div>
-
   <!-- ==================== FIREBASE SDK & APPLICATION LOGIC ==================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getDatabase, ref, onValue, push, set, remove, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
     // Firebase Configuration
     const firebaseConfig = {
@@ -562,12 +469,11 @@
       appId: "YOUR_APP_ID"
     };
 
-    // Initialize App
+    // Initialize App & DB
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
     const db = getDatabase(app);
 
-    // Global State Cache
+    // Global Cache
     let appData = {
       brackets: {},
       schedule: {},
@@ -575,8 +481,6 @@
       staff: {}
     };
 
-    let currentUser = null;
-    let isAdminAuthorized = false;
     let currentScheduleFilter = 'ALL';
 
     // Set Copyright Year
@@ -585,36 +489,14 @@
     // Init Dynamic Particles
     initParticles();
 
-    // SPA Routing & Hash Handler
-    window.addEventListener('hashchange', handleRoute);
+    // Init Logic on DOM Load
     window.addEventListener('DOMContentLoaded', () => {
-      handleRoute();
       setupMenu();
       bindFirebaseListeners();
       setupDiamondEffects();
     });
 
-    function handleRoute() {
-      const hash = window.location.hash || '#home';
-      const publicView = document.getElementById('public-view');
-      const adminView = document.getElementById('admin-view');
-
-      if (hash.startsWith('#admin')) {
-        publicView.classList.add('hidden');
-        adminView.classList.remove('hidden');
-        checkAdminAccess();
-      } else {
-        adminView.classList.add('hidden');
-        publicView.classList.remove('hidden');
-        
-        const targetSection = document.querySelector(hash);
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
-
-    // Hamburger Mobile Menu Toggle with Smooth Animation
+    // Hamburger Mobile Menu Toggle with Smooth Slide Transition
     function setupMenu() {
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -672,25 +554,21 @@
       onValue(ref(db, 'site/brackets'), (snapshot) => {
         appData.brackets = snapshot.val() || {};
         renderBrackets();
-        updateAdminStats();
       });
 
       onValue(ref(db, 'site/schedule'), (snapshot) => {
         appData.schedule = snapshot.val() || {};
         renderSchedule();
-        updateAdminStats();
       });
 
       onValue(ref(db, 'site/news'), (snapshot) => {
         appData.news = snapshot.val() || {};
         renderNews();
-        updateAdminStats();
       });
 
       onValue(ref(db, 'site/staff'), (snapshot) => {
         appData.staff = snapshot.val() || {};
         renderStaff();
-        updateAdminStats();
       });
     }
 
@@ -719,7 +597,6 @@
               <span class="text-xs px-3 py-1 bg-white/10 text-white rounded-full font-orbitron">${item.status || 'UPCOMING'}</span>
             </div>
 
-            <!-- Bracket Rounds -->
             <div class="grid md:grid-cols-3 gap-6 relative">
               <div class="space-y-4">
                 <span class="text-xs font-orbitron text-blds-muted block text-center">QUARTERFINAL</span>
@@ -844,274 +721,6 @@
           <p class="text-xs text-gray-300 font-sans">${item.desc || ''}</p>
         </div>
       `).join('');
-    }
-
-    // Check Admin Authentication & Authorization
-    function checkAdminAccess() {
-      onAuthStateChanged(auth, async (user) => {
-        const loginCard = document.getElementById('admin-login-card');
-        const dashboard = document.getElementById('admin-dashboard');
-
-        if (user) {
-          currentUser = user;
-          onValue(ref(db, `admins/${user.uid}`), (snapshot) => {
-            if (snapshot.val() === true) {
-              isAdminAuthorized = true;
-              loginCard.classList.add('hidden');
-              dashboard.classList.remove('hidden');
-              document.getElementById('admin-user-info').textContent = `Logged in as: ${user.email} (UID: ${user.uid})`;
-              switchAdminTab('brackets');
-            } else {
-              isAdminAuthorized = false;
-              showLoginError("Akses Ditolak: UID Anda belum terdaftar di node /admins.");
-              signOut(auth);
-            }
-          });
-        } else {
-          loginCard.classList.remove('hidden');
-          dashboard.classList.add('hidden');
-        }
-      });
-    }
-
-    // Handle Admin Login
-    document.getElementById('login-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('login-email').value;
-      const pass = document.getElementById('login-password').value;
-
-      try {
-        await signInWithEmailAndPassword(auth, email, pass);
-      } catch (err) {
-        showLoginError("Gagal Login: " + err.message);
-      }
-    });
-
-    document.getElementById('logout-btn').addEventListener('click', () => {
-      signOut(auth);
-    });
-
-    function showLoginError(msg) {
-      const errBox = document.getElementById('login-error');
-      errBox.textContent = msg;
-      errBox.classList.remove('hidden');
-    }
-
-    // Admin Stats Update
-    function updateAdminStats() {
-      document.getElementById('stat-brackets').textContent = Object.keys(appData.brackets).length;
-      document.getElementById('stat-schedules').textContent = Object.keys(appData.schedule).length;
-      document.getElementById('stat-news').textContent = Object.keys(appData.news).length;
-      document.getElementById('stat-staff').textContent = Object.keys(appData.staff).length;
-    }
-
-    // Admin Tab Switcher
-    window.switchAdminTab = function(tab) {
-      const container = document.getElementById('admin-tab-content');
-      let html = '';
-
-      if (tab === 'brackets') {
-        html = `
-          <div class="space-y-4">
-            <div class="flex justify-between items-center">
-              <h3 class="font-orbitron font-bold text-white text-lg">MANAGE BRACKETS</h3>
-              <button onclick="openBracketModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">TAMBAH BRACKET</button>
-            </div>
-            ${renderAdminTable(appData.brackets, 'brackets')}
-          </div>`;
-      } else if (tab === 'schedule') {
-        html = `
-          <div class="space-y-4">
-            <div class="flex justify-between items-center">
-              <h3 class="font-orbitron font-bold text-white text-lg">MANAGE SCHEDULE</h3>
-              <button onclick="openScheduleModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">TAMBAH JADWAL</button>
-            </div>
-            ${renderAdminTable(appData.schedule, 'schedule')}
-          </div>`;
-      } else if (tab === 'news') {
-        html = `
-          <div class="space-y-4">
-            <div class="flex justify-between items-center">
-              <h3 class="font-orbitron font-bold text-white text-lg">MANAGE NEWS</h3>
-              <button onclick="openNewsModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">TAMBAH BERITA</button>
-            </div>
-            ${renderAdminTable(appData.news, 'news')}
-          </div>`;
-      } else if (tab === 'staff') {
-        html = `
-          <div class="space-y-4">
-            <div class="flex justify-between items-center">
-              <h3 class="font-orbitron font-bold text-white text-lg">MANAGE STAFF</h3>
-              <button onclick="openStaffModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">TAMBAH STAFF</button>
-            </div>
-            ${renderAdminTable(appData.staff, 'staff')}
-          </div>`;
-      }
-
-      container.innerHTML = html;
-    }
-
-    function renderAdminTable(dataObj, type) {
-      const keys = Object.keys(dataObj);
-      if (keys.length === 0) return '<p class="text-xs text-blds-muted py-8 text-center">Data kosong.</p>';
-
-      return `
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs text-gray-200">
-            <thead class="font-orbitron text-white border-b border-blds-border">
-              <tr>
-                <th class="p-2">KEY / TITLE</th>
-                <th class="p-2">INFO</th>
-                <th class="p-2 text-right">ACTION</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-blds-border">
-              ${keys.map(k => `
-                <tr>
-                  <td class="p-2 font-bold text-white">${dataObj[k].title || dataObj[k].eventName || dataObj[k].name || k}</td>
-                  <td class="p-2 text-blds-muted">${dataObj[k].game || dataObj[k].role || dataObj[k].category || '-'}</td>
-                  <td class="p-2 text-right space-x-2">
-                    <button onclick="deleteItem('${type}', '${k}')" class="px-2 py-1 bg-red-500/20 text-red-400 rounded hover:bg-red-500 hover:text-white">HAPUS</button>
-                  </td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-      `;
-    }
-
-    // Modal Helpers & Handlers
-    window.openBracketModal = function() {
-      const modal = document.getElementById('admin-modal');
-      document.getElementById('modal-title').textContent = 'TAMBAH BRACKET TOURNAMENT';
-      document.getElementById('modal-body').innerHTML = `
-        <form id="form-bracket" class="space-y-3">
-          <input type="text" id="b-title" placeholder="Judul Tournament" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <input type="text" id="b-game" placeholder="Nama Game (cth: MLBB)" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <div class="grid grid-cols-2 gap-2">
-            <input type="text" id="b-qf1" placeholder="Quarter Team 1" class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-            <input type="text" id="b-qf2" placeholder="Quarter Team 2" class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          </div>
-          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">SIMPAN</button>
-        </form>
-      `;
-      modal.classList.remove('hidden');
-
-      document.getElementById('form-bracket').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        await push(ref(db, 'site/brackets'), {
-          title: document.getElementById('b-title').value,
-          game: document.getElementById('b-game').value,
-          qf_t1: document.getElementById('b-qf1').value,
-          qf_t2: document.getElementById('b-qf2').value,
-          status: 'UPCOMING'
-        });
-        closeModal();
-      });
-    }
-
-    window.openScheduleModal = function() {
-      const modal = document.getElementById('admin-modal');
-      document.getElementById('modal-title').textContent = 'TAMBAH JADWAL MATCH';
-      document.getElementById('modal-body').innerHTML = `
-        <form id="form-schedule" class="space-y-3">
-          <input type="text" id="s-event" placeholder="Nama Event" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <input type="text" id="s-game" placeholder="Game" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <div class="grid grid-cols-2 gap-2">
-            <input type="text" id="s-ta" placeholder="Team A" required class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-            <input type="text" id="s-tb" placeholder="Team B" required class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          </div>
-          <div class="grid grid-cols-2 gap-2">
-            <input type="date" id="s-date" required class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-            <input type="time" id="s-time" required class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          </div>
-          <select id="s-status" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded">
-            <option value="UPCOMING">UPCOMING</option>
-            <option value="LIVE">LIVE</option>
-            <option value="COMPLETED">COMPLETED</option>
-          </select>
-          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">SIMPAN JADWAL</button>
-        </form>
-      `;
-      modal.classList.remove('hidden');
-
-      document.getElementById('form-schedule').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        await push(ref(db, 'site/schedule'), {
-          eventName: document.getElementById('s-event').value,
-          game: document.getElementById('s-game').value,
-          teamA: document.getElementById('s-ta').value,
-          teamB: document.getElementById('s-tb').value,
-          date: document.getElementById('s-date').value,
-          time: document.getElementById('s-time').value,
-          status: document.getElementById('s-status').value
-        });
-        closeModal();
-      });
-    }
-
-    window.openNewsModal = function() {
-      const modal = document.getElementById('admin-modal');
-      document.getElementById('modal-title').textContent = 'TAMBAH BERITA';
-      document.getElementById('modal-body').innerHTML = `
-        <form id="form-news" class="space-y-3">
-          <input type="text" id="n-title" placeholder="Judul Berita" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <input type="text" id="n-cat" placeholder="Kategori" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <input type="url" id="n-img" placeholder="URL Cover Gambar" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <textarea id="n-sum" placeholder="Ringkasan Berita" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded h-20"></textarea>
-          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">PUBLIKASIKAN BERITA</button>
-        </form>
-      `;
-      modal.classList.remove('hidden');
-
-      document.getElementById('form-news').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        await push(ref(db, 'site/news'), {
-          title: document.getElementById('n-title').value,
-          category: document.getElementById('n-cat').value,
-          imageUrl: document.getElementById('n-img').value,
-          summary: document.getElementById('n-sum').value,
-          date: new Date().toISOString().split('T')[0]
-        });
-        closeModal();
-      });
-    }
-
-    window.openStaffModal = function() {
-      const modal = document.getElementById('admin-modal');
-      document.getElementById('modal-title').textContent = 'TAMBAH STAFF';
-      document.getElementById('modal-body').innerHTML = `
-        <form id="form-staff" class="space-y-3">
-          <input type="text" id="st-name" placeholder="Nama Lengkap" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <input type="text" id="st-role" placeholder="Jabatan / Role" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <input type="url" id="st-photo" placeholder="URL Foto Profil" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <input type="text" id="st-desc" placeholder="Deskripsi Singkat" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">SIMPAN STAFF</button>
-        </form>
-      `;
-      modal.classList.remove('hidden');
-
-      document.getElementById('form-staff').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        await push(ref(db, 'site/staff'), {
-          name: document.getElementById('st-name').value,
-          role: document.getElementById('st-role').value,
-          photoUrl: document.getElementById('st-photo').value,
-          desc: document.getElementById('st-desc').value
-        });
-        closeModal();
-      });
-    }
-
-    window.deleteItem = async function(type, key) {
-      if (confirm(`Apakah Anda yakin ingin menghapus data ini?`)) {
-        await remove(ref(db, `site/${type}/${key}`));
-      }
-    }
-
-    window.closeModal = function() {
-      document.getElementById('admin-modal').classList.add('hidden');
     }
 
     // Dynamic Floating Background Particles
