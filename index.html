@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="id" class="dark">
+<html lang="id" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BLDS (BlacklightDominions) - Official Website</title>
   
-  <!-- Google Fonts: Inter & Orbitron -->
+  <!-- Google Fonts: Inter, Orbitron & Rajdhani -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,16 +19,17 @@
         extend: {
           colors: {
             blds: {
-              black: '#050505',
-              card: '#0c0c0d',
-              border: '#1f1f22',
+              black: '#030304',
+              card: '#0a0a0c',
+              border: '#1a1a1e',
               accent: '#ffffff',
-              muted: '#8e8e93',
-              hover: '#18181b'
+              muted: '#94949d',
+              hover: '#16161a'
             }
           },
           fontFamily: {
             orbitron: ['Orbitron', 'sans-serif'],
+            rajdhani: ['Rajdhani', 'sans-serif'],
             sans: ['Inter', 'sans-serif']
           }
         }
@@ -37,71 +38,73 @@
   </script>
 
   <style>
+    /* Smooth Scroll Behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #050505;
+      background: #030304;
     }
     ::-webkit-scrollbar-thumb {
       background: #27272a;
-      border-radius: 4px;
+      border-radius: 3px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #3f3f46;
+      background: #52525b;
     }
 
     /* Glow FX Typography & Elements */
     .glow-title {
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.2);
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.15);
     }
     .glow-sub {
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
     }
     .glow-box {
-      box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 30px -5px rgba(255, 255, 255, 0.12);
     }
     .glow-border {
       border-color: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
     }
 
     /* Floating Slow Animation for Logo */
     @keyframes floatSlow {
       0%, 100% {
         transform: translateY(0px);
-        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+        filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.35));
       }
       50% {
-        transform: translateY(-14px);
-        filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.7));
+        transform: translateY(-12px);
+        filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.65));
       }
     }
     .animate-float-logo {
       animation: floatSlow 6s ease-in-out infinite;
     }
 
-    /* Diamond FX Click Effect Keyframes */
+    /* Diamond FX Click Effect Keyframes (Straight & Upright ♦) */
     @keyframes diamondHit {
       0% {
-        transform: scale(0.2) rotate(45deg);
+        transform: scale(0.3);
         opacity: 0;
       }
-      20% {
-        transform: scale(1.2) rotate(45deg);
+      25% {
+        transform: scale(1.3);
         opacity: 1;
       }
-      40% { transform: scale(1) rotate(43deg); }
-      50% { transform: scale(1) rotate(47deg); }
-      60% { transform: scale(1) rotate(44deg); }
-      70% { transform: scale(1) rotate(46deg); }
-      80% {
-        transform: scale(1.5) rotate(45deg);
-        opacity: 0.8;
+      50% { transform: scale(1); }
+      75% {
+        transform: scale(1.5);
+        opacity: 0.7;
       }
       100% {
-        transform: scale(2.2) rotate(45deg);
+        transform: scale(2.2);
         opacity: 0;
       }
     }
@@ -111,7 +114,7 @@
       pointer-events: none;
       color: #ffffff;
       font-size: 1.5rem;
-      animation: diamondHit 3s forwards ease-in-out;
+      animation: diamondHit 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
       z-index: 50;
     }
 
@@ -119,8 +122,15 @@
     .bg-grid-pattern {
       background-size: 40px 40px;
       background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+
+    /* Smooth Transitions */
+    * {
+      transition-property: color, background-color, border-color, transform, opacity, box-shadow;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 250ms;
     }
   </style>
 </head>
@@ -128,34 +138,34 @@
 <body class="bg-blds-black text-white font-sans antialiased selection:bg-white selection:text-black overflow-x-hidden min-h-screen flex flex-col justify-between">
 
   <!-- Interactive Canvas Particles Background -->
-  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none z-0 opacity-35"></canvas>
 
   <!-- ==================== PUBLIC HEADER / NAVBAR ==================== -->
-  <header id="main-header" class="fixed top-0 left-0 right-0 z-40 bg-blds-black/80 backdrop-blur-md border-b border-blds-border transition-all duration-300">
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-40 bg-blds-black/85 backdrop-blur-xl border-b border-blds-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Brand Logo & Name -->
       <a href="#home" class="flex items-center gap-3 group">
         <img src="logo.png" alt="BLDS Logo" class="h-10 w-10 object-contain animate-float-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/100/000000/FFFFFF?text=BLDS';" />
         <div class="flex flex-col">
-          <span class="font-orbitron font-bold text-lg tracking-wider text-white group-hover:glow-sub transition-all">BLDS</span>
-          <span class="text-[10px] text-blds-muted tracking-widest uppercase hidden sm:inline">BlacklightDominions</span>
+          <span class="font-orbitron font-bold text-lg tracking-wider text-white group-hover:glow-sub">BLDS</span>
+          <span class="font-rajdhani text-[11px] text-blds-muted tracking-widest uppercase hidden sm:inline">BlacklightDominions</span>
         </div>
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider font-orbitron">
-        <a href="#home" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">HOME</a>
-        <a href="#about" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">ABOUT</a>
-        <a href="#bracket" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">BRACKET</a>
-        <a href="#schedule" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">SCHEDULE</a>
-        <a href="#news" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">NEWS</a>
-        <a href="#staff" class="hover:text-white text-blds-muted transition-colors hover:glow-sub">STAFF</a>
+      <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold tracking-widest font-orbitron">
+        <a href="#home" class="hover:text-white text-blds-muted hover:glow-sub">HOME</a>
+        <a href="#about" class="hover:text-white text-blds-muted hover:glow-sub">ABOUT</a>
+        <a href="#bracket" class="hover:text-white text-blds-muted hover:glow-sub">BRACKET</a>
+        <a href="#schedule" class="hover:text-white text-blds-muted hover:glow-sub">SCHEDULE</a>
+        <a href="#news" class="hover:text-white text-blds-muted hover:glow-sub">NEWS</a>
+        <a href="#staff" class="hover:text-white text-blds-muted hover:glow-sub">STAFF</a>
       </nav>
 
       <!-- Desktop Action & Mobile Toggle -->
       <div class="flex items-center gap-4">
-        <a href="#admin" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-orbitron border border-blds-border rounded-lg hover:border-white hover:bg-white hover:text-black transition-all duration-300 tracking-wider">
+        <a href="#admin" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-orbitron border border-blds-border rounded-lg hover:border-white hover:bg-white hover:text-black tracking-wider shadow-sm">
           ADMIN PORTAL
         </a>
 
@@ -170,14 +180,14 @@
     </div>
 
     <!-- Mobile Drawer Overlay -->
-    <div id="mobile-menu" class="hidden md:hidden bg-blds-black/95 border-b border-blds-border px-4 pt-4 pb-6 space-y-4 font-orbitron text-center">
-      <a href="#home" class="mobile-link block py-2 text-blds-muted hover:text-white">HOME</a>
-      <a href="#about" class="mobile-link block py-2 text-blds-muted hover:text-white">ABOUT</a>
-      <a href="#bracket" class="mobile-link block py-2 text-blds-muted hover:text-white">BRACKET</a>
-      <a href="#schedule" class="mobile-link block py-2 text-blds-muted hover:text-white">SCHEDULE</a>
-      <a href="#news" class="mobile-link block py-2 text-blds-muted hover:text-white">NEWS</a>
-      <a href="#staff" class="mobile-link block py-2 text-blds-muted hover:text-white">STAFF</a>
-      <a href="#admin" class="mobile-link block py-2 text-xs text-white border border-blds-border rounded-lg mt-4">ADMIN PORTAL</a>
+    <div id="mobile-menu" class="hidden md:hidden bg-blds-black/98 border-b border-blds-border px-6 pt-6 pb-8 space-y-4 font-orbitron text-center backdrop-blur-2xl">
+      <a href="#home" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">HOME</a>
+      <a href="#about" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">ABOUT</a>
+      <a href="#bracket" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">BRACKET</a>
+      <a href="#schedule" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">SCHEDULE</a>
+      <a href="#news" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">NEWS</a>
+      <a href="#staff" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">STAFF</a>
+      <a href="#admin" class="mobile-link block py-3 text-xs text-white border border-blds-border rounded-lg mt-4 bg-white/5">ADMIN PORTAL</a>
     </div>
   </header>
 
@@ -198,20 +208,20 @@
           BLACKLIGHT DOMINIONS
         </h1>
         
-        <p class="font-orbitron text-lg sm:text-2xl text-blds-muted tracking-widest uppercase mb-8 glow-sub">
+        <p class="font-rajdhani font-bold text-lg sm:text-2xl text-blds-muted tracking-widest uppercase mb-8 glow-sub">
           UNITED BEYOND THE ECLIPSE
         </p>
 
-        <p class="max-w-2xl text-sm sm:text-base text-gray-400 mb-10 leading-relaxed">
+        <p class="max-w-2xl text-sm sm:text-base text-gray-400 mb-10 leading-relaxed font-sans">
           Ekosistem esports dan komunitas profesional yang bergerak dalam persatuan, keteguhan, dan potensi tanpa batas.
         </p>
 
         <!-- Action Buttons -->
         <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="#bracket" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-orbitron font-bold text-sm tracking-widest uppercase rounded-lg shadow-lg hover:bg-gray-200 transition-all duration-300 overflow-hidden">
+          <a href="#bracket" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-orbitron font-bold text-xs tracking-widest uppercase rounded-lg shadow-lg hover:bg-gray-200 overflow-hidden">
             <span>LIHAT BRACKET</span>
           </a>
-          <a href="#schedule" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-transparent border border-white/30 text-white font-orbitron font-bold text-sm tracking-widest uppercase rounded-lg hover:border-white hover:bg-white/5 transition-all duration-300 overflow-hidden">
+          <a href="#schedule" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-transparent border border-white/30 text-white font-orbitron font-bold text-xs tracking-widest uppercase rounded-lg hover:border-white hover:bg-white/5 overflow-hidden">
             <span>JADWAL TANDING</span>
           </a>
         </div>
@@ -275,20 +285,20 @@
         <!-- Vision & Mission Grid -->
         <div class="grid md:grid-cols-2 gap-8">
           
-          <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-4 hover:border-white/40 transition-all">
+          <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-4 hover:border-white/40">
             <h3 class="font-orbitron font-bold text-xl text-white tracking-wider flex items-center gap-3">
               <span class="text-white">♦</span> VISION
             </h3>
-            <p class="text-sm text-gray-300 leading-relaxed">
+            <p class="text-sm text-gray-300 leading-relaxed font-sans">
               Menjadi komunitas yang solid, dikenal melalui identitasnya, dan terus berkembang dengan membangun lingkungan yang mendorong kebersamaan, kreativitas, kompetisi, serta potensi setiap Dominioner.
             </p>
           </div>
 
-          <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-4 hover:border-white/40 transition-all">
+          <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-4 hover:border-white/40">
             <h3 class="font-orbitron font-bold text-xl text-white tracking-wider flex items-center gap-3">
               <span class="text-white">♦</span> MISSION
             </h3>
-            <ul class="text-sm text-gray-300 space-y-2.5 list-disc list-inside">
+            <ul class="text-sm text-gray-300 space-y-2.5 list-disc list-inside font-sans">
               <li><strong class="text-white">Build Unity:</strong> Mempererat hubungan antar-Dominioners.</li>
               <li><strong class="text-white">Develop Potential:</strong> Ruang belajar dan berkembang.</li>
               <li><strong class="text-white">Create Opportunities:</strong> Peluang kegiatan dan kolaborasi.</li>
@@ -303,21 +313,21 @@
         <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-6">
           <h3 class="font-orbitron font-bold text-xl text-white tracking-wider text-center">CORE IDENTITY</h3>
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50">
+            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
               <h4 class="font-orbitron text-white font-semibold text-sm mb-2">BLACK & WHITE</h4>
-              <p class="text-xs text-gray-400">Dua sisi berbeda yang bersatu menjadi kesatuan utuh.</p>
+              <p class="text-xs text-gray-400 font-sans">Dua sisi berbeda yang bersatu menjadi kesatuan utuh.</p>
             </div>
-            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50">
+            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
               <h4 class="font-orbitron text-white font-semibold text-sm mb-2">THE ECLIPSE</h4>
-              <p class="text-xs text-gray-400">Melambangkan transformasi dan perjalanan menuju masa depan.</p>
+              <p class="text-xs text-gray-400 font-sans">Melambangkan transformasi dan perjalanan menuju masa depan.</p>
             </div>
-            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50">
+            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
               <h4 class="font-orbitron text-white font-semibold text-sm mb-2">DOMINIONERS</h4>
-              <p class="text-xs text-gray-400">Sebutan kehormatan bagi seluruh anggota keluarga BLDS.</p>
+              <p class="text-xs text-gray-400 font-sans">Sebutan kehormatan bagi seluruh anggota keluarga BLDS.</p>
             </div>
-            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50">
+            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
               <h4 class="font-orbitron text-white font-semibold text-sm mb-2">UNITED BEYOND</h4>
-              <p class="text-xs text-gray-400">Semangat untuk terus tumbuh dan bersatu melampaui batas.</p>
+              <p class="text-xs text-gray-400 font-sans">Semangat untuk terus tumbuh dan bersatu melampaui batas.</p>
             </div>
           </div>
         </div>
@@ -335,7 +345,6 @@
 
         <!-- Dynamic Brackets Container -->
         <div id="brackets-container" class="space-y-12">
-          <!-- Empty State Default -->
           <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
             <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p>
           </div>
@@ -424,7 +433,7 @@
 
         <div id="login-error" class="hidden text-red-500 text-xs font-orbitron text-center"></div>
 
-        <button type="submit" class="blds-btn w-full py-3 bg-white text-black font-orbitron font-bold text-xs tracking-widest rounded-lg hover:bg-gray-200 transition-all uppercase">
+        <button type="submit" class="blds-btn w-full py-3 bg-white text-black font-orbitron font-bold text-xs tracking-widest rounded-lg hover:bg-gray-200 uppercase">
           LOGIN PORTAL
         </button>
       </form>
@@ -439,7 +448,7 @@
           <h2 class="font-orbitron font-bold text-2xl text-white tracking-wider glow-sub">ADMIN DASHBOARD</h2>
           <p id="admin-user-info" class="text-xs text-blds-muted mt-0.5">Logged in as: Authenticating...</p>
         </div>
-        <button id="logout-btn" class="px-4 py-2 border border-red-500/50 text-red-400 hover:bg-red-500 hover:text-white rounded-lg text-xs font-orbitron tracking-wider transition-all">
+        <button id="logout-btn" class="px-4 py-2 border border-red-500/50 text-red-400 hover:bg-red-500 hover:text-white rounded-lg text-xs font-orbitron tracking-wider">
           LOGOUT
         </button>
       </div>
@@ -473,9 +482,7 @@
       </div>
 
       <!-- Tab Content Area -->
-      <div id="admin-tab-content" class="bg-blds-card border border-blds-border p-6 rounded-xl">
-        <!-- Content dynamically injected via JS -->
-      </div>
+      <div id="admin-tab-content" class="bg-blds-card border border-blds-border p-6 rounded-xl"></div>
 
     </div>
 
@@ -491,23 +498,30 @@
           <img src="logo.png" alt="BLDS Footer Emblem" class="w-8 h-8 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/80/000000/FFFFFF?text=BLDS';" />
           <span class="font-orbitron font-bold text-lg text-white">BLDS</span>
         </div>
-        <p class="text-xs text-blds-muted">United Beyond the Eclipse</p>
-        <p class="text-[11px] text-gray-600">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
+        <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
+        <p class="text-[11px] text-gray-600 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
       </div>
 
-      <!-- Official Social Links -->
-      <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-orbitron text-blds-muted">
-        <a href="https://discord.gg/r4dM4QFteV" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
-          <span>DISCORD</span>
+      <!-- Official Social Links (Logo/Icon Only) -->
+      <div class="flex items-center justify-center gap-6">
+        <!-- Discord Logo Icon -->
+        <a href="https://discord.gg/r4dM4QFteV" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full bg-blds-card border border-blds-border hover:border-white hover:text-white text-blds-muted group" title="Discord">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
         </a>
-        <a href="https://chat.whatsapp.com/LYhSQn3vXhO6qpVWyoJEoR?s=cl&p=a&ilr=1" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
-          <span>WHATSAPP</span>
+
+        <!-- WhatsApp Logo Icon -->
+        <a href="https://chat.whatsapp.com/LYhSQn3vXhO6qpVWyoJEoR?s=cl&p=a&ilr=1" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full bg-blds-card border border-blds-border hover:border-white hover:text-white text-blds-muted group" title="WhatsApp">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
         </a>
-        <a href="https://www.instagram.com/blacklightdominions?exln=YjZvbnRlaHd2cGU=" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
-          <span>INSTAGRAM</span>
+
+        <!-- Instagram Logo Icon -->
+        <a href="https://www.instagram.com/blacklightdominions?exln=YjZvbnRlaHd2cGU=" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full bg-blds-card border border-blds-border hover:border-white hover:text-white text-blds-muted group" title="Instagram">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <a href="https://www.tiktok.com/@blacklightdominions?_r=1&_t=ZS-9Ab57EC6WAM" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
-          <span>TIKTOK</span>
+
+        <!-- TikTok Logo Icon -->
+        <a href="https://www.tiktok.com/@blacklightdominions?_r=1&_t=ZS-9Ab57EC6WAM" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full bg-blds-card border border-blds-border hover:border-white hover:text-white text-blds-muted group" title="TikTok">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.242V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002-.001a2.895 2.895 0 0 1 3.144-4.53v-3.49a6.382 6.382 0 0 0-5.26 6.25c0 3.535 2.863 6.398 6.398 6.398 3.535 0 6.398-2.863 6.398-6.398V9.213a8.198 8.198 0 0 0 4.77 1.528v-3.47a4.767 4.767 0 0 1-1.034-.585z"/></svg>
         </a>
       </div>
 
@@ -578,7 +592,6 @@
       const hash = window.location.hash || '#home';
       const publicView = document.getElementById('public-view');
       const adminView = document.getElementById('admin-view');
-      const mainHeader = document.getElementById('main-header');
 
       if (hash.startsWith('#admin')) {
         publicView.classList.add('hidden');
@@ -588,7 +601,6 @@
         adminView.classList.add('hidden');
         publicView.classList.remove('hidden');
         
-        // Smooth scroll to section if matching ID
         const targetSection = document.querySelector(hash);
         if (targetSection) {
           targetSection.scrollIntoView({ behavior: 'smooth' });
@@ -613,7 +625,7 @@
       });
     }
 
-    // Interactive Button Diamond Hit Effect (♦)
+    // Interactive Button Diamond Hit Effect (Straight Upright ♦)
     function setupDiamondEffects() {
       document.body.addEventListener('click', (e) => {
         const btn = e.target.closest('.blds-btn, button, a');
@@ -631,34 +643,30 @@
 
         setTimeout(() => {
           diamond.remove();
-        }, 3000);
+        }, 700);
       });
     }
 
     // Realtime Database Listeners
     function bindFirebaseListeners() {
-      // Brackets
       onValue(ref(db, 'site/brackets'), (snapshot) => {
         appData.brackets = snapshot.val() || {};
         renderBrackets();
         updateAdminStats();
       });
 
-      // Schedule
       onValue(ref(db, 'site/schedule'), (snapshot) => {
         appData.schedule = snapshot.val() || {};
         renderSchedule();
         updateAdminStats();
       });
 
-      // News
       onValue(ref(db, 'site/news'), (snapshot) => {
         appData.news = snapshot.val() || {};
         renderNews();
         updateAdminStats();
       });
 
-      // Staff
       onValue(ref(db, 'site/staff'), (snapshot) => {
         appData.staff = snapshot.val() || {};
         renderStaff();
@@ -740,12 +748,12 @@
       }
 
       container.innerHTML = items.map(item => `
-        <div class="bg-blds-card border border-blds-border p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="bg-blds-card border border-blds-border p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4 hover:border-white/30">
           <div class="flex items-center gap-4 w-full md:w-auto">
             <span class="text-xs font-orbitron px-2.5 py-1 rounded bg-white/10 text-white">${item.status}</span>
             <div>
               <h4 class="font-orbitron font-bold text-white text-sm">${item.eventName}</h4>
-              <p class="text-xs text-blds-muted">${item.game} • ${item.date} (${item.time})</p>
+              <p class="text-xs text-blds-muted font-sans">${item.game} • ${item.date} (${item.time})</p>
             </div>
           </div>
           <div class="font-orbitron font-bold text-sm text-white flex items-center gap-6">
@@ -777,7 +785,7 @@
       }
 
       container.innerHTML = items.map(item => `
-        <article class="bg-blds-card border border-blds-border rounded-xl overflow-hidden flex flex-col justify-between">
+        <article class="bg-blds-card border border-blds-border rounded-xl overflow-hidden flex flex-col justify-between hover:border-white/30">
           <img src="${item.imageUrl || 'https://via.placeholder.com/600x350/0f0f10/ffffff?text=BLDS+NEWS'}" alt="Cover" class="w-full h-48 object-cover" />
           <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
             <div class="space-y-2">
@@ -786,7 +794,7 @@
                 <span>${item.date || ''}</span>
               </div>
               <h3 class="font-orbitron font-bold text-lg text-white leading-snug">${item.title}</h3>
-              <p class="text-xs text-gray-400 line-clamp-3">${item.summary || ''}</p>
+              <p class="text-xs text-gray-400 line-clamp-3 font-sans">${item.summary || ''}</p>
             </div>
           </div>
         </article>
@@ -807,13 +815,13 @@
       }
 
       container.innerHTML = items.map(item => `
-        <div class="bg-blds-card border border-blds-border p-6 rounded-xl text-center space-y-4">
+        <div class="bg-blds-card border border-blds-border p-6 rounded-xl text-center space-y-4 hover:border-white/30">
           <img src="${item.photoUrl || 'https://via.placeholder.com/150/1f1f22/ffffff?text=STAFF'}" alt="${item.name}" class="w-24 h-24 mx-auto rounded-full object-cover border-2 border-blds-border" />
           <div>
             <h3 class="font-orbitron font-bold text-white text-base">${item.name}</h3>
             <p class="text-xs font-orbitron text-blds-muted uppercase">${item.role}</p>
           </div>
-          <p class="text-xs text-gray-400">${item.desc || ''}</p>
+          <p class="text-xs text-gray-400 font-sans">${item.desc || ''}</p>
         </div>
       `).join('');
     }
@@ -826,7 +834,6 @@
 
         if (user) {
           currentUser = user;
-          // Verify against /admins node
           onValue(ref(db, `admins/${user.uid}`), (snapshot) => {
             if (snapshot.val() === true) {
               isAdminAuthorized = true;
@@ -888,7 +895,7 @@
           <div class="space-y-4">
             <div class="flex justify-between items-center">
               <h3 class="font-orbitron font-bold text-white text-lg">MANAGE BRACKETS</h3>
-              <button onclick="openBracketModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded">TAMBAH BRACKET</button>
+              <button onclick="openBracketModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">TAMBAH BRACKET</button>
             </div>
             ${renderAdminTable(appData.brackets, 'brackets')}
           </div>`;
@@ -897,7 +904,7 @@
           <div class="space-y-4">
             <div class="flex justify-between items-center">
               <h3 class="font-orbitron font-bold text-white text-lg">MANAGE SCHEDULE</h3>
-              <button onclick="openScheduleModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded">TAMBAH JADWAL</button>
+              <button onclick="openScheduleModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">TAMBAH JADWAL</button>
             </div>
             ${renderAdminTable(appData.schedule, 'schedule')}
           </div>`;
@@ -906,7 +913,7 @@
           <div class="space-y-4">
             <div class="flex justify-between items-center">
               <h3 class="font-orbitron font-bold text-white text-lg">MANAGE NEWS</h3>
-              <button onclick="openNewsModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded">TAMBAH BERITA</button>
+              <button onclick="openNewsModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">TAMBAH BERITA</button>
             </div>
             ${renderAdminTable(appData.news, 'news')}
           </div>`;
@@ -915,7 +922,7 @@
           <div class="space-y-4">
             <div class="flex justify-between items-center">
               <h3 class="font-orbitron font-bold text-white text-lg">MANAGE STAFF</h3>
-              <button onclick="openStaffModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded">TAMBAH STAFF</button>
+              <button onclick="openStaffModal()" class="px-4 py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">TAMBAH STAFF</button>
             </div>
             ${renderAdminTable(appData.staff, 'staff')}
           </div>`;
@@ -966,7 +973,7 @@
             <input type="text" id="b-qf1" placeholder="Quarter Team 1" class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
             <input type="text" id="b-qf2" placeholder="Quarter Team 2" class="bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
           </div>
-          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded">SIMPAN</button>
+          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">SIMPAN</button>
         </form>
       `;
       modal.classList.remove('hidden');
@@ -1004,7 +1011,7 @@
             <option value="LIVE">LIVE</option>
             <option value="COMPLETED">COMPLETED</option>
           </select>
-          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded">SIMPAN JADWAL</button>
+          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">SIMPAN JADWAL</button>
         </form>
       `;
       modal.classList.remove('hidden');
@@ -1033,7 +1040,7 @@
           <input type="text" id="n-cat" placeholder="Kategori" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
           <input type="url" id="n-img" placeholder="URL Cover Gambar" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
           <textarea id="n-sum" placeholder="Ringkasan Berita" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded h-20"></textarea>
-          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded">PUBLIKASIKAN BERITA</button>
+          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">PUBLIKASIKAN BERITA</button>
         </form>
       `;
       modal.classList.remove('hidden');
@@ -1060,7 +1067,7 @@
           <input type="text" id="st-role" placeholder="Jabatan / Role" required class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
           <input type="url" id="st-photo" placeholder="URL Foto Profil" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
           <input type="text" id="st-desc" placeholder="Deskripsi Singkat" class="w-full bg-blds-black border border-blds-border p-2 text-xs text-white rounded" />
-          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded">SIMPAN STAFF</button>
+          <button type="submit" class="w-full py-2 bg-white text-black font-orbitron font-bold text-xs rounded hover:bg-gray-200">SIMPAN STAFF</button>
         </form>
       `;
       modal.classList.remove('hidden');
@@ -1100,13 +1107,13 @@
       resize();
       window.addEventListener('resize', resize);
 
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 45; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 2 + 0.5,
-          speedY: Math.random() * 0.4 + 0.1,
-          opacity: Math.random() * 0.5 + 0.2
+          speedY: Math.random() * 0.3 + 0.1,
+          opacity: Math.random() * 0.4 + 0.15
         });
       }
 
