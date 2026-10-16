@@ -58,37 +58,41 @@
       background: #52525b;
     }
 
-    /* Glow FX Typography & Elements */
+    /* Global Glow Effects for Every Text */
+    body, p, span, h1, h2, h3, h4, h5, h6, a, label, th, td {
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+    }
+
     .glow-title {
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.15);
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.65), 0 0 40px rgba(255, 255, 255, 0.25) !important;
     }
     .glow-sub {
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.45) !important;
     }
     .glow-box {
-      box-shadow: 0 0 30px -5px rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 30px -5px rgba(255, 255, 255, 0.15);
     }
     .glow-border {
-      border-color: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
 
     /* Floating Slow Animation for Logo */
     @keyframes floatSlow {
       0%, 100% {
         transform: translateY(0px);
-        filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.35));
+        filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
       }
       50% {
         transform: translateY(-12px);
-        filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.65));
+        filter: drop-shadow(0 0 45px rgba(255, 255, 255, 0.8));
       }
     }
     .animate-float-logo {
       animation: floatSlow 6s ease-in-out infinite;
     }
 
-    /* Diamond FX Click Effect Keyframes (Straight & Upright ♦) */
+    /* Diamond FX Click Effect (Straight Upright ♦) */
     @keyframes diamondHit {
       0% {
         transform: scale(0.3);
@@ -122,13 +126,13 @@
     .bg-grid-pattern {
       background-size: 40px 40px;
       background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     }
 
     /* Smooth Transitions */
     * {
-      transition-property: color, background-color, border-color, transform, opacity, box-shadow;
+      transition-property: color, background-color, border-color, transform, opacity, box-shadow, max-height, visibility;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       transition-duration: 250ms;
     }
@@ -138,10 +142,10 @@
 <body class="bg-blds-black text-white font-sans antialiased selection:bg-white selection:text-black overflow-x-hidden min-h-screen flex flex-col justify-between">
 
   <!-- Interactive Canvas Particles Background -->
-  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none z-0 opacity-35"></canvas>
+  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
 
   <!-- ==================== PUBLIC HEADER / NAVBAR ==================== -->
-  <header id="main-header" class="fixed top-0 left-0 right-0 z-40 bg-blds-black/85 backdrop-blur-xl border-b border-blds-border">
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-40 bg-blds-black/90 backdrop-blur-xl border-b border-blds-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Brand Logo & Name -->
@@ -169,25 +173,27 @@
           ADMIN PORTAL
         </a>
 
-        <!-- Hamburger Icon (Mobile) -->
-        <button id="menu-btn" class="md:hidden p-2 text-white hover:text-blds-muted focus:outline-none" aria-label="Toggle Menu">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        <!-- Hamburger Icon Button (Smooth Transition) -->
+        <button id="menu-btn" class="md:hidden p-2.5 text-white hover:text-blds-muted focus:outline-none rounded-lg border border-blds-border bg-blds-card active:scale-95 transition-all" aria-label="Toggle Menu">
+          <svg id="hamburger-svg" class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
       </div>
 
     </div>
 
-    <!-- Mobile Drawer Overlay -->
-    <div id="mobile-menu" class="hidden md:hidden bg-blds-black/98 border-b border-blds-border px-6 pt-6 pb-8 space-y-4 font-orbitron text-center backdrop-blur-2xl">
-      <a href="#home" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">HOME</a>
-      <a href="#about" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">ABOUT</a>
-      <a href="#bracket" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">BRACKET</a>
-      <a href="#schedule" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">SCHEDULE</a>
-      <a href="#news" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">NEWS</a>
-      <a href="#staff" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">STAFF</a>
-      <a href="#admin" class="mobile-link block py-3 text-xs text-white border border-blds-border rounded-lg mt-4 bg-white/5">ADMIN PORTAL</a>
+    <!-- Mobile Drawer Overlay (Smooth Slide Down) -->
+    <div id="mobile-menu" class="md:hidden bg-blds-black/98 border-b border-blds-border px-6 overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out font-orbitron text-center backdrop-blur-2xl">
+      <div class="py-6 space-y-4">
+        <a href="#home" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">HOME</a>
+        <a href="#about" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">ABOUT</a>
+        <a href="#bracket" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">BRACKET</a>
+        <a href="#schedule" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">SCHEDULE</a>
+        <a href="#news" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">NEWS</a>
+        <a href="#staff" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">STAFF</a>
+        <a href="#admin" class="mobile-link block py-3 text-xs text-white border border-blds-border rounded-lg mt-4 bg-white/5">ADMIN PORTAL</a>
+      </div>
     </div>
   </header>
 
@@ -200,7 +206,7 @@
         
         <!-- Animated Floating Hero Logo -->
         <div class="relative mb-8">
-          <div class="absolute inset-0 bg-white/10 rounded-full blur-3xl transform scale-150"></div>
+          <div class="absolute inset-0 bg-white/15 rounded-full blur-3xl transform scale-150"></div>
           <img src="logo.png" alt="BLDS Emblem" class="w-36 h-36 sm:w-48 sm:h-48 object-contain animate-float-logo relative z-10" onerror="this.onerror=null; this.src='https://via.placeholder.com/200/000000/FFFFFF?text=BLDS';" />
         </div>
 
@@ -212,7 +218,7 @@
           UNITED BEYOND THE ECLIPSE
         </p>
 
-        <p class="max-w-2xl text-sm sm:text-base text-gray-400 mb-10 leading-relaxed font-sans">
+        <p class="max-w-2xl text-sm sm:text-base text-gray-300 mb-10 leading-relaxed font-sans">
           Ekosistem esports dan komunitas profesional yang bergerak dalam persatuan, keteguhan, dan potensi tanpa batas.
         </p>
 
@@ -248,35 +254,35 @@
               <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
               <span class="text-xs font-orbitron text-blds-muted tracking-widest">3 MEI 2023</span>
               <h4 class="font-orbitron font-bold text-lg text-white mt-1">THE BEGINNING</h4>
-              <p class="text-sm text-gray-400 mt-1">Langkah awal terbentuknya fondasi utama perjalanan sejarah BLDS.</p>
+              <p class="text-sm text-gray-300 mt-1 font-sans">Langkah awal terbentuknya fondasi utama perjalanan sejarah BLDS.</p>
             </div>
 
             <div class="relative group">
               <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
               <span class="text-xs font-orbitron text-blds-muted tracking-widest">15 MEI 2024</span>
               <h4 class="font-orbitron font-bold text-lg text-white mt-1">WHATSAPP COMMUNITY</h4>
-              <p class="text-sm text-gray-400 mt-1">Penggunaan platform WhatsApp sebagai wadah awal interaksi harian antar-anggota.</p>
+              <p class="text-sm text-gray-300 mt-1 font-sans">Penggunaan platform WhatsApp sebagai wadah awal interaksi harian antar-anggota.</p>
             </div>
 
             <div class="relative group">
               <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
               <span class="text-xs font-orbitron text-blds-muted tracking-widest">12 SEPTEMBER 2024</span>
               <h4 class="font-orbitron font-bold text-lg text-white mt-1">DISCORD EXPANSION</h4>
-              <p class="text-sm text-gray-400 mt-1">Peluncuran Server Discord resmi guna memperluas jangkauan komunikasi dan kegiatan esports.</p>
+              <p class="text-sm text-gray-300 mt-1 font-sans">Peluncuran Server Discord resmi guna memperluas jangkauan komunikasi dan kegiatan esports.</p>
             </div>
 
             <div class="relative group">
               <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
               <span class="text-xs font-orbitron text-blds-muted tracking-widest">20 AGUSTUS 2025</span>
               <h4 class="font-orbitron font-bold text-lg text-white mt-1">MAJOR IDENTITY RENEWAL</h4>
-              <p class="text-sm text-gray-400 mt-1">Fase renovasi total branding dan struktur ekosistem digital BLDS.</p>
+              <p class="text-sm text-gray-300 mt-1 font-sans">Fase renovasi total branding dan struktur ekosistem digital BLDS.</p>
             </div>
 
             <div class="relative group">
               <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
               <span class="text-xs font-orbitron text-blds-muted tracking-widest">2026 & BEYOND</span>
               <h4 class="font-orbitron font-bold text-lg text-white mt-1">FUTURE HORIZON</h4>
-              <p class="text-sm text-gray-400 mt-1">Pengembangan berkelanjutan kompetisi, talent, dan ekosistem esports digital.</p>
+              <p class="text-sm text-gray-300 mt-1 font-sans">Pengembangan berkelanjutan kompetisi, talent, dan ekosistem esports digital.</p>
             </div>
 
           </div>
@@ -289,7 +295,7 @@
             <h3 class="font-orbitron font-bold text-xl text-white tracking-wider flex items-center gap-3">
               <span class="text-white">♦</span> VISION
             </h3>
-            <p class="text-sm text-gray-300 leading-relaxed font-sans">
+            <p class="text-sm text-gray-200 leading-relaxed font-sans">
               Menjadi komunitas yang solid, dikenal melalui identitasnya, dan terus berkembang dengan membangun lingkungan yang mendorong kebersamaan, kreativitas, kompetisi, serta potensi setiap Dominioner.
             </p>
           </div>
@@ -298,7 +304,7 @@
             <h3 class="font-orbitron font-bold text-xl text-white tracking-wider flex items-center gap-3">
               <span class="text-white">♦</span> MISSION
             </h3>
-            <ul class="text-sm text-gray-300 space-y-2.5 list-disc list-inside font-sans">
+            <ul class="text-sm text-gray-200 space-y-2.5 list-disc list-inside font-sans">
               <li><strong class="text-white">Build Unity:</strong> Mempererat hubungan antar-Dominioners.</li>
               <li><strong class="text-white">Develop Potential:</strong> Ruang belajar dan berkembang.</li>
               <li><strong class="text-white">Create Opportunities:</strong> Peluang kegiatan dan kolaborasi.</li>
@@ -315,19 +321,19 @@
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
               <h4 class="font-orbitron text-white font-semibold text-sm mb-2">BLACK & WHITE</h4>
-              <p class="text-xs text-gray-400 font-sans">Dua sisi berbeda yang bersatu menjadi kesatuan utuh.</p>
+              <p class="text-xs text-gray-300 font-sans">Dua sisi berbeda yang bersatu menjadi kesatuan utuh.</p>
             </div>
             <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
               <h4 class="font-orbitron text-white font-semibold text-sm mb-2">THE ECLIPSE</h4>
-              <p class="text-xs text-gray-400 font-sans">Melambangkan transformasi dan perjalanan menuju masa depan.</p>
+              <p class="text-xs text-gray-300 font-sans">Melambangkan transformasi dan perjalanan menuju masa depan.</p>
             </div>
             <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
               <h4 class="font-orbitron text-white font-semibold text-sm mb-2">DOMINIONERS</h4>
-              <p class="text-xs text-gray-400 font-sans">Sebutan kehormatan bagi seluruh anggota keluarga BLDS.</p>
+              <p class="text-xs text-gray-300 font-sans">Sebutan kehormatan bagi seluruh anggota keluarga BLDS.</p>
             </div>
             <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
               <h4 class="font-orbitron text-white font-semibold text-sm mb-2">UNITED BEYOND</h4>
-              <p class="text-xs text-gray-400 font-sans">Semangat untuk terus tumbuh dan bersatu melampaui batas.</p>
+              <p class="text-xs text-gray-300 font-sans">Semangat untuk terus tumbuh dan bersatu melampaui batas.</p>
             </div>
           </div>
         </div>
@@ -423,11 +429,11 @@
 
       <form id="login-form" class="space-y-4">
         <div>
-          <label class="block text-xs font-orbitron text-gray-400 mb-1">EMAIL ADMIN</label>
+          <label class="block text-xs font-orbitron text-gray-300 mb-1">EMAIL ADMIN</label>
           <input type="email" id="login-email" required class="w-full bg-blds-black border border-blds-border rounded-lg px-4 py-2.5 text-sm text-white focus:border-white focus:outline-none" placeholder="admin@blds.com" />
         </div>
         <div>
-          <label class="block text-xs font-orbitron text-gray-400 mb-1">PASSWORD</label>
+          <label class="block text-xs font-orbitron text-gray-300 mb-1">PASSWORD</label>
           <input type="password" id="login-password" required class="w-full bg-blds-black border border-blds-border rounded-lg px-4 py-2.5 text-sm text-white focus:border-white focus:outline-none" placeholder="••••••••" />
         </div>
 
@@ -499,7 +505,7 @@
           <span class="font-orbitron font-bold text-lg text-white">BLDS</span>
         </div>
         <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
-        <p class="text-[11px] text-gray-600 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
+        <p class="text-[11px] text-gray-400 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
       </div>
 
       <!-- Official Social Links (Logo/Icon Only) -->
@@ -608,19 +614,33 @@
       }
     }
 
-    // Hamburger Mobile Menu
+    // Hamburger Mobile Menu Toggle with Smooth Animation
     function setupMenu() {
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
+      const hamburgerSvg = document.getElementById('hamburger-svg');
       const mobileLinks = document.querySelectorAll('.mobile-link');
+      let isOpen = false;
 
       menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+        isOpen = !isOpen;
+        if (isOpen) {
+          mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+          mobileMenu.style.opacity = '1';
+          hamburgerSvg.style.transform = 'rotate(90deg)';
+        } else {
+          mobileMenu.style.maxHeight = '0px';
+          mobileMenu.style.opacity = '0';
+          hamburgerSvg.style.transform = 'rotate(0deg)';
+        }
       });
 
       mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
+          isOpen = false;
+          mobileMenu.style.maxHeight = '0px';
+          mobileMenu.style.opacity = '0';
+          hamburgerSvg.style.transform = 'rotate(0deg)';
         });
       });
     }
@@ -705,7 +725,7 @@
                 <span class="text-xs font-orbitron text-blds-muted block text-center">QUARTERFINAL</span>
                 <div class="p-3 bg-blds-black border border-blds-border rounded-lg text-xs space-y-2">
                   <div class="flex justify-between text-white"><span>${item.qf_t1 || 'Team A'}</span><span>${item.qf_s1 || '0'}</span></div>
-                  <div class="flex justify-between text-gray-400"><span>${item.qf_t2 || 'Team B'}</span><span>${item.qf_s2 || '0'}</span></div>
+                  <div class="flex justify-between text-gray-300"><span>${item.qf_t2 || 'Team B'}</span><span>${item.qf_s2 || '0'}</span></div>
                 </div>
               </div>
 
@@ -713,7 +733,7 @@
                 <span class="text-xs font-orbitron text-blds-muted block text-center">SEMIFINAL</span>
                 <div class="p-3 bg-blds-black border border-blds-border rounded-lg text-xs space-y-2">
                   <div class="flex justify-between text-white"><span>${item.sf_t1 || 'TBD'}</span><span>${item.sf_s1 || '0'}</span></div>
-                  <div class="flex justify-between text-gray-400"><span>${item.sf_t2 || 'TBD'}</span><span>${item.sf_s2 || '0'}</span></div>
+                  <div class="flex justify-between text-gray-300"><span>${item.sf_t2 || 'TBD'}</span><span>${item.sf_s2 || '0'}</span></div>
                 </div>
               </div>
 
@@ -721,7 +741,7 @@
                 <span class="text-xs font-orbitron text-blds-muted block text-center">GRAND FINAL</span>
                 <div class="p-3 bg-blds-black border border-white/30 glow-border rounded-lg text-xs space-y-2">
                   <div class="flex justify-between text-white font-bold"><span>${item.f_t1 || 'TBD'}</span><span>${item.f_s1 || '0'}</span></div>
-                  <div class="flex justify-between text-gray-400"><span>${item.f_t2 || 'TBD'}</span><span>${item.f_s2 || '0'}</span></div>
+                  <div class="flex justify-between text-gray-300"><span>${item.f_t2 || 'TBD'}</span><span>${item.f_s2 || '0'}</span></div>
                 </div>
               </div>
             </div>
@@ -794,7 +814,7 @@
                 <span>${item.date || ''}</span>
               </div>
               <h3 class="font-orbitron font-bold text-lg text-white leading-snug">${item.title}</h3>
-              <p class="text-xs text-gray-400 line-clamp-3 font-sans">${item.summary || ''}</p>
+              <p class="text-xs text-gray-300 line-clamp-3 font-sans">${item.summary || ''}</p>
             </div>
           </div>
         </article>
@@ -821,7 +841,7 @@
             <h3 class="font-orbitron font-bold text-white text-base">${item.name}</h3>
             <p class="text-xs font-orbitron text-blds-muted uppercase">${item.role}</p>
           </div>
-          <p class="text-xs text-gray-400 font-sans">${item.desc || ''}</p>
+          <p class="text-xs text-gray-300 font-sans">${item.desc || ''}</p>
         </div>
       `).join('');
     }
@@ -937,7 +957,7 @@
 
       return `
         <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs text-gray-300">
+          <table class="w-full text-left text-xs text-gray-200">
             <thead class="font-orbitron text-white border-b border-blds-border">
               <tr>
                 <th class="p-2">KEY / TITLE</th>
