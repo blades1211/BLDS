@@ -235,7 +235,7 @@
       </div>
     </section>
 
-    <!-- BRACKET SECTION (Bracket HQ Interactive Tree View) -->
+    <!-- BRACKET SECTION -->
     <section id="bracket" class="py-24 px-4 bg-blds-black/50 border-t border-blds-border">
       <div class="max-w-7xl mx-auto space-y-8">
         <div class="text-center space-y-3">
@@ -244,7 +244,6 @@
           <p id="bracket-tournament-title" class="font-orbitron text-sm text-blds-muted uppercase tracking-widest pt-2">NO ACTIVE TOURNAMENT</p>
         </div>
         
-        <!-- Interactive Bracket Canvas Container -->
         <div class="bg-blds-card/80 border border-blds-border rounded-2xl p-6 overflow-x-auto min-h-[450px] shadow-2xl relative">
           <div id="brackets-container" class="flex gap-12 min-w-[750px] justify-between items-stretch py-4">
             <div class="m-auto text-center py-16">
@@ -321,12 +320,12 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           
-          <!-- 1. Form Setup Bracket (Bebas Banyak Tim) -->
+          <!-- 1. Form Setup Bracket -->
           <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
             <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">🏆 SETUP BRACKET HQ</h3>
             <form id="form-bracket-setup" onsubmit="setupBracketTeams(event)" class="space-y-3 text-xs">
               <input type="text" id="brk-title" placeholder="Nama Turnamen" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <textarea id="brk-teams" placeholder="Masukkan Nama Tim (Pisahkan dengan koma atau baris baru) Contoh: Tim A, Tim B, Tim C, Tim D" rows="5" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
+              <textarea id="brk-teams" placeholder="Masukkan Nama Tim (Pisahkan koma/baris baru)" rows="5" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
               <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">GENERATE BRACKET</button>
             </form>
             <button onclick="resetBracket()" class="w-full py-2 bg-red-600/20 border border-red-500 text-red-400 text-xs font-orbitron rounded hover:bg-red-600 hover:text-white">RESET ALL BRACKET</button>
@@ -336,8 +335,8 @@
           <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
             <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">👤 TAMBAH STAFF</h3>
             <form id="form-staff" onsubmit="addStaff(event)" class="space-y-3 text-xs">
-              <input type="text" id="staff-name" placeholder="Nama Staff (Michael, William, dll)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <input type="text" id="staff-role" placeholder="Jabatan (Owner, Co-Owner, Headstaff)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="staff-name" placeholder="Nama Staff" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="staff-role" placeholder="Jabatan (Owner, Co-Owner, dll)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <input type="url" id="staff-photo" placeholder="URL Foto Profil" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <textarea id="staff-desc" placeholder="Deskripsi Singkat" rows="2" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
               <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">SIMPAN STAFF</button>
@@ -426,7 +425,7 @@
     </div>
   </div>
 
-  <!-- ==================== POP-UP MODAL LOGIN ADMIN (TRANSPARAN / GLASSMORPHISM) ==================== -->
+  <!-- ==================== POP-UP MODAL LOGIN ADMIN (TRANSPARAN) ==================== -->
   <div id="admin-modal" class="fixed inset-0 bg-black/50 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-black/40 border border-white/20 backdrop-blur-2xl p-6 rounded-2xl w-full max-w-md space-y-6 glow-box relative shadow-2xl">
       <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-blds-muted hover:text-white text-xl">&times;</button>
@@ -460,7 +459,7 @@
         <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
         <p class="text-[11px] text-gray-400 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
         
-        <!-- Tombol Admin Access Transparan (Glassmorphism) -->
+        <!-- Tombol Admin Access Transparan -->
         <div class="pt-3">
           <button id="admin-login-btn" onclick="openAdminModal()" type="button" class="cursor-pointer inline-block px-4 py-2 bg-white/5 hover:bg-white/15 border border-white/20 backdrop-blur-md rounded-lg text-[11px] font-orbitron text-white transition-all shadow-lg active:scale-95">
             🔐 Admin Access
@@ -521,6 +520,9 @@
     let appData = { bracket: {}, schedule: {}, news: {}, staff: {} };
     let currentScheduleFilter = 'ALL';
 
+    // Variabel aman cadangan jika sessionStorage diblokir browser/incognito
+    window.bldsAdminFlag = false;
+
     document.getElementById('current-year').textContent = new Date().getFullYear();
     initParticles();
 
@@ -532,7 +534,7 @@
     });
 
     window.openScoreModal = function(key, roundTitle, t1, s1, t2, s2) {
-      if (sessionStorage.getItem('blds_admin_logged_in') !== 'true') return;
+      if (!isLoggedInAdmin()) return;
       document.getElementById('edit-match-key').value = key;
       document.getElementById('score-modal-round').textContent = roundTitle;
       document.getElementById('label-t1').textContent = t1 || 'TBD';
@@ -546,13 +548,27 @@
       document.getElementById('score-modal').classList.add('hidden');
     }
 
+    function isLoggedInAdmin() {
+      try {
+        return sessionStorage.getItem('blds_admin_logged_in') === 'true' || window.bldsAdminFlag === true;
+      } catch (e) {
+        return window.bldsAdminFlag === true;
+      }
+    }
+
     window.handleDirectLogin = function(e) {
       e.preventDefault();
       const passwordInput = document.getElementById('modal-password').value.trim();
 
       if (passwordInput === ADMIN_PASSWORD) {
-        sessionStorage.setItem('blds_admin_logged_in', 'true');
-        alert("Login Admin Berhasil! Silakan atur bracket/jadwal/berita/staff di Admin Control Panel.");
+        window.bldsAdminFlag = true;
+        try {
+          sessionStorage.setItem('blds_admin_logged_in', 'true');
+        } catch (err) {
+          console.warn("SessionStorage diblokir, menggunakan memori lokal.");
+        }
+
+        alert("Login Admin Berhasil!");
         closeAdminModal();
         checkAdminSession();
         
@@ -568,13 +584,17 @@
     }
 
     window.logoutAdmin = function() {
-      sessionStorage.removeItem('blds_admin_logged_in');
+      window.bldsAdminFlag = false;
+      try {
+        sessionStorage.removeItem('blds_admin_logged_in');
+      } catch (e) {}
       alert("Berhasil Logout Admin");
       checkAdminSession();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function checkAdminSession() {
-      const isLoggedIn = sessionStorage.getItem('blds_admin_logged_in') === 'true';
+      const isLoggedIn = isLoggedInAdmin();
       const adminSection = document.getElementById('admin-dashboard-section');
       const adminLoginBtn = document.getElementById('admin-login-btn');
       const floatingBtn = document.getElementById('floating-admin-btn');
@@ -823,7 +843,7 @@
       const container = document.getElementById('brackets-container');
       const titleElem = document.getElementById('bracket-tournament-title');
       const bracketData = appData.bracket;
-      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
+      const isAdmin = isLoggedInAdmin();
 
       if (!bracketData || !bracketData.matches) {
         titleElem.textContent = "NO ACTIVE TOURNAMENT";
@@ -891,7 +911,7 @@
     function renderSchedule() {
       const container = document.getElementById('schedule-container');
       let items = Object.keys(appData.schedule).map(k => ({ key: k, ...appData.schedule[k] }));
-      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
+      const isAdmin = isLoggedInAdmin();
 
       if (currentScheduleFilter !== 'ALL') items = items.filter(i => i.status === currentScheduleFilter);
 
@@ -930,7 +950,7 @@
     function renderNews() {
       const container = document.getElementById('news-container');
       const items = Object.keys(appData.news).map(k => ({ key: k, ...appData.news[k] }));
-      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
+      const isAdmin = isLoggedInAdmin();
 
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p></div>`;
@@ -958,7 +978,7 @@
     function renderStaff() {
       const container = document.getElementById('staff-container');
       const items = Object.keys(appData.staff).map(k => ({ key: k, ...appData.staff[k] }));
-      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
+      const isAdmin = isLoggedInAdmin();
 
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p></div>`;
