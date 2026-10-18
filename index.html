@@ -235,7 +235,7 @@
       </div>
     </section>
 
-    <!-- BRACKET SECTION -->
+    <!-- BRACKET SECTION (Bracket HQ Interactive Tree View) -->
     <section id="bracket" class="py-24 px-4 bg-blds-black/50 border-t border-blds-border">
       <div class="max-w-7xl mx-auto space-y-8">
         <div class="text-center space-y-3">
@@ -244,6 +244,7 @@
           <p id="bracket-tournament-title" class="font-orbitron text-sm text-blds-muted uppercase tracking-widest pt-2">NO ACTIVE TOURNAMENT</p>
         </div>
         
+        <!-- Interactive Bracket Canvas Container -->
         <div class="bg-blds-card/80 border border-blds-border rounded-2xl p-6 overflow-x-auto min-h-[450px] shadow-2xl relative">
           <div id="brackets-container" class="flex gap-12 min-w-[750px] justify-between items-stretch py-4">
             <div class="m-auto text-center py-16">
@@ -305,96 +306,86 @@
       </div>
     </section>
 
+    <!-- ==================== ADMIN DASHBOARD CONTROL ==================== -->
+    <section id="admin-dashboard-section" class="py-20 px-4 bg-blds-card border-t-2 border-white" style="display: none;">
+      <div class="max-w-6xl mx-auto space-y-10">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-blds-black p-6 rounded-xl border border-blds-border">
+          <div>
+            <h2 class="font-orbitron font-bold text-xl text-white">⚙️ ADMIN CONTROL PANEL</h2>
+            <p class="text-xs text-green-400 font-sans font-semibold">● Full Admin Privileges Active</p>
+          </div>
+          <button onclick="logoutAdmin()" class="px-5 py-2.5 bg-red-600/20 border border-red-500 text-red-400 hover:bg-red-600 hover:text-white rounded-lg text-xs font-orbitron tracking-wider">
+            LOGOUT ADMIN
+          </button>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- 1. Form Setup Bracket (Bebas Banyak Tim) -->
+          <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
+            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">🏆 SETUP BRACKET HQ</h3>
+            <form id="form-bracket-setup" onsubmit="setupBracketTeams(event)" class="space-y-3 text-xs">
+              <input type="text" id="brk-title" placeholder="Nama Turnamen" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <textarea id="brk-teams" placeholder="Masukkan Nama Tim (Pisahkan dengan koma atau baris baru) Contoh: Tim A, Tim B, Tim C, Tim D" rows="5" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
+              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">GENERATE BRACKET</button>
+            </form>
+            <button onclick="resetBracket()" class="w-full py-2 bg-red-600/20 border border-red-500 text-red-400 text-xs font-orbitron rounded hover:bg-red-600 hover:text-white">RESET ALL BRACKET</button>
+          </div>
+
+          <!-- 2. Form Tambah Staff -->
+          <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
+            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">👤 TAMBAH STAFF</h3>
+            <form id="form-staff" onsubmit="addStaff(event)" class="space-y-3 text-xs">
+              <input type="text" id="staff-name" placeholder="Nama Staff (Michael, William, dll)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="staff-role" placeholder="Jabatan (Owner, Co-Owner, Headstaff)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="url" id="staff-photo" placeholder="URL Foto Profil" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <textarea id="staff-desc" placeholder="Deskripsi Singkat" rows="2" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
+              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">SIMPAN STAFF</button>
+            </form>
+          </div>
+
+          <!-- 3. Form Tambah Berita -->
+          <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
+            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📰 TAMBAH BERITA</h3>
+            <form id="form-news" onsubmit="addNews(event)" class="space-y-3 text-xs">
+              <input type="text" id="news-title" placeholder="Judul Berita" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="news-category" placeholder="Kategori (ANNOUNCEMENT)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="news-date" placeholder="Tanggal (Misal: 19 Okt 2026)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="url" id="news-image" placeholder="URL Gambar Cover" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <textarea id="news-summary" placeholder="Isi / Ringkasan Berita" rows="2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
+              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">PUBLISH BERITA</button>
+            </form>
+          </div>
+
+          <!-- 4. Form Tambah Jadwal -->
+          <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
+            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📅 TAMBAH JADWAL</h3>
+            <form id="form-schedule" onsubmit="addSchedule(event)" class="space-y-3 text-xs">
+              <input type="text" id="sched-event" placeholder="Nama Event" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="sched-game" placeholder="Game" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" id="sched-date" placeholder="Tgl (19 Okt)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+                <input type="text" id="sched-time" placeholder="Jam (19:00)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" id="sched-t1" placeholder="Tim A" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+                <input type="text" id="sched-t2" placeholder="Tim B" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              </div>
+              <select id="sched-status" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white">
+                <option value="UPCOMING">UPCOMING</option>
+                <option value="LIVE">LIVE</option>
+                <option value="COMPLETED">COMPLETED</option>
+              </select>
+              <input type="url" id="sched-stream" placeholder="URL Live Stream (Opsional)" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">TAMBAH JADWAL</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
-
-  <!-- ==================== FLOATING ADMIN CONTROL PANEL (PANEL MELAYANG TRANSPARAN) ==================== -->
-  <div id="admin-dashboard-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
-    <div class="bg-black/75 border border-white/20 backdrop-blur-2xl p-6 sm:p-8 rounded-2xl w-full max-w-6xl max-h-[90vh] overflow-y-auto space-y-8 glow-box relative shadow-2xl my-auto">
-      
-      <button onclick="closeAdminPanel()" class="absolute top-5 right-5 text-gray-400 hover:text-white text-2xl font-bold bg-white/10 hover:bg-white/20 w-10 h-10 rounded-full flex items-center justify-center transition-all">&times;</button>
-
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-4 pr-10">
-        <div>
-          <h2 class="font-orbitron font-bold text-xl sm:text-2xl text-white flex items-center gap-2">⚙️ ADMIN CONTROL PANEL</h2>
-          <p class="text-xs text-green-400 font-sans font-semibold mt-1">● Full Admin Privileges Active</p>
-        </div>
-        <button onclick="logoutAdmin()" class="px-5 py-2.5 bg-red-600/30 border border-red-500/50 text-red-300 hover:bg-red-600 hover:text-white rounded-lg text-xs font-orbitron tracking-wider transition-all">
-          LOGOUT ADMIN
-        </button>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- 1. Form Setup Bracket HQ -->
-        <div class="bg-white/5 p-5 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
-          <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">🏆 SETUP BRACKET HQ</h3>
-          <form id="form-bracket-setup" onsubmit="setupBracketTeams(event)" class="space-y-3 text-xs">
-            <input type="text" id="brk-title" placeholder="Nama Turnamen" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <textarea id="brk-teams" placeholder="Nama Tim (Pisahkan koma/baris baru)" rows="4" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white"></textarea>
-            <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200 transition-all">GENERATE BRACKET</button>
-          </form>
-          <button onclick="resetBracket()" class="w-full py-2 bg-red-600/20 border border-red-500/40 text-red-300 text-xs font-orbitron rounded hover:bg-red-600 hover:text-white transition-all">RESET ALL BRACKET</button>
-        </div>
-
-        <!-- 2. Form Tambah Staff -->
-        <div class="bg-white/5 p-5 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
-          <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">👤 TAMBAH STAFF</h3>
-          <form id="form-staff" onsubmit="addStaff(event)" class="space-y-3 text-xs">
-            <input type="text" id="staff-name" placeholder="Nama Staff" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <input type="text" id="staff-role" placeholder="Jabatan (Owner, Co-Owner, dll)" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <input type="url" id="staff-photo" placeholder="URL Foto Profil" class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <textarea id="staff-desc" placeholder="Deskripsi Singkat" rows="2" class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white"></textarea>
-            <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200 transition-all">SIMPAN STAFF</button>
-          </form>
-        </div>
-
-        <!-- 3. Form Tambah Berita -->
-        <div class="bg-white/5 p-5 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
-          <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📰 TAMBAH BERITA</h3>
-          <form id="form-news" onsubmit="addNews(event)" class="space-y-3 text-xs">
-            <input type="text" id="news-title" placeholder="Judul Berita" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <input type="text" id="news-category" placeholder="Kategori (ANNOUNCEMENT)" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <input type="text" id="news-date" placeholder="Tanggal (Misal: 19 Okt 2026)" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <input type="url" id="news-image" placeholder="URL Gambar Sampul" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <textarea id="news-summary" placeholder="Isi / Ringkasan Berita" rows="2" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white"></textarea>
-            <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200 transition-all">PUBLISH BERITA</button>
-          </form>
-        </div>
-
-        <!-- 4. Form Tambah Jadwal / Tournament Match -->
-        <div class="bg-white/5 p-5 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
-          <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📅 JADWAL / TOURNAMENT</h3>
-          <form id="form-schedule" onsubmit="addSchedule(event)" class="space-y-3 text-xs">
-            <input type="text" id="sched-event" placeholder="Nama Event / Tournament" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <input type="text" id="sched-game" placeholder="Game" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <div class="grid grid-cols-2 gap-2">
-              <input type="text" id="sched-date" placeholder="Tgl (19 Okt)" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-              <input type="text" id="sched-time" placeholder="Jam (19:00)" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-              <input type="text" id="sched-t1" placeholder="Tim A" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-              <input type="text" id="sched-t2" placeholder="Tim B" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            </div>
-            <select id="sched-status" class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white">
-              <option value="UPCOMING" class="bg-black text-white">UPCOMING</option>
-              <option value="LIVE" class="bg-black text-white">LIVE</option>
-              <option value="COMPLETED" class="bg-black text-white">COMPLETED</option>
-            </select>
-            <input type="url" id="sched-stream" placeholder="URL Live Stream (Opsional)" class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
-            <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200 transition-all">TAMBAH JADWAL</button>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== FLOATING ADMIN QUICK ACTION BUTTON ==================== -->
-  <div id="floating-admin-btn" class="fixed bottom-6 right-6 z-50 hidden">
-    <button onclick="openAdminPanel()" type="button" class="px-5 py-3 bg-white/10 hover:bg-white/20 text-white font-orbitron font-bold text-xs rounded-full shadow-2xl border border-white/30 backdrop-blur-xl flex items-center gap-2 hover:scale-105 transition-all">
-      <span>⚙️ OPEN ADMIN PANEL</span>
-    </button>
-  </div>
 
   <!-- ==================== POP-UP MODAL EDIT SKOR MATCH ==================== -->
   <div id="score-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
@@ -421,16 +412,16 @@
           </div>
         </div>
 
-        <button type="submit" class="w-full py-3 bg-white text-black font-orbitron font-bold rounded text-xs tracking-wider hover:bg-gray-200 transition-all">
+        <button type="submit" class="w-full py-3 bg-white text-black font-orbitron font-bold rounded text-xs tracking-wider hover:bg-gray-200">
           SIMPAN SKOR & PROMOSIKAN WINNER 👑
         </button>
       </form>
     </div>
   </div>
 
-  <!-- ==================== POP-UP MODAL LOGIN ADMIN (TRANSPARAN) ==================== -->
-  <div id="admin-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-black/50 border border-white/20 backdrop-blur-2xl p-6 sm:p-8 rounded-2xl w-full max-w-md space-y-6 glow-box relative shadow-2xl">
+  <!-- ==================== POP-UP MODAL LOGIN ADMIN ==================== -->
+  <div id="admin-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-blds-card border border-white/20 p-6 rounded-2xl w-full max-w-md space-y-6 glow-box relative">
       <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-blds-muted hover:text-white text-xl">&times;</button>
       
       <div class="text-center space-y-1">
@@ -441,10 +432,10 @@
       <form onsubmit="handleDirectLogin(event)" class="space-y-4 text-xs font-sans">
         <div class="space-y-1">
           <label class="text-blds-muted font-orbitron text-[10px]">ADMIN PASSWORD</label>
-          <input type="password" id="modal-password" placeholder="Masukkan password admin..." required class="w-full p-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none backdrop-blur-md" />
+          <input type="password" id="modal-password" placeholder="Masukkan password admin..." required class="w-full p-3 bg-blds-black border border-blds-border rounded text-white focus:border-white focus:outline-none" />
         </div>
 
-        <button type="submit" class="w-full py-3 bg-white/90 hover:bg-white text-black font-orbitron font-bold rounded-lg text-xs tracking-wider transition-all shadow-lg">
+        <button type="submit" class="w-full py-3 bg-white text-black font-orbitron font-bold rounded text-xs tracking-wider hover:bg-gray-200">
           LOGIN ADMIN
         </button>
       </form>
@@ -462,9 +453,9 @@
         <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
         <p class="text-[11px] text-gray-400 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
         
-        <!-- Tombol Admin Access Transparan -->
+        <!-- Tombol Admin Access Terbuka & Bisa Dipencet -->
         <div class="pt-3">
-          <button id="admin-login-btn" onclick="openAdminModal()" type="button" class="cursor-pointer inline-block px-4 py-2 bg-white/5 hover:bg-white/15 border border-white/20 backdrop-blur-md rounded-lg text-[11px] font-orbitron text-white transition-all shadow-lg active:scale-95">
+          <button id="admin-login-btn" onclick="openAdminModal()" type="button" class="cursor-pointer relative z-30 inline-block px-3 py-1.5 bg-white/5 hover:bg-white/20 border border-white/20 rounded text-[11px] font-orbitron text-white transition-all shadow-md">
             🔐 Admin Access
           </button>
         </div>
@@ -487,24 +478,21 @@
     </div>
   </footer>
 
-  <!-- ==================== SCRIPT MODAL DIRECT ==================== -->
+  <!-- ==================== SCRIPT FUNGSI ADMIN GLOBAL ==================== -->
   <script>
-    function openAdminModal() {
+    window.openAdminModal = function() {
       var modal = document.getElementById('admin-modal');
-      if (modal) modal.classList.remove('hidden');
-    }
-    function closeAdminModal() {
+      if (modal) {
+        modal.classList.remove('hidden');
+      }
+    };
+
+    window.closeAdminModal = function() {
       var modal = document.getElementById('admin-modal');
-      if (modal) modal.classList.add('hidden');
-    }
-    function openAdminPanel() {
-      var panel = document.getElementById('admin-dashboard-modal');
-      if (panel) panel.classList.remove('hidden');
-    }
-    function closeAdminPanel() {
-      var panel = document.getElementById('admin-dashboard-modal');
-      if (panel) panel.classList.add('hidden');
-    }
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+    };
   </script>
 
   <!-- ==================== FIREBASE SDK & APPLICATION LOGIC ==================== -->
@@ -531,8 +519,6 @@
     let appData = { bracket: {}, schedule: {}, news: {}, staff: {} };
     let currentScheduleFilter = 'ALL';
 
-    window.bldsAdminFlag = false;
-
     document.getElementById('current-year').textContent = new Date().getFullYear();
     initParticles();
 
@@ -544,7 +530,7 @@
     });
 
     window.openScoreModal = function(key, roundTitle, t1, s1, t2, s2) {
-      if (!isLoggedInAdmin()) return;
+      if (sessionStorage.getItem('blds_admin_logged_in') !== 'true') return;
       document.getElementById('edit-match-key').value = key;
       document.getElementById('score-modal-round').textContent = roundTitle;
       document.getElementById('label-t1').textContent = t1 || 'TBD';
@@ -558,56 +544,38 @@
       document.getElementById('score-modal').classList.add('hidden');
     }
 
-    function isLoggedInAdmin() {
-      try {
-        return sessionStorage.getItem('blds_admin_logged_in') === 'true' || window.bldsAdminFlag === true;
-      } catch (e) {
-        return window.bldsAdminFlag === true;
-      }
-    }
-
     window.handleDirectLogin = function(e) {
-      if (e) e.preventDefault();
+      e.preventDefault();
       const passwordInput = document.getElementById('modal-password').value.trim();
 
       if (passwordInput === ADMIN_PASSWORD) {
-        window.bldsAdminFlag = true;
-        try {
-          sessionStorage.setItem('blds_admin_logged_in', 'true');
-        } catch (err) {
-          console.warn("Storage restricted.");
-        }
-
+        sessionStorage.setItem('blds_admin_logged_in', 'true');
         alert("Login Admin Berhasil!");
         closeAdminModal();
         checkAdminSession();
-        openAdminPanel(); // Membuka Panel Admin Melayang Tepat di Tengah Layar
+        location.href = "#admin-dashboard-section";
       } else {
         alert("Akses Ditolak: Password Admin Salah!");
       }
     }
 
     window.logoutAdmin = function() {
-      window.bldsAdminFlag = false;
-      try {
-        sessionStorage.removeItem('blds_admin_logged_in');
-      } catch (e) {}
+      sessionStorage.removeItem('blds_admin_logged_in');
       alert("Berhasil Logout Admin");
-      closeAdminPanel();
       checkAdminSession();
     }
 
     function checkAdminSession() {
-      const isLoggedIn = isLoggedInAdmin();
+      const isLoggedIn = sessionStorage.getItem('blds_admin_logged_in') === 'true';
+      const adminSection = document.getElementById('admin-dashboard-section');
       const adminLoginBtn = document.getElementById('admin-login-btn');
-      const floatingBtn = document.getElementById('floating-admin-btn');
 
       if (isLoggedIn) {
+        if (adminSection) adminSection.style.display = 'block';
         if (adminLoginBtn) adminLoginBtn.style.display = 'none';
-        if (floatingBtn) floatingBtn.classList.remove('hidden');
       } else {
+        if (adminSection) adminSection.style.display = 'none';
         if (adminLoginBtn) adminLoginBtn.style.display = 'inline-block';
-        if (floatingBtn) floatingBtn.classList.add('hidden');
       }
       renderStaff();
       renderNews();
@@ -624,7 +592,7 @@
     }
 
     window.setupBracketTeams = function(e) {
-      if (e) e.preventDefault();
+      e.preventDefault();
       const title = document.getElementById('brk-title').value;
       const rawTeams = document.getElementById('brk-teams').value;
       
@@ -701,7 +669,7 @@
     }
 
     window.saveMatchScore = function(e) {
-      if (e) e.preventDefault();
+      e.preventDefault();
       const matchKey = document.getElementById('edit-match-key').value;
       const s1 = parseInt(document.getElementById('input-s1').value) || 0;
       const s2 = parseInt(document.getElementById('input-s2').value) || 0;
@@ -738,7 +706,7 @@
     }
 
     window.addStaff = function(e) {
-      if (e) e.preventDefault();
+      e.preventDefault();
       push(ref(db, 'site/staff'), {
         name: document.getElementById('staff-name').value,
         role: document.getElementById('staff-role').value,
@@ -748,7 +716,7 @@
     }
 
     window.addNews = function(e) {
-      if (e) e.preventDefault();
+      e.preventDefault();
       push(ref(db, 'site/news'), {
         title: document.getElementById('news-title').value,
         category: document.getElementById('news-category').value,
@@ -759,7 +727,7 @@
     }
 
     window.addSchedule = function(e) {
-      if (e) e.preventDefault();
+      e.preventDefault();
       push(ref(db, 'site/schedule'), {
         eventName: document.getElementById('sched-event').value,
         game: document.getElementById('sched-game').value,
@@ -844,7 +812,7 @@
       const container = document.getElementById('brackets-container');
       const titleElem = document.getElementById('bracket-tournament-title');
       const bracketData = appData.bracket;
-      const isAdmin = isLoggedInAdmin();
+      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
 
       if (!bracketData || !bracketData.matches) {
         titleElem.textContent = "NO ACTIVE TOURNAMENT";
@@ -912,7 +880,7 @@
     function renderSchedule() {
       const container = document.getElementById('schedule-container');
       let items = Object.keys(appData.schedule).map(k => ({ key: k, ...appData.schedule[k] }));
-      const isAdmin = isLoggedInAdmin();
+      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
 
       if (currentScheduleFilter !== 'ALL') items = items.filter(i => i.status === currentScheduleFilter);
 
@@ -937,7 +905,7 @@
           </div>
           <div class="flex items-center gap-3">
             ${item.streamUrl ? `<a href="${item.streamUrl}" target="_blank" class="text-xs font-orbitron px-4 py-2 border border-white/20 hover:border-white rounded text-white">WATCH LIVE</a>` : ''}
-            ${isAdmin ? `<button onclick="deleteItem('schedule', '${item.key}')" class="text-xs px-3 py-2 bg-red-600/30 border border-red-500 text-red-400 rounded hover:bg-red-600 hover:text-white transition-all">Hapus</button>` : ''}
+            ${isAdmin ? `<button onclick="deleteItem('schedule', '${item.key}')" class="text-xs px-3 py-2 bg-red-600/30 border border-red-500 text-red-400 rounded hover:bg-red-600 hover:text-white">Hapus</button>` : ''}
           </div>
         </div>
       `).join('');
@@ -951,7 +919,7 @@
     function renderNews() {
       const container = document.getElementById('news-container');
       const items = Object.keys(appData.news).map(k => ({ key: k, ...appData.news[k] }));
-      const isAdmin = isLoggedInAdmin();
+      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
 
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p></div>`;
@@ -970,7 +938,7 @@
               <h3 class="font-orbitron font-bold text-lg text-white leading-snug">${item.title}</h3>
               <p class="text-xs text-gray-300 line-clamp-3 font-sans">${item.summary || ''}</p>
             </div>
-            ${isAdmin ? `<button onclick="deleteItem('news', '${item.key}')" class="mt-4 w-full py-2 bg-red-600/30 border border-red-500 text-red-400 text-xs rounded hover:bg-red-600 hover:text-white transition-all">Hapus Berita</button>` : ''}
+            ${isAdmin ? `<button onclick="deleteItem('news', '${item.key}')" class="mt-4 w-full py-2 bg-red-600/30 border border-red-500 text-red-400 text-xs rounded hover:bg-red-600 hover:text-white">Hapus Berita</button>` : ''}
           </div>
         </article>
       `).join('');
@@ -979,7 +947,7 @@
     function renderStaff() {
       const container = document.getElementById('staff-container');
       const items = Object.keys(appData.staff).map(k => ({ key: k, ...appData.staff[k] }));
-      const isAdmin = isLoggedInAdmin();
+      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
 
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p></div>`;
@@ -994,7 +962,7 @@
             <p class="text-xs font-orbitron text-blds-muted uppercase">${item.role}</p>
           </div>
           <p class="text-xs text-gray-300 font-sans">${item.desc || ''}</p>
-          ${isAdmin ? `<button onclick="deleteItem('staff', '${item.key}')" class="w-full py-1.5 bg-red-600/30 border border-red-500 text-red-400 text-xs rounded hover:bg-red-600 hover:text-white transition-all">Hapus Staff</button>` : ''}
+          ${isAdmin ? `<button onclick="deleteItem('staff', '${item.key}')" class="w-full py-1.5 bg-red-600/30 border border-red-500 text-red-400 text-xs rounded hover:bg-red-600 hover:text-white">Hapus Staff</button>` : ''}
         </div>
       `).join('');
     }
