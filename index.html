@@ -81,7 +81,6 @@
       transition-duration: 250ms;
     }
 
-    /* BRACKET HQ CONNECTOR STYLES */
     .bracket-round-col {
       display: flex;
       flex-direction: column;
@@ -444,7 +443,7 @@
   </div>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="relative z-10 bg-blds-black border-t border-blds-border py-12 px-4">
+  <footer class="relative z-20 bg-blds-black border-t border-blds-border py-12 px-4">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
       <div class="space-y-2">
         <div class="flex items-center justify-center md:justify-start gap-3">
@@ -454,9 +453,9 @@
         <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
         <p class="text-[11px] text-gray-400 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
         
-        <!-- Tombol Admin Login Transparan / Samar -->
+        <!-- Tombol Admin Access Terbuka & Bisa Dipencet -->
         <div class="pt-3">
-          <button id="admin-login-btn" onclick="openAdminModal()" class="text-[10px] font-orbitron text-white/20 hover:text-white/80 transition-opacity underline">
+          <button id="admin-login-btn" onclick="openAdminModal()" type="button" class="cursor-pointer relative z-30 inline-block px-3 py-1.5 bg-white/5 hover:bg-white/20 border border-white/20 rounded text-[11px] font-orbitron text-white transition-all shadow-md">
             🔐 Admin Access
           </button>
         </div>
@@ -479,10 +478,27 @@
     </div>
   </footer>
 
+  <!-- ==================== SCRIPT FUNGSI ADMIN GLOBAL ==================== -->
+  <script>
+    window.openAdminModal = function() {
+      var modal = document.getElementById('admin-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+      }
+    };
+
+    window.closeAdminModal = function() {
+      var modal = document.getElementById('admin-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+    };
+  </script>
+
   <!-- ==================== FIREBASE SDK & APPLICATION LOGIC ==================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getDatabase, ref, onValue, set, update, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, onValue, set, update, remove, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDYIySEcpbvCwMpXgvB-ggDZH",
@@ -512,15 +528,6 @@
       setupDiamondEffects();
       checkAdminSession();
     });
-
-    // Modal Control
-    window.openAdminModal = function() {
-      document.getElementById('admin-modal').classList.remove('hidden');
-    }
-
-    window.closeAdminModal = function() {
-      document.getElementById('admin-modal').classList.add('hidden');
-    }
 
     window.openScoreModal = function(key, roundTitle, t1, s1, t2, s2) {
       if (sessionStorage.getItem('blds_admin_logged_in') !== 'true') return;
@@ -584,7 +591,6 @@
       }
     }
 
-    // BRACKET HQ GENERATOR LOGIC (Auto Rounds & Auto Advancement)
     window.setupBracketTeams = function(e) {
       e.preventDefault();
       const title = document.getElementById('brk-title').value;
@@ -597,7 +603,6 @@
         return;
       }
 
-      // Hitung total bracket rounds (2^n)
       let numRounds = Math.ceil(Math.log2(teamList.length));
       let totalBracketSlots = Math.pow(2, numRounds);
 
@@ -608,7 +613,6 @@
       let matches = {};
       let matchIdCounter = 1;
 
-      // Generate Round 1
       for (let i = 0; i < teamList.length; i += 2) {
         let matchKey = `R1_M${matchIdCounter}`;
         matches[matchKey] = {
@@ -622,7 +626,6 @@
           slotInNext: (matchIdCounter % 2 !== 0) ? 't1' : 't2'
         };
 
-        // Auto Advance kalau musuhnya BYE
         if (teamList[i+1] === "BYE") {
           matches[matchKey].s1 = 1;
         }
@@ -630,7 +633,6 @@
         matchIdCounter++;
       }
 
-      // Generate Round Selanjutnya (2, 3, DST)
       let currentRoundSlots = totalBracketSlots / 2;
       for (let r = 2; r <= numRounds; r++) {
         currentRoundSlots /= 2;
@@ -649,7 +651,6 @@
         }
       }
 
-      // Update Pemenang BYE ke Round 2 otomatis
       Object.keys(matches).forEach(k => {
         let match = matches[k];
         if (match.t2 === "BYE" && match.nextMatchKey) {
@@ -667,7 +668,6 @@
       }).catch(err => alert("Error: " + err.message));
     }
 
-    // Save Score & Auto Advance Winner
     window.saveMatchScore = function(e) {
       e.preventDefault();
       const matchKey = document.getElementById('edit-match-key').value;
@@ -681,7 +681,6 @@
       updates[`site/bracket/matches/${matchKey}/s1`] = s1;
       updates[`site/bracket/matches/${matchKey}/s2`] = s2;
 
-      // Cek Winner
       let winner = null;
       if (s1 > s2) winner = currentMatch.t1;
       else if (s2 > s1) winner = currentMatch.t2;
@@ -706,7 +705,6 @@
       }
     }
 
-    // Form Handlers
     window.addStaff = function(e) {
       e.preventDefault();
       push(ref(db, 'site/staff'), {
@@ -810,7 +808,6 @@
       });
     }
 
-    // RENDER BRACKET HQ CANVAS (TREE VIEW & CONNECTOR LINES)
     function renderBracketHQ() {
       const container = document.getElementById('brackets-container');
       const titleElem = document.getElementById('bracket-tournament-title');
@@ -856,7 +853,6 @@
                     
                     ${isAdmin ? `<div class="absolute -top-2 -right-2 bg-white text-black text-[9px] font-orbitron px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">Edit Score</div>` : ''}
 
-                    <!-- Team 1 -->
                     <div class="flex justify-between items-center p-2 rounded ${t1Win ? 'bg-white/10 border border-white text-white font-bold glow-border' : 'bg-blds-card text-gray-300 border border-transparent'}">
                       <span class="text-xs font-orbitron truncate flex items-center gap-1.5 max-w-[120px]">
                         <span>${m.t1 \vert{}\vert{} 'TBD'}</span>${t1Win ? '👑' : ''}
@@ -864,7 +860,6 @@
                       <span class="text-xs font-orbitron px-2 py-0.5 bg-blds-black rounded text-white">${s1}</span>
                     </div>
 
-                    <!-- Team 2 -->
                     <div class="flex justify-between items-center p-2 rounded ${t2Win ? 'bg-white/10 border border-white text-white font-bold glow-border' : 'bg-blds-card text-gray-300 border border-transparent'}">
                       <span class="text-xs font-orbitron truncate flex items-center gap-1.5 max-w-[120px]">
                         <span>${m.t2 \vert{}\vert{} 'TBD'}</span>${t2Win ? '👑' : ''}
