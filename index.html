@@ -102,7 +102,6 @@
       <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold tracking-widest font-orbitron">
         <a href="#home" class="hover:text-white text-blds-muted hover:glow-sub">HOME</a>
         <a href="#about" class="hover:text-white text-blds-muted hover:glow-sub">ABOUT</a>
-        <a href="#bracket" class="hover:text-white text-blds-muted hover:glow-sub">BRACKET</a>
         <a href="#schedule" class="hover:text-white text-blds-muted hover:glow-sub">SCHEDULE</a>
         <a href="#news" class="hover:text-white text-blds-muted hover:glow-sub">NEWS</a>
         <a href="#staff" class="hover:text-white text-blds-muted hover:glow-sub">STAFF</a>
@@ -121,7 +120,6 @@
       <div class="py-6 space-y-4">
         <a href="#home" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">HOME</a>
         <a href="#about" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">ABOUT</a>
-        <a href="#bracket" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">BRACKET</a>
         <a href="#schedule" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">SCHEDULE</a>
         <a href="#news" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">NEWS</a>
         <a href="#staff" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">STAFF</a>
@@ -149,11 +147,11 @@
           Ekosistem esports dan komunitas profesional yang bergerak dalam persatuan, keteguhan, dan potensi tanpa batas.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="#bracket" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-orbitron font-bold text-xs tracking-widest uppercase rounded-lg shadow-lg hover:bg-gray-200 overflow-hidden">
-            <span>LIHAT BRACKET</span>
-          </a>
-          <a href="#schedule" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-transparent border border-white/30 text-white font-orbitron font-bold text-xs tracking-widest uppercase rounded-lg hover:border-white hover:bg-white/5 overflow-hidden">
+          <a href="#schedule" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-orbitron font-bold text-xs tracking-widest uppercase rounded-lg shadow-lg hover:bg-gray-200 overflow-hidden">
             <span>JADWAL TANDING</span>
+          </a>
+          <a href="#about" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-transparent border border-white/30 text-white font-orbitron font-bold text-xs tracking-widest uppercase rounded-lg hover:border-white hover:bg-white/5 overflow-hidden">
+            <span>TENTANG BLDS</span>
           </a>
         </div>
       </div>
@@ -228,25 +226,8 @@
       </div>
     </section>
 
-    <!-- BRACKET SECTION (Bracket HQ Style Columns) -->
-    <section id="bracket" class="py-24 px-4 bg-blds-black/50 border-t border-blds-border">
-      <div class="max-w-7xl mx-auto space-y-12">
-        <div class="text-center space-y-3">
-          <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">TOURNAMENT BRACKETS</h2>
-          <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
-        </div>
-        
-        <!-- Container Kolom Berjenjang ala Bracket HQ -->
-        <div id="brackets-container" class="overflow-x-auto pb-6">
-          <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
-            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- SCHEDULE SECTION -->
-    <section id="schedule" class="py-24 px-4 bg-blds-black border-t border-blds-border">
+    <section id="schedule" class="py-24 px-4 bg-blds-black/50 border-t border-blds-border">
       <div class="max-w-6xl mx-auto space-y-12">
         <div class="text-center space-y-3">
           <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">MATCH SCHEDULE</h2>
@@ -267,7 +248,7 @@
     </section>
 
     <!-- NEWS SECTION -->
-    <section id="news" class="py-24 px-4 bg-blds-black/50 border-t border-blds-border">
+    <section id="news" class="py-24 px-4 bg-blds-black border-t border-blds-border">
       <div class="max-w-6xl mx-auto space-y-12">
         <div class="text-center space-y-3">
           <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">NEWS & ANNOUNCEMENTS</h2>
@@ -282,7 +263,7 @@
     </section>
 
     <!-- STAFF SECTION -->
-    <section id="staff" class="py-24 px-4 bg-blds-black border-t border-blds-border">
+    <section id="staff" class="py-24 px-4 bg-blds-black/50 border-t border-blds-border">
       <div class="max-w-6xl mx-auto space-y-12">
         <div class="text-center space-y-3">
           <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">OFFICIAL STAFF</h2>
@@ -296,101 +277,139 @@
       </div>
     </section>
 
-    <!-- ==================== ADMIN DASHBOARD CONTROL ==================== -->
-    <section id="admin-dashboard-section" class="py-20 px-4 bg-blds-card border-t-2 border-white" style="display: none;">
-      <div class="max-w-6xl mx-auto space-y-10">
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-blds-black p-6 rounded-xl border border-blds-border">
-          <div>
-            <h2 class="font-orbitron font-bold text-xl text-white">⚙️ ADMIN CONTROL PANEL</h2>
-            <p class="text-xs text-green-400 font-sans font-semibold">● Full Admin Privileges Active</p>
-          </div>
-          <button onclick="logoutAdmin()" class="px-5 py-2.5 bg-red-600/20 border border-red-500 text-red-400 hover:bg-red-600 hover:text-white rounded-lg text-xs font-orbitron tracking-wider">
-            LOGOUT ADMIN
-          </button>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          
-          <!-- 1. Form Tambah Staff -->
-          <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
-            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">👤 TAMBAH STAFF</h3>
-            <form id="form-staff" onsubmit="addStaff(event)" class="space-y-3 text-xs">
-              <input type="text" id="staff-name" placeholder="Nama Staff (Michael, William, dll)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <input type="text" id="staff-role" placeholder="Jabatan (Owner, Co-Owner, Headstaff)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <input type="url" id="staff-photo" placeholder="URL Foto Profil" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <textarea id="staff-desc" placeholder="Deskripsi Singkat" rows="2" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
-              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">SIMPAN STAFF</button>
-            </form>
-          </div>
-
-          <!-- 2. Form Tambah Berita -->
-          <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
-            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📰 TAMBAH BERITA</h3>
-            <form id="form-news" onsubmit="addNews(event)" class="space-y-3 text-xs">
-              <input type="text" id="news-title" placeholder="Judul Berita" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <input type="text" id="news-category" placeholder="Kategori (ANNOUNCEMENT)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <input type="text" id="news-date" placeholder="Tanggal (Misal: 19 Okt 2026)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <input type="url" id="news-image" placeholder="URL Gambar Cover" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <textarea id="news-summary" placeholder="Isi / Ringkasan Berita" rows="2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
-              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">PUBLISH BERITA</button>
-            </form>
-          </div>
-
-          <!-- 3. Form Tambah Jadwal -->
-          <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
-            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📅 TAMBAH JADWAL</h3>
-            <form id="form-schedule" onsubmit="addSchedule(event)" class="space-y-3 text-xs">
-              <input type="text" id="sched-event" placeholder="Nama Event" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <input type="text" id="sched-game" placeholder="Game" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <div class="grid grid-cols-2 gap-2">
-                <input type="text" id="sched-date" placeholder="Tgl (19 Okt)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-                <input type="text" id="sched-time" placeholder="Jam (19:00)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              </div>
-              <div class="grid grid-cols-2 gap-2">
-                <input type="text" id="sched-t1" placeholder="Tim A" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-                <input type="text" id="sched-t2" placeholder="Tim B" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              </div>
-              <select id="sched-status" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white">
-                <option value="UPCOMING">UPCOMING</option>
-                <option value="LIVE">LIVE</option>
-                <option value="COMPLETED">COMPLETED</option>
-              </select>
-              <input type="url" id="sched-stream" placeholder="URL Live Stream (Opsional)" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">TAMBAH JADWAL</button>
-            </form>
-          </div>
-
-          <!-- 4. Form Tambah Bracket (HQ Style) -->
-          <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
-            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">🏆 TAMBAH BRACKET MATCH</h3>
-            <form id="form-bracket" onsubmit="addBracket(event)" class="space-y-3 text-xs">
-              <input type="text" id="brk-title" placeholder="Nama Turnamen" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <select id="brk-round" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white">
-                <option value="Quarterfinal">Quarterfinal</option>
-                <option value="Semifinal">Semifinal</option>
-                <option value="Grand Final">Grand Final</option>
-              </select>
-              <div class="grid grid-cols-2 gap-2">
-                <input type="text" id="brk-t1" placeholder="Tim 1" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-                <input type="number" id="brk-s1" placeholder="Skor 1" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              </div>
-              <div class="grid grid-cols-2 gap-2">
-                <input type="text" id="brk-t2" placeholder="Tim 2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-                <input type="number" id="brk-s2" placeholder="Skor 2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              </div>
-              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">TAMBAH KE BRACKET</button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
   </main>
 
+  <!-- ==================== FLOATING ADMIN CONTROL PANEL ==================== -->
+  <div id="admin-dashboard-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+    <div class="bg-black/80 border border-white/20 backdrop-blur-2xl p-6 sm:p-8 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto space-y-8 glow-box relative shadow-2xl my-auto">
+      
+      <button onclick="closeAdminPanel()" class="absolute top-5 right-5 text-gray-400 hover:text-white text-2xl font-bold bg-white/10 hover:bg-white/20 w-10 h-10 rounded-full flex items-center justify-center transition-all">&times;</button>
+
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-4 pr-10">
+        <div>
+          <h2 class="font-orbitron font-bold text-xl sm:text-2xl text-white flex items-center gap-2">⚙️ ADMIN CONTROL PANEL</h2>
+          <p class="text-xs text-green-400 font-sans font-semibold mt-1">● Full Admin Privileges Active</p>
+        </div>
+        <button onclick="logoutAdmin()" class="px-5 py-2.5 bg-red-600/30 border border-red-500/50 text-red-300 hover:bg-red-600 hover:text-white rounded-lg text-xs font-orbitron tracking-wider transition-all">
+          LOGOUT ADMIN
+        </button>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        
+        <!-- 1. Form Tambah / Update Jadwal Tanding & Skor -->
+        <div class="bg-white/5 p-5 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
+          <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📅 TAMBAH JADWAL MATCH</h3>
+          <form id="form-schedule" onsubmit="addSchedule(event)" class="space-y-3 text-xs">
+            <input type="text" id="sched-event" placeholder="Nama Event / Tournament" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            <input type="text" id="sched-game" placeholder="Game" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            <div class="grid grid-cols-2 gap-2">
+              <input type="text" id="sched-date" placeholder="Tgl (19 Okt)" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+              <input type="text" id="sched-time" placeholder="Jam (19:00)" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            </div>
+            
+            <div class="space-y-2 pt-1 border-t border-white/10">
+              <p class="text-[10px] font-orbitron text-blds-muted">TIM & SKOR</p>
+              <div class="grid grid-cols-3 gap-2 items-center">
+                <input type="text" id="sched-t1" placeholder="Tim A" required class="col-span-2 p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+                <input type="number" id="sched-s1" placeholder="Skor A" min="0" value="0" class="p-2.5 bg-black/40 border border-white/15 rounded text-white text-center font-orbitron font-bold focus:outline-none focus:border-white" />
+              </div>
+              <div class="grid grid-cols-3 gap-2 items-center">
+                <input type="text" id="sched-t2" placeholder="Tim B" required class="col-span-2 p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+                <input type="number" id="sched-s2" placeholder="Skor B" min="0" value="0" class="p-2.5 bg-black/40 border border-white/15 rounded text-white text-center font-orbitron font-bold focus:outline-none focus:border-white" />
+              </div>
+            </div>
+
+            <select id="sched-status" class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white">
+              <option value="UPCOMING" class="bg-black text-white">UPCOMING</option>
+              <option value="LIVE" class="bg-black text-white">LIVE</option>
+              <option value="COMPLETED" class="bg-black text-white">COMPLETED</option>
+            </select>
+            <input type="url" id="sched-stream" placeholder="URL Live Stream (Opsional)" class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200 transition-all">SIMPAN JADWAL</button>
+          </form>
+        </div>
+
+        <!-- 2. Form Tambah Staff -->
+        <div class="bg-white/5 p-5 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
+          <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">👤 TAMBAH STAFF</h3>
+          <form id="form-staff" onsubmit="addStaff(event)" class="space-y-3 text-xs">
+            <input type="text" id="staff-name" placeholder="Nama Staff" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            <input type="text" id="staff-role" placeholder="Jabatan (Owner, Co-Owner, dll)" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            <input type="url" id="staff-photo" placeholder="URL Foto Profil" class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            <textarea id="staff-desc" placeholder="Deskripsi Singkat" rows="3" class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white"></textarea>
+            <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200 transition-all">SIMPAN STAFF</button>
+          </form>
+        </div>
+
+        <!-- 3. Form Tambah Berita -->
+        <div class="bg-white/5 p-5 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
+          <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📰 TAMBAH BERITA</h3>
+          <form id="form-news" onsubmit="addNews(event)" class="space-y-3 text-xs">
+            <input type="text" id="news-title" placeholder="Judul Berita" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            <input type="text" id="news-category" placeholder="Kategori (ANNOUNCEMENT)" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            <input type="text" id="news-date" placeholder="Tanggal (Misal: 19 Okt 2026)" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            <input type="url" id="news-image" placeholder="URL Gambar Sampul" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white" />
+            <textarea id="news-summary" placeholder="Isi / Ringkasan Berita" rows="3" required class="w-full p-2.5 bg-black/40 border border-white/15 rounded text-white focus:outline-none focus:border-white"></textarea>
+            <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200 transition-all">PUBLISH BERITA</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FLOATING ADMIN QUICK ACTION BUTTON ==================== -->
+  <div id="floating-admin-btn" class="fixed bottom-6 right-6 z-50 hidden">
+    <button onclick="openAdminPanel()" type="button" class="px-5 py-3 bg-white/10 hover:bg-white/20 text-white font-orbitron font-bold text-xs rounded-full shadow-2xl border border-white/30 backdrop-blur-xl flex items-center gap-2 hover:scale-105 transition-all">
+      <span>⚙️ OPEN ADMIN PANEL</span>
+    </button>
+  </div>
+
+  <!-- ==================== POP-UP MODAL EDIT SKOR JADWAL MATCH ==================== -->
+  <div id="schedule-score-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-blds-card border border-white/20 p-6 rounded-2xl w-full max-w-sm space-y-6 glow-box relative">
+      <button onclick="closeScheduleScoreModal()" class="absolute top-4 right-4 text-blds-muted hover:text-white text-xl">&times;</button>
+      
+      <div class="text-center space-y-1">
+        <h3 class="font-orbitron font-bold text-base text-white">UPDATE SKOR PERTANDINGAN</h3>
+        <p id="modal-event-name" class="text-xs text-blds-muted font-sans uppercase">EVENT MATCH</p>
+      </div>
+
+      <form onsubmit="saveScheduleScore(event)" class="space-y-4 text-xs font-sans">
+        <input type="hidden" id="edit-sched-key" />
+
+        <div class="space-y-3">
+          <div class="flex items-center justify-between p-3 bg-blds-black border border-blds-border rounded-lg">
+            <span id="modal-label-t1" class="font-orbitron font-bold text-white text-sm truncate max-w-[150px]">Tim A</span>
+            <input type="number" id="modal-input-s1" min="0" value="0" required class="w-16 p-2 text-center bg-blds-card border border-blds-border rounded text-white font-orbitron font-bold focus:outline-none focus:border-white" />
+          </div>
+
+          <div class="flex items-center justify-between p-3 bg-blds-black border border-blds-border rounded-lg">
+            <span id="modal-label-t2" class="font-orbitron font-bold text-white text-sm truncate max-w-[150px]">Tim B</span>
+            <input type="number" id="modal-input-s2" min="0" value="0" required class="w-16 p-2 text-center bg-blds-card border border-blds-border rounded text-white font-orbitron font-bold focus:outline-none focus:border-white" />
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-[10px] font-orbitron text-blds-muted">STATUS PERTANDINGAN</label>
+          <select id="modal-sched-status" class="w-full p-2.5 bg-blds-black border border-blds-border rounded text-white font-orbitron">
+            <option value="COMPLETED">COMPLETED</option>
+            <option value="LIVE">LIVE</option>
+            <option value="UPCOMING">UPCOMING</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-white text-black font-orbitron font-bold rounded text-xs tracking-wider hover:bg-gray-200 transition-all">
+          SIMPAN PERUBAHAN SKOR 👑
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- ==================== POP-UP MODAL LOGIN ADMIN ==================== -->
-  <div id="admin-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-blds-card border border-white/20 p-6 rounded-2xl w-full max-w-md space-y-6 glow-box relative">
+  <div id="admin-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-black/50 border border-white/20 backdrop-blur-2xl p-6 sm:p-8 rounded-2xl w-full max-w-md space-y-6 glow-box relative shadow-2xl">
       <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-blds-muted hover:text-white text-xl">&times;</button>
       
       <div class="text-center space-y-1">
@@ -401,10 +420,10 @@
       <form onsubmit="handleDirectLogin(event)" class="space-y-4 text-xs font-sans">
         <div class="space-y-1">
           <label class="text-blds-muted font-orbitron text-[10px]">ADMIN PASSWORD</label>
-          <input type="password" id="modal-password" placeholder="Masukkan password admin..." required class="w-full p-3 bg-blds-black border border-blds-border rounded text-white focus:border-white focus:outline-none" />
+          <input type="password" id="modal-password" placeholder="Masukkan password admin..." required class="w-full p-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none backdrop-blur-md" />
         </div>
 
-        <button type="submit" class="w-full py-3 bg-white text-black font-orbitron font-bold rounded text-xs tracking-wider hover:bg-gray-200">
+        <button type="submit" class="w-full py-3 bg-white/90 hover:bg-white text-black font-orbitron font-bold rounded-lg text-xs tracking-wider transition-all shadow-lg">
           LOGIN ADMIN
         </button>
       </form>
@@ -412,7 +431,7 @@
   </div>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="relative z-10 bg-blds-black border-t border-blds-border py-12 px-4">
+  <footer class="relative z-20 bg-blds-black border-t border-blds-border py-12 px-4">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
       <div class="space-y-2">
         <div class="flex items-center justify-center md:justify-start gap-3">
@@ -422,9 +441,9 @@
         <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
         <p class="text-[11px] text-gray-400 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
         
-        <!-- Tombol Admin Login Transparan / Samar -->
+        <!-- Tombol Admin Access Transparan -->
         <div class="pt-3">
-          <button id="admin-login-btn" onclick="openAdminModal()" class="text-[10px] font-orbitron text-white/20 hover:text-white/80 transition-opacity underline">
+          <button id="admin-login-btn" onclick="openAdminModal()" type="button" class="cursor-pointer inline-block px-4 py-2 bg-white/5 hover:bg-white/15 border border-white/20 backdrop-blur-md rounded-lg text-[11px] font-orbitron text-white transition-all shadow-lg active:scale-95">
             🔐 Admin Access
           </button>
         </div>
@@ -447,10 +466,30 @@
     </div>
   </footer>
 
+  <!-- ==================== SCRIPT DIRECT MODAL ==================== -->
+  <script>
+    function openAdminModal() {
+      var modal = document.getElementById('admin-modal');
+      if (modal) modal.classList.remove('hidden');
+    }
+    function closeAdminModal() {
+      var modal = document.getElementById('admin-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+    function openAdminPanel() {
+      var panel = document.getElementById('admin-dashboard-modal');
+      if (panel) panel.classList.remove('hidden');
+    }
+    function closeAdminPanel() {
+      var panel = document.getElementById('admin-dashboard-modal');
+      if (panel) panel.classList.add('hidden');
+    }
+  </script>
+
   <!-- ==================== FIREBASE SDK & APPLICATION LOGIC ==================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getDatabase, ref, onValue, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, onValue, update, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDYIySEcpbvCwMpXgvB-ggDZH",
@@ -468,8 +507,10 @@
 
     const ADMIN_PASSWORD = "BLDSACCESS";
 
-    let appData = { brackets: {}, schedule: {}, news: {}, staff: {} };
+    let appData = { schedule: {}, news: {}, staff: {} };
     let currentScheduleFilter = 'ALL';
+
+    window.bldsAdminFlag = false;
 
     document.getElementById('current-year').textContent = new Date().getFullYear();
     initParticles();
@@ -481,52 +522,60 @@
       checkAdminSession();
     });
 
-    window.openAdminModal = function() {
-      document.getElementById('admin-modal').classList.remove('hidden');
-    }
-
-    window.closeAdminModal = function() {
-      document.getElementById('admin-modal').classList.add('hidden');
+    function isLoggedInAdmin() {
+      try {
+        return sessionStorage.getItem('blds_admin_logged_in') === 'true' || window.bldsAdminFlag === true;
+      } catch (e) {
+        return window.bldsAdminFlag === true;
+      }
     }
 
     window.handleDirectLogin = function(e) {
-      e.preventDefault();
+      if (e) e.preventDefault();
       const passwordInput = document.getElementById('modal-password').value.trim();
 
       if (passwordInput === ADMIN_PASSWORD) {
-        // Pakai sessionStorage biar otomatis logout kalau browser ditutup
-        sessionStorage.setItem('blds_admin_logged_in', 'true');
+        window.bldsAdminFlag = true;
+        try {
+          sessionStorage.setItem('blds_admin_logged_in', 'true');
+        } catch (err) {
+          console.warn("Storage restricted.");
+        }
+
         alert("Login Admin Berhasil!");
         closeAdminModal();
         checkAdminSession();
-        location.href = "#admin-dashboard-section";
+        openAdminPanel();
       } else {
         alert("Akses Ditolak: Password Admin Salah!");
       }
     }
 
     window.logoutAdmin = function() {
-      sessionStorage.removeItem('blds_admin_logged_in');
+      window.bldsAdminFlag = false;
+      try {
+        sessionStorage.removeItem('blds_admin_logged_in');
+      } catch (e) {}
       alert("Berhasil Logout Admin");
+      closeAdminPanel();
       checkAdminSession();
     }
 
     function checkAdminSession() {
-      const isLoggedIn = sessionStorage.getItem('blds_admin_logged_in') === 'true';
-      const adminSection = document.getElementById('admin-dashboard-section');
+      const isLoggedIn = isLoggedInAdmin();
       const adminLoginBtn = document.getElementById('admin-login-btn');
+      const floatingBtn = document.getElementById('floating-admin-btn');
 
       if (isLoggedIn) {
-        if (adminSection) adminSection.style.display = 'block';
         if (adminLoginBtn) adminLoginBtn.style.display = 'none';
+        if (floatingBtn) floatingBtn.classList.remove('hidden');
       } else {
-        if (adminSection) adminSection.style.display = 'none';
         if (adminLoginBtn) adminLoginBtn.style.display = 'inline-block';
+        if (floatingBtn) floatingBtn.classList.add('hidden');
       }
       renderStaff();
       renderNews();
       renderSchedule();
-      renderBrackets();
     }
 
     window.deleteItem = function(path, key) {
@@ -538,70 +587,85 @@
     }
 
     window.addStaff = function(e) {
-      e.preventDefault();
-      const name = document.getElementById('staff-name').value;
-      const role = document.getElementById('staff-role').value;
-      const photoUrl = document.getElementById('staff-photo').value;
-      const desc = document.getElementById('staff-desc').value;
-
-      push(ref(db, 'site/staff'), { name, role, photoUrl, desc })
-        .then(() => {
-          alert('Staff berhasil ditambahkan!');
-          document.getElementById('form-staff').reset();
-        })
-        .catch(err => alert('Gagal: ' + err.message));
+      if (e) e.preventDefault();
+      push(ref(db, 'site/staff'), {
+        name: document.getElementById('staff-name').value,
+        role: document.getElementById('staff-role').value,
+        photoUrl: document.getElementById('staff-photo').value,
+        desc: document.getElementById('staff-desc').value
+      }).then(() => { alert('Staff berhasil disimpan!'); document.getElementById('form-staff').reset(); });
     }
 
     window.addNews = function(e) {
-      e.preventDefault();
-      const title = document.getElementById('news-title').value;
-      const category = document.getElementById('news-category').value;
-      const date = document.getElementById('news-date').value;
-      const imageUrl = document.getElementById('news-image').value;
-      const summary = document.getElementById('news-summary').value;
-
-      push(ref(db, 'site/news'), { title, category, date, imageUrl, summary })
-        .then(() => {
-          alert('Berita berhasil ditambahkan!');
-          document.getElementById('form-news').reset();
-        })
-        .catch(err => alert('Gagal: ' + err.message));
+      if (e) e.preventDefault();
+      push(ref(db, 'site/news'), {
+        title: document.getElementById('news-title').value,
+        category: document.getElementById('news-category').value,
+        date: document.getElementById('news-date').value,
+        imageUrl: document.getElementById('news-image').value,
+        summary: document.getElementById('news-summary').value
+      }).then(() => { alert('Berita berhasil dipublish!'); document.getElementById('form-news').reset(); });
     }
 
     window.addSchedule = function(e) {
-      e.preventDefault();
-      const eventName = document.getElementById('sched-event').value;
-      const game = document.getElementById('sched-game').value;
-      const date = document.getElementById('sched-date').value;
-      const time = document.getElementById('sched-time').value;
-      const teamA = document.getElementById('sched-t1').value;
-      const teamB = document.getElementById('sched-t2').value;
-      const status = document.getElementById('sched-status').value;
-      const streamUrl = document.getElementById('sched-stream').value;
+      if (e) e.preventDefault();
+      const s1 = parseInt(document.getElementById('sched-s1').value) || 0;
+      const s2 = parseInt(document.getElementById('sched-s2').value) || 0;
+      let status = document.getElementById('sched-status').value;
 
-      push(ref(db, 'site/schedule'), { eventName, game, date, time, teamA, teamB, status, streamUrl })
-        .then(() => {
-          alert('Jadwal berhasil ditambahkan!');
-          document.getElementById('form-schedule').reset();
-        })
-        .catch(err => alert('Gagal: ' + err.message));
+      if (s1 > 0 || s2 > 0) {
+        status = 'COMPLETED';
+      }
+
+      push(ref(db, 'site/schedule'), {
+        eventName: document.getElementById('sched-event').value,
+        game: document.getElementById('sched-game').value,
+        date: document.getElementById('sched-date').value,
+        time: document.getElementById('sched-time').value,
+        teamA: document.getElementById('sched-t1').value,
+        scoreA: s1,
+        teamB: document.getElementById('sched-t2').value,
+        scoreB: s2,
+        status: status,
+        streamUrl: document.getElementById('sched-stream').value
+      }).then(() => { alert('Jadwal berhasil ditambahkan!'); document.getElementById('form-schedule').reset(); });
     }
 
-    window.addBracket = function(e) {
-      e.preventDefault();
-      const title = document.getElementById('brk-title').value;
-      const round = document.getElementById('brk-round').value;
-      const t1 = document.getElementById('brk-t1').value;
-      const s1 = document.getElementById('brk-s1').value;
-      const t2 = document.getElementById('brk-t2').value;
-      const s2 = document.getElementById('brk-s2').value;
+    // Modal Edit Skor Jadwal Match
+    window.openScheduleScoreModal = function(key, eventName, t1, s1, t2, s2, status) {
+      if (!isLoggedInAdmin()) return;
+      document.getElementById('edit-sched-key').value = key;
+      document.getElementById('modal-event-name').textContent = eventName;
+      document.getElementById('modal-label-t1').textContent = t1 || 'Tim A';
+      document.getElementById('modal-input-s1').value = s1 || 0;
+      document.getElementById('modal-label-t2').textContent = t2 || 'Tim B';
+      document.getElementById('modal-input-s2').value = s2 || 0;
+      document.getElementById('modal-sched-status').value = status || 'COMPLETED';
+      document.getElementById('schedule-score-modal').classList.remove('hidden');
+    }
 
-      push(ref(db, 'site/brackets'), { title, round, t1, s1, t2, s2 })
+    window.closeScheduleScoreModal = function() {
+      document.getElementById('schedule-score-modal').classList.add('hidden');
+    }
+
+    window.saveScheduleScore = function(e) {
+      if (e) e.preventDefault();
+      const key = document.getElementById('edit-sched-key').value;
+      const s1 = parseInt(document.getElementById('modal-input-s1').value) || 0;
+      const s2 = parseInt(document.getElementById('modal-input-s2').value) || 0;
+      const status = document.getElementById('modal-sched-status').value;
+
+      let updates = {};
+      updates[`site/schedule/${key}/scoreA`] = s1;
+      updates[`site/schedule/${key}/scoreB`] = s2;
+      updates[`site/schedule/${key}/status`] = status;
+
+      update(ref(db), updates)
         .then(() => {
-          alert('Bracket Match berhasil ditambahkan!');
-          document.getElementById('form-bracket').reset();
+          alert("Skor & status jadwal berhasil diperbarui!");
+          closeScheduleScoreModal();
         })
-        .catch(err => alert('Gagal: ' + err.message));
+        .catch(err => alert("Gagal update skor: " + err.message));
     }
 
     function setupMenu() {
@@ -654,10 +718,6 @@
     }
 
     function bindFirebaseListeners() {
-      onValue(ref(db, 'site/brackets'), (snapshot) => {
-        appData.brackets = snapshot.val() || {};
-        renderBrackets();
-      });
       onValue(ref(db, 'site/schedule'), (snapshot) => {
         appData.schedule = snapshot.val() || {};
         renderSchedule();
@@ -672,123 +732,56 @@
       });
     }
 
-    // Render Brackets ala Bracket HQ (Kolom Berjenjang Round demi Round)
-    function renderBrackets() {
-      const container = document.getElementById('brackets-container');
-      const items = appData.brackets;
-      const keys = Object.keys(items);
-      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
-
-      if (keys.length === 0) {
-        container.innerHTML = `<div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p></div>`;
-        return;
-      }
-
-      // Kelompokkan berdasarkan round
-      let qf = [];
-      let sf = [];
-      let gf = [];
-
-      keys.forEach(k => {
-        const item = items[k];
-        item.key = k;
-        if (item.round === 'Quarterfinal') qf.push(item);
-        else if (item.round === 'Semifinal') sf.push(item);
-        else if (item.round === 'Grand Final') gf.push(item);
-        else qf.push(item); // Default masuk QF jika tidak dipilih
-      });
-
-      function renderMatchCard(item) {
-        const s1 = parseInt(item.s1) || 0;
-        const s2 = parseInt(item.s2) || 0;
-        const t1Winner = s1 > s2;
-        const t2Winner = s2 > s1;
-
-        return `
-          <div class="bg-blds-card border border-blds-border p-4 rounded-xl space-y-3 relative group hover:border-white/40 shadow-xl">
-            ${isAdmin ? `<button onclick="deleteItem('brackets', '${item.key}')" class="absolute top-2 right-2 px-2 py-0.5 bg-red-600/30 border border-red-500 text-red-400 text-[9px] rounded hover:bg-red-600 hover:text-white">Hapus</button>` : ''}
-            
-            <div class="text-[10px] font-orbitron text-blds-muted tracking-widest uppercase pb-1 border-b border-blds-border">${item.title || 'Match'}</div>
-
-            <div class="space-y-1.5 text-xs font-orbitron">
-              <!-- Team 1 -->
-              <div class="flex justify-between items-center p-2.5 rounded bg-blds-black border ${t1Winner ? 'border-white text-white font-bold glow-border' : 'border-blds-border text-gray-400'}">
-                <span class="flex items-center gap-1.5 truncate"><span>${item.t1}</span> ${t1Winner ? '👑' : ''}</span>
-                <span class="px-2 py-0.5 bg-white/5 rounded text-white">${item.s1}</span>
-              </div>
-              <!-- Team 2 -->
-              <div class="flex justify-between items-center p-2.5 rounded bg-blds-black border ${t2Winner ? 'border-white text-white font-bold glow-border' : 'border-blds-border text-gray-400'}">
-                <span class="flex items-center gap-1.5 truncate"><span>${item.t2}</span> ${t2Winner ? '👑' : ''}</span>
-                <span class="px-2 py-0.5 bg-white/5 rounded text-white">${item.s2}</span>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-
-      container.innerHTML = `
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 min-w-[800px]">
-          <!-- Kolom 1: Quarterfinals -->
-          <div class="space-y-4">
-            <div class="text-center font-orbitron font-bold text-xs tracking-widest text-blds-muted bg-blds-card p-2.5 rounded-lg border border-blds-border">QUARTERFINALS</div>
-            <div class="space-y-4">
-              ${qf.length > 0 ? qf.map(renderMatchCard).join('') : '<p class="text-center text-xs text-blds-muted py-8 font-orbitron">Tidak ada match</p>'}
-            </div>
-          </div>
-
-          <!-- Kolom 2: Semifinals -->
-          <div class="space-y-4 md:mt-12">
-            <div class="text-center font-orbitron font-bold text-xs tracking-widest text-blds-muted bg-blds-card p-2.5 rounded-lg border border-blds-border">SEMIFINALS</div>
-            <div class="space-y-4">
-              ${sf.length > 0 ? sf.map(renderMatchCard).join('') : '<p class="text-center text-xs text-blds-muted py-8 font-orbitron">Tidak ada match</p>'}
-            </div>
-          </div>
-
-          <!-- Kolom 3: Grand Final -->
-          <div class="space-y-4 md:mt-24">
-            <div class="text-center font-orbitron font-bold text-xs tracking-widest text-white bg-blds-card p-2.5 rounded-lg border border-white/30 glow-border">GRAND FINAL 🏆</div>
-            <div class="space-y-4">
-              ${gf.length > 0 ? gf.map(renderMatchCard).join('') : '<p class="text-center text-xs text-blds-muted py-8 font-orbitron">Tidak ada match</p>'}
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
     function renderSchedule() {
       const container = document.getElementById('schedule-container');
       let items = Object.keys(appData.schedule).map(k => ({ key: k, ...appData.schedule[k] }));
-      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
+      const isAdmin = isLoggedInAdmin();
 
-      if (currentScheduleFilter !== 'ALL') {
-        items = items.filter(i => i.status === currentScheduleFilter);
-      }
+      if (currentScheduleFilter !== 'ALL') items = items.filter(i => i.status === currentScheduleFilter);
 
       if (items.length === 0) {
         container.innerHTML = `<div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">TIDAK ADA JADWAL PERTANDINGAN TERSEDIA</p></div>`;
         return;
       }
 
-      container.innerHTML = items.map(item => `
-        <div class="bg-blds-card border border-blds-border p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4 hover:border-white/30 relative">
-          <div class="flex items-center gap-4 w-full md:w-auto">
-            <span class="text-xs font-orbitron px-2.5 py-1 rounded bg-white/10 text-white">${item.status}</span>
-            <div>
-              <h4 class="font-orbitron font-bold text-white text-sm">${item.eventName}</h4>
-              <p class="text-xs text-blds-muted font-sans">${item.game} • ${item.date} (${item.time})</p>
+      container.innerHTML = items.map(item => {
+        const s1 = parseInt(item.scoreA) || 0;
+        const s2 = parseInt(item.scoreB) || 0;
+        const played = item.status === 'COMPLETED' || s1 > 0 || s2 > 0;
+        const t1Win = played && s1 > s2;
+        const t2Win = played && s2 > s1;
+
+        return `
+          <div class="bg-blds-card border border-blds-border p-4 sm:p-5 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4 hover:border-white/30 relative">
+            <div class="flex items-center gap-4 w-full md:w-auto">
+              <span class="text-xs font-orbitron px-2.5 py-1 rounded ${item.status === 'LIVE' ? 'bg-red-600 text-white animate-pulse' : 'bg-white/10 text-white'}">${item.status}</span>
+              <div>
+                <h4 class="font-orbitron font-bold text-white text-sm sm:text-base">${item.eventName}</h4>
+                <p class="text-xs text-blds-muted font-sans">${item.game} • ${item.date} (${item.time})</p>
+              </div>
+            </div>
+
+            <!-- Tampilan Tim & Skor Interaktif -->
+            <div class="font-orbitron font-bold text-sm text-white flex items-center justify-center gap-3 sm:gap-6 w-full md:w-auto bg-blds-black/60 p-3 rounded-lg border border-blds-border">
+              <span class="flex items-center gap-1.5 ${t1Win ? 'text-white font-extrabold glow-sub' : 'text-gray-300'}">
+                ${t1Win ? '👑' : ''} ${item.teamA}
+              </span>
+              <span class="px-2.5 py-1 bg-white/10 rounded text-xs font-mono text-white">${s1} - ${s2}</span>
+              <span class="flex items-center gap-1.5 ${t2Win ? 'text-white font-extrabold glow-sub' : 'text-gray-300'}">
+                ${item.teamB} ${t2Win ? '👑' : ''}
+              </span>
+            </div>
+
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+              ${item.streamUrl ? `<a href="${item.streamUrl}" target="_blank" class="text-xs font-orbitron px-4 py-2 border border-white/20 hover:border-white rounded text-white transition-all">WATCH LIVE</a>` : ''}
+              ${isAdmin ? `
+                <button onclick="openScheduleScoreModal('${item.key}', '${item.eventName}', '${item.teamA}', ${s1}, '${item.teamB}', ${s2}, '${item.status}')" class="text-xs px-3 py-2 bg-white/10 border border-white/20 text-white rounded hover:bg-white hover:text-black transition-all">Edit Skor</button>
+                <button onclick="deleteItem('schedule', '${item.key}')" class="text-xs px-3 py-2 bg-red-600/30 border border-red-500 text-red-400 rounded hover:bg-red-600 hover:text-white transition-all">Hapus</button>
+              ` : ''}
             </div>
           </div>
-          <div class="font-orbitron font-bold text-sm text-white flex items-center gap-6">
-            <span>${item.teamA}</span>
-            <span class="text-xs text-blds-muted">VS</span>
-            <span>${item.teamB}</span>
-          </div>
-          <div class="flex items-center gap-3">
-            ${item.streamUrl ? `<a href="${item.streamUrl}" target="_blank" class="text-xs font-orbitron px-4 py-2 border border-white/20 hover:border-white rounded text-white">WATCH LIVE</a>` : ''}
-            ${isAdmin ? `<button onclick="deleteItem('schedule', '${item.key}')" class="text-xs px-3 py-2 bg-red-600/30 border border-red-500 text-red-400 rounded hover:bg-red-600 hover:text-white">Hapus</button>` : ''}
-          </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     window.filterSchedule = function(type) {
@@ -799,7 +792,7 @@
     function renderNews() {
       const container = document.getElementById('news-container');
       const items = Object.keys(appData.news).map(k => ({ key: k, ...appData.news[k] }));
-      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
+      const isAdmin = isLoggedInAdmin();
 
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p></div>`;
@@ -818,7 +811,7 @@
               <h3 class="font-orbitron font-bold text-lg text-white leading-snug">${item.title}</h3>
               <p class="text-xs text-gray-300 line-clamp-3 font-sans">${item.summary || ''}</p>
             </div>
-            ${isAdmin ? `<button onclick="deleteItem('news', '${item.key}')" class="mt-4 w-full py-2 bg-red-600/30 border border-red-500 text-red-400 text-xs rounded hover:bg-red-600 hover:text-white">Hapus Berita</button>` : ''}
+            ${isAdmin ? `<button onclick="deleteItem('news', '${item.key}')" class="mt-4 w-full py-2 bg-red-600/30 border border-red-500 text-red-400 text-xs rounded hover:bg-red-600 hover:text-white transition-all">Hapus Berita</button>` : ''}
           </div>
         </article>
       `).join('');
@@ -827,7 +820,7 @@
     function renderStaff() {
       const container = document.getElementById('staff-container');
       const items = Object.keys(appData.staff).map(k => ({ key: k, ...appData.staff[k] }));
-      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
+      const isAdmin = isLoggedInAdmin();
 
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p></div>`;
@@ -842,7 +835,7 @@
             <p class="text-xs font-orbitron text-blds-muted uppercase">${item.role}</p>
           </div>
           <p class="text-xs text-gray-300 font-sans">${item.desc || ''}</p>
-          ${isAdmin ? `<button onclick="deleteItem('staff', '${item.key}')" class="w-full py-1.5 bg-red-600/30 border border-red-500 text-red-400 text-xs rounded hover:bg-red-600 hover:text-white">Hapus Staff</button>` : ''}
+          ${isAdmin ? `<button onclick="deleteItem('staff', '${item.key}')" class="w-full py-1.5 bg-red-600/30 border border-red-500 text-red-400 text-xs rounded hover:bg-red-600 hover:text-white transition-all">Hapus Staff</button>` : ''}
         </div>
       `).join('');
     }
