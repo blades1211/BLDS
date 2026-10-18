@@ -306,10 +306,10 @@
       </div>
     </section>
 
-    <!-- ==================== ADMIN DASHBOARD CONTROL ==================== -->
-    <section id="admin-dashboard-section" class="py-20 px-4 bg-blds-card border-t-2 border-white" style="display: none;">
+    <!-- ==================== ADMIN DASHBOARD CONTROL PANEL ==================== -->
+    <section id="admin-dashboard-section" class="py-20 px-4 bg-blds-card border-t-4 border-white relative z-30" style="display: none;">
       <div class="max-w-6xl mx-auto space-y-10">
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-blds-black p-6 rounded-xl border border-blds-border">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-blds-black p-6 rounded-xl border border-blds-border glow-border">
           <div>
             <h2 class="font-orbitron font-bold text-xl text-white">⚙️ ADMIN CONTROL PANEL</h2>
             <p class="text-xs text-green-400 font-sans font-semibold">● Full Admin Privileges Active</p>
@@ -387,6 +387,13 @@
 
   </main>
 
+  <!-- ==================== FLOATING ADMIN QUICK ACTION BUTTON ==================== -->
+  <div id="floating-admin-btn" class="fixed bottom-6 right-6 z-50 hidden">
+    <a href="#admin-dashboard-section" class="px-4 py-3 bg-white text-black font-orbitron font-bold text-xs rounded-full shadow-2xl border-2 border-white flex items-center gap-2 hover:scale-105 transition-all">
+      <span>⚙️ OPEN ADMIN PANEL</span>
+    </a>
+  </div>
+
   <!-- ==================== POP-UP MODAL EDIT SKOR MATCH ==================== -->
   <div id="score-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-blds-card border border-white/20 p-6 rounded-2xl w-full max-w-sm space-y-6 glow-box relative">
@@ -453,11 +460,11 @@
         <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
         <p class="text-[11px] text-gray-400 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
         
-        <!-- Tombol Admin Access Paling Aman Ditekan -->
+        <!-- Tombol Admin Access -->
         <div class="pt-3">
-          <span id="admin-login-btn" onclick="openAdminModal()" class="cursor-pointer inline-block px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/30 rounded text-[11px] font-orbitron text-white transition-all shadow-md active:scale-95">
+          <button id="admin-login-btn" onclick="openAdminModal()" type="button" class="cursor-pointer inline-block px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/30 rounded text-[11px] font-orbitron text-white transition-all shadow-md active:scale-95">
             🔐 Admin Access
-          </span>
+          </button>
         </div>
       </div>
 
@@ -481,10 +488,12 @@
   <!-- ==================== SCRIPT ADMIN MODAL DIRECT ==================== -->
   <script>
     function openAdminModal() {
-      document.getElementById('admin-modal').classList.remove('hidden');
+      var modal = document.getElementById('admin-modal');
+      if (modal) modal.classList.remove('hidden');
     }
     function closeAdminModal() {
-      document.getElementById('admin-modal').classList.add('hidden');
+      var modal = document.getElementById('admin-modal');
+      if (modal) modal.classList.add('hidden');
     }
   </script>
 
@@ -543,10 +552,16 @@
 
       if (passwordInput === ADMIN_PASSWORD) {
         sessionStorage.setItem('blds_admin_logged_in', 'true');
-        alert("Login Admin Berhasil!");
+        alert("Login Admin Berhasil! Silakan atur bracket/jadwal/berita/staff di Admin Control Panel.");
         closeAdminModal();
         checkAdminSession();
-        location.href = "#admin-dashboard-section";
+        
+        // Memaksa Tampilan Admin & Scroll ke Bawah
+        const adminSec = document.getElementById('admin-dashboard-section');
+        if (adminSec) {
+          adminSec.style.display = 'block';
+          adminSec.scrollIntoView({ behavior: 'smooth' });
+        }
       } else {
         alert("Akses Ditolak: Password Admin Salah!");
       }
@@ -562,13 +577,16 @@
       const isLoggedIn = sessionStorage.getItem('blds_admin_logged_in') === 'true';
       const adminSection = document.getElementById('admin-dashboard-section');
       const adminLoginBtn = document.getElementById('admin-login-btn');
+      const floatingBtn = document.getElementById('floating-admin-btn');
 
       if (isLoggedIn) {
         if (adminSection) adminSection.style.display = 'block';
         if (adminLoginBtn) adminLoginBtn.style.display = 'none';
+        if (floatingBtn) floatingBtn.classList.remove('hidden');
       } else {
         if (adminSection) adminSection.style.display = 'none';
         if (adminLoginBtn) adminLoginBtn.style.display = 'inline-block';
+        if (floatingBtn) floatingBtn.classList.add('hidden');
       }
       renderStaff();
       renderNews();
