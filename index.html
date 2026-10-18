@@ -228,14 +228,16 @@
       </div>
     </section>
 
-    <!-- BRACKET SECTION -->
+    <!-- BRACKET SECTION (Bracket HQ Style Columns) -->
     <section id="bracket" class="py-24 px-4 bg-blds-black/50 border-t border-blds-border">
       <div class="max-w-7xl mx-auto space-y-12">
         <div class="text-center space-y-3">
           <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">TOURNAMENT BRACKETS</h2>
           <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
         </div>
-        <div id="brackets-container" class="space-y-12">
+        
+        <!-- Container Kolom Berjenjang ala Bracket HQ -->
+        <div id="brackets-container" class="overflow-x-auto pb-6">
           <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
             <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p>
           </div>
@@ -313,7 +315,7 @@
           <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
             <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">👤 TAMBAH STAFF</h3>
             <form id="form-staff" onsubmit="addStaff(event)" class="space-y-3 text-xs">
-              <input type="text" id="staff-name" placeholder="Nama Staff (Misal: Michael)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="staff-name" placeholder="Nama Staff (Michael, William, dll)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <input type="text" id="staff-role" placeholder="Jabatan (Owner, Co-Owner, Headstaff)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <input type="url" id="staff-photo" placeholder="URL Foto Profil" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <textarea id="staff-desc" placeholder="Deskripsi Singkat" rows="2" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
@@ -358,12 +360,16 @@
             </form>
           </div>
 
-          <!-- 4. Form Tambah Bracket (Bebas Tim & Skor) -->
+          <!-- 4. Form Tambah Bracket (HQ Style) -->
           <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
             <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">🏆 TAMBAH BRACKET MATCH</h3>
             <form id="form-bracket" onsubmit="addBracket(event)" class="space-y-3 text-xs">
-              <input type="text" id="brk-title" placeholder="Nama Tournament / Event" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <input type="text" id="brk-round" placeholder="Babak (Quarterfinal / Semifinal / Final)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="brk-title" placeholder="Nama Turnamen" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <select id="brk-round" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white">
+                <option value="Quarterfinal">Quarterfinal</option>
+                <option value="Semifinal">Semifinal</option>
+                <option value="Grand Final">Grand Final</option>
+              </select>
               <div class="grid grid-cols-2 gap-2">
                 <input type="text" id="brk-t1" placeholder="Tim 1" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
                 <input type="number" id="brk-s1" placeholder="Skor 1" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
@@ -372,7 +378,7 @@
                 <input type="text" id="brk-t2" placeholder="Tim 2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
                 <input type="number" id="brk-s2" placeholder="Skor 2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               </div>
-              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">TAMBAH MATCH BRACKET</button>
+              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">TAMBAH KE BRACKET</button>
             </form>
           </div>
 
@@ -389,7 +395,7 @@
       
       <div class="text-center space-y-1">
         <h3 class="font-orbitron font-bold text-lg text-white">ADMIN AUTHENTICATION</h3>
-        <p class="text-xs text-blds-muted font-sans">Masukkan Kredensial Akses Khusus Admin</p>
+        <p class="text-xs text-blds-muted font-sans">Masukkan Password Admin</p>
       </div>
 
       <form onsubmit="handleDirectLogin(event)" class="space-y-4 text-xs font-sans">
@@ -446,7 +452,6 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getDatabase, ref, onValue, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-    // Data Config Asli Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyDYIySEcpbvCwMpXgvB-ggDZH",
       authDomain: "blds-official.firebaseapp.com",
@@ -489,7 +494,8 @@
       const passwordInput = document.getElementById('modal-password').value.trim();
 
       if (passwordInput === ADMIN_PASSWORD) {
-        localStorage.setItem('blds_admin_logged_in', 'true');
+        // Pakai sessionStorage biar otomatis logout kalau browser ditutup
+        sessionStorage.setItem('blds_admin_logged_in', 'true');
         alert("Login Admin Berhasil!");
         closeAdminModal();
         checkAdminSession();
@@ -500,13 +506,13 @@
     }
 
     window.logoutAdmin = function() {
-      localStorage.removeItem('blds_admin_logged_in');
+      sessionStorage.removeItem('blds_admin_logged_in');
       alert("Berhasil Logout Admin");
       checkAdminSession();
     }
 
     function checkAdminSession() {
-      const isLoggedIn = localStorage.getItem('blds_admin_logged_in') === 'true';
+      const isLoggedIn = sessionStorage.getItem('blds_admin_logged_in') === 'true';
       const adminSection = document.getElementById('admin-dashboard-section');
       const adminLoginBtn = document.getElementById('admin-login-btn');
 
@@ -581,7 +587,6 @@
         .catch(err => alert('Gagal: ' + err.message));
     }
 
-    // Dynamic Bracket Match Adder
     window.addBracket = function(e) {
       e.preventDefault();
       const title = document.getElementById('brk-title').value;
@@ -667,55 +672,93 @@
       });
     }
 
-    // Render Brackets Dynamically with Winner Highlight Crown 👑
+    // Render Brackets ala Bracket HQ (Kolom Berjenjang Round demi Round)
     function renderBrackets() {
       const container = document.getElementById('brackets-container');
-      const keys = Object.keys(appData.brackets);
-      const isAdmin = localStorage.getItem('blds_admin_logged_in') === 'true';
+      const items = appData.brackets;
+      const keys = Object.keys(items);
+      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
 
       if (keys.length === 0) {
         container.innerHTML = `<div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p></div>`;
         return;
       }
 
-      container.innerHTML = `<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">` + keys.map(key => {
-        const item = appData.brackets[key];
+      // Kelompokkan berdasarkan round
+      let qf = [];
+      let sf = [];
+      let gf = [];
+
+      keys.forEach(k => {
+        const item = items[k];
+        item.key = k;
+        if (item.round === 'Quarterfinal') qf.push(item);
+        else if (item.round === 'Semifinal') sf.push(item);
+        else if (item.round === 'Grand Final') gf.push(item);
+        else qf.push(item); // Default masuk QF jika tidak dipilih
+      });
+
+      function renderMatchCard(item) {
         const s1 = parseInt(item.s1) || 0;
         const s2 = parseInt(item.s2) || 0;
         const t1Winner = s1 > s2;
         const t2Winner = s2 > s1;
 
         return `
-          <div class="bg-blds-card border border-blds-border p-6 rounded-xl space-y-4 relative group hover:border-white/30">
-            ${isAdmin ? `<button onclick="deleteItem('brackets', '${key}')" class="absolute top-4 right-4 px-2.5 py-1 bg-red-600/30 border border-red-500 text-red-400 text-[10px] rounded hover:bg-red-600 hover:text-white">Hapus</button>` : ''}
+          <div class="bg-blds-card border border-blds-border p-4 rounded-xl space-y-3 relative group hover:border-white/40 shadow-xl">
+            ${isAdmin ? `<button onclick="deleteItem('brackets', '${item.key}')" class="absolute top-2 right-2 px-2 py-0.5 bg-red-600/30 border border-red-500 text-red-400 text-[9px] rounded hover:bg-red-600 hover:text-white">Hapus</button>` : ''}
             
-            <div class="border-b border-blds-border pb-3">
-              <span class="text-[10px] font-orbitron px-2.5 py-0.5 bg-white/10 text-white rounded uppercase tracking-wider">${item.round || 'MATCH'}</span>
-              <h3 class="font-orbitron font-bold text-base text-white mt-2">${item.title}</h3>
-            </div>
+            <div class="text-[10px] font-orbitron text-blds-muted tracking-widest uppercase pb-1 border-b border-blds-border">${item.title || 'Match'}</div>
 
-            <div class="space-y-2 text-xs font-orbitron">
+            <div class="space-y-1.5 text-xs font-orbitron">
               <!-- Team 1 -->
-              <div class="flex justify-between items-center p-3 rounded bg-blds-black border ${t1Winner ? 'border-white/60 glow-border font-bold text-white' : 'border-blds-border text-gray-400'}">
-                <span class="flex items-center gap-2">${item.t1} ${t1Winner ? '👑 <span class="text-[9px] text-green-400 font-sans font-normal">(Winner)</span>' : ''}</span>
-                <span class="text-sm px-2.5 py-0.5 bg-white/5 rounded text-white">${item.s1}</span>
+              <div class="flex justify-between items-center p-2.5 rounded bg-blds-black border ${t1Winner ? 'border-white text-white font-bold glow-border' : 'border-blds-border text-gray-400'}">
+                <span class="flex items-center gap-1.5 truncate"><span>${item.t1}</span> ${t1Winner ? '👑' : ''}</span>
+                <span class="px-2 py-0.5 bg-white/5 rounded text-white">${item.s1}</span>
               </div>
-              
               <!-- Team 2 -->
-              <div class="flex justify-between items-center p-3 rounded bg-blds-black border ${t2Winner ? 'border-white/60 glow-border font-bold text-white' : 'border-blds-border text-gray-400'}">
-                <span class="flex items-center gap-2">${item.t2} ${t2Winner ? '👑 <span class="text-[9px] text-green-400 font-sans font-normal">(Winner)</span>' : ''}</span>
-                <span class="text-sm px-2.5 py-0.5 bg-white/5 rounded text-white">${item.s2}</span>
+              <div class="flex justify-between items-center p-2.5 rounded bg-blds-black border ${t2Winner ? 'border-white text-white font-bold glow-border' : 'border-blds-border text-gray-400'}">
+                <span class="flex items-center gap-1.5 truncate"><span>${item.t2}</span> ${t2Winner ? '👑' : ''}</span>
+                <span class="px-2 py-0.5 bg-white/5 rounded text-white">${item.s2}</span>
               </div>
             </div>
           </div>
         `;
-      }).join('') + `</div>`;
+      }
+
+      container.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 min-w-[800px]">
+          <!-- Kolom 1: Quarterfinals -->
+          <div class="space-y-4">
+            <div class="text-center font-orbitron font-bold text-xs tracking-widest text-blds-muted bg-blds-card p-2.5 rounded-lg border border-blds-border">QUARTERFINALS</div>
+            <div class="space-y-4">
+              ${qf.length > 0 ? qf.map(renderMatchCard).join('') : '<p class="text-center text-xs text-blds-muted py-8 font-orbitron">Tidak ada match</p>'}
+            </div>
+          </div>
+
+          <!-- Kolom 2: Semifinals -->
+          <div class="space-y-4 md:mt-12">
+            <div class="text-center font-orbitron font-bold text-xs tracking-widest text-blds-muted bg-blds-card p-2.5 rounded-lg border border-blds-border">SEMIFINALS</div>
+            <div class="space-y-4">
+              ${sf.length > 0 ? sf.map(renderMatchCard).join('') : '<p class="text-center text-xs text-blds-muted py-8 font-orbitron">Tidak ada match</p>'}
+            </div>
+          </div>
+
+          <!-- Kolom 3: Grand Final -->
+          <div class="space-y-4 md:mt-24">
+            <div class="text-center font-orbitron font-bold text-xs tracking-widest text-white bg-blds-card p-2.5 rounded-lg border border-white/30 glow-border">GRAND FINAL 🏆</div>
+            <div class="space-y-4">
+              ${gf.length > 0 ? gf.map(renderMatchCard).join('') : '<p class="text-center text-xs text-blds-muted py-8 font-orbitron">Tidak ada match</p>'}
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     function renderSchedule() {
       const container = document.getElementById('schedule-container');
       let items = Object.keys(appData.schedule).map(k => ({ key: k, ...appData.schedule[k] }));
-      const isAdmin = localStorage.getItem('blds_admin_logged_in') === 'true';
+      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
 
       if (currentScheduleFilter !== 'ALL') {
         items = items.filter(i => i.status === currentScheduleFilter);
@@ -756,7 +799,7 @@
     function renderNews() {
       const container = document.getElementById('news-container');
       const items = Object.keys(appData.news).map(k => ({ key: k, ...appData.news[k] }));
-      const isAdmin = localStorage.getItem('blds_admin_logged_in') === 'true';
+      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
 
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p></div>`;
@@ -784,7 +827,7 @@
     function renderStaff() {
       const container = document.getElementById('staff-container');
       const items = Object.keys(appData.staff).map(k => ({ key: k, ...appData.staff[k] }));
-      const isAdmin = localStorage.getItem('blds_admin_logged_in') === 'true';
+      const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
 
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p></div>`;
