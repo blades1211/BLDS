@@ -39,7 +39,7 @@
 
   <style>
     html { scroll-behavior: smooth; }
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #030304; }
     ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #52525b; }
@@ -79,13 +79,6 @@
       transition-property: color, background-color, border-color, transform, opacity, box-shadow, max-height, visibility;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       transition-duration: 250ms;
-    }
-
-    .bracket-round-col {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      min-width: 220px;
     }
   </style>
 </head>
@@ -235,21 +228,18 @@
       </div>
     </section>
 
-    <!-- BRACKET SECTION (Bracket HQ Interactive Tree View) -->
+    <!-- BRACKET SECTION (Bracket HQ Style Columns) -->
     <section id="bracket" class="py-24 px-4 bg-blds-black/50 border-t border-blds-border">
-      <div class="max-w-7xl mx-auto space-y-8">
+      <div class="max-w-7xl mx-auto space-y-12">
         <div class="text-center space-y-3">
-          <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">TOURNAMENT BRACKET</h2>
+          <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">TOURNAMENT BRACKETS</h2>
           <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
-          <p id="bracket-tournament-title" class="font-orbitron text-sm text-blds-muted uppercase tracking-widest pt-2">NO ACTIVE TOURNAMENT</p>
         </div>
         
-        <!-- Interactive Bracket Canvas Container -->
-        <div class="bg-blds-card/80 border border-blds-border rounded-2xl p-6 overflow-x-auto min-h-[450px] shadow-2xl relative">
-          <div id="brackets-container" class="flex gap-12 min-w-[750px] justify-between items-stretch py-4">
-            <div class="m-auto text-center py-16">
-              <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TIM TERDAFTAR DI BRACKET</p>
-            </div>
+        <!-- Container Kolom Berjenjang ala Bracket HQ -->
+        <div id="brackets-container" class="overflow-x-auto pb-6">
+          <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
+            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p>
           </div>
         </div>
       </div>
@@ -321,18 +311,7 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           
-          <!-- 1. Form Setup Bracket (Bebas Banyak Tim) -->
-          <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
-            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">🏆 SETUP BRACKET HQ</h3>
-            <form id="form-bracket-setup" onsubmit="setupBracketTeams(event)" class="space-y-3 text-xs">
-              <input type="text" id="brk-title" placeholder="Nama Turnamen" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <textarea id="brk-teams" placeholder="Masukkan Nama Tim (Pisahkan dengan koma atau baris baru) Contoh: Tim A, Tim B, Tim C, Tim D" rows="5" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
-              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">GENERATE BRACKET</button>
-            </form>
-            <button onclick="resetBracket()" class="w-full py-2 bg-red-600/20 border border-red-500 text-red-400 text-xs font-orbitron rounded hover:bg-red-600 hover:text-white">RESET ALL BRACKET</button>
-          </div>
-
-          <!-- 2. Form Tambah Staff -->
+          <!-- 1. Form Tambah Staff -->
           <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
             <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">👤 TAMBAH STAFF</h3>
             <form id="form-staff" onsubmit="addStaff(event)" class="space-y-3 text-xs">
@@ -344,7 +323,7 @@
             </form>
           </div>
 
-          <!-- 3. Form Tambah Berita -->
+          <!-- 2. Form Tambah Berita -->
           <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
             <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📰 TAMBAH BERITA</h3>
             <form id="form-news" onsubmit="addNews(event)" class="space-y-3 text-xs">
@@ -357,7 +336,7 @@
             </form>
           </div>
 
-          <!-- 4. Form Tambah Jadwal -->
+          <!-- 3. Form Tambah Jadwal -->
           <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
             <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📅 TAMBAH JADWAL</h3>
             <form id="form-schedule" onsubmit="addSchedule(event)" class="space-y-3 text-xs">
@@ -381,43 +360,33 @@
             </form>
           </div>
 
+          <!-- 4. Form Tambah Bracket (HQ Style) -->
+          <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
+            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">🏆 TAMBAH BRACKET MATCH</h3>
+            <form id="form-bracket" onsubmit="addBracket(event)" class="space-y-3 text-xs">
+              <input type="text" id="brk-title" placeholder="Nama Turnamen" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <select id="brk-round" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white">
+                <option value="Quarterfinal">Quarterfinal</option>
+                <option value="Semifinal">Semifinal</option>
+                <option value="Grand Final">Grand Final</option>
+              </select>
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" id="brk-t1" placeholder="Tim 1" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+                <input type="number" id="brk-s1" placeholder="Skor 1" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" id="brk-t2" placeholder="Tim 2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+                <input type="number" id="brk-s2" placeholder="Skor 2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              </div>
+              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">TAMBAH KE BRACKET</button>
+            </form>
+          </div>
+
         </div>
       </div>
     </section>
 
   </main>
-
-  <!-- ==================== POP-UP MODAL EDIT SKOR MATCH ==================== -->
-  <div id="score-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-blds-card border border-white/20 p-6 rounded-2xl w-full max-w-sm space-y-6 glow-box relative">
-      <button onclick="closeScoreModal()" class="absolute top-4 right-4 text-blds-muted hover:text-white text-xl">&times;</button>
-      
-      <div class="text-center space-y-1">
-        <h3 class="font-orbitron font-bold text-base text-white">UPDATE SCORE MATCH</h3>
-        <p id="score-modal-round" class="text-xs text-blds-muted font-sans uppercase">ROUND MATCH</p>
-      </div>
-
-      <form onsubmit="saveMatchScore(event)" class="space-y-4 text-xs font-sans">
-        <input type="hidden" id="edit-match-key" />
-
-        <div class="space-y-3">
-          <div class="flex items-center justify-between p-3 bg-blds-black border border-blds-border rounded-lg">
-            <span id="label-t1" class="font-orbitron font-bold text-white text-sm truncate max-w-[150px]">Tim 1</span>
-            <input type="number" id="input-s1" min="0" value="0" required class="w-16 p-2 text-center bg-blds-card border border-blds-border rounded text-white font-orbitron font-bold" />
-          </div>
-
-          <div class="flex items-center justify-between p-3 bg-blds-black border border-blds-border rounded-lg">
-            <span id="label-t2" class="font-orbitron font-bold text-white text-sm truncate max-w-[150px]">Tim 2</span>
-            <input type="number" id="input-s2" min="0" value="0" required class="w-16 p-2 text-center bg-blds-card border border-blds-border rounded text-white font-orbitron font-bold" />
-          </div>
-        </div>
-
-        <button type="submit" class="w-full py-3 bg-white text-black font-orbitron font-bold rounded text-xs tracking-wider hover:bg-gray-200">
-          SIMPAN SKOR & PROMOSIKAN WINNER 👑
-        </button>
-      </form>
-    </div>
-  </div>
 
   <!-- ==================== POP-UP MODAL LOGIN ADMIN ==================== -->
   <div id="admin-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
@@ -443,7 +412,7 @@
   </div>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="relative z-20 bg-blds-black border-t border-blds-border py-12 px-4">
+  <footer class="relative z-10 bg-blds-black border-t border-blds-border py-12 px-4">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
       <div class="space-y-2">
         <div class="flex items-center justify-center md:justify-start gap-3">
@@ -453,9 +422,9 @@
         <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
         <p class="text-[11px] text-gray-400 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
         
-        <!-- Tombol Admin Access Terbuka & Bisa Dipencet -->
+        <!-- Tombol Admin Login Transparan / Samar -->
         <div class="pt-3">
-          <button id="admin-login-btn" onclick="openAdminModal()" type="button" class="cursor-pointer relative z-30 inline-block px-3 py-1.5 bg-white/5 hover:bg-white/20 border border-white/20 rounded text-[11px] font-orbitron text-white transition-all shadow-md">
+          <button id="admin-login-btn" onclick="openAdminModal()" class="text-[10px] font-orbitron text-white/20 hover:text-white/80 transition-opacity underline">
             🔐 Admin Access
           </button>
         </div>
@@ -478,27 +447,10 @@
     </div>
   </footer>
 
-  <!-- ==================== SCRIPT FUNGSI ADMIN GLOBAL ==================== -->
-  <script>
-    window.openAdminModal = function() {
-      var modal = document.getElementById('admin-modal');
-      if (modal) {
-        modal.classList.remove('hidden');
-      }
-    };
-
-    window.closeAdminModal = function() {
-      var modal = document.getElementById('admin-modal');
-      if (modal) {
-        modal.classList.add('hidden');
-      }
-    };
-  </script>
-
   <!-- ==================== FIREBASE SDK & APPLICATION LOGIC ==================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getDatabase, ref, onValue, set, update, remove, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, onValue, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDYIySEcpbvCwMpXgvB-ggDZH",
@@ -516,7 +468,7 @@
 
     const ADMIN_PASSWORD = "BLDSACCESS";
 
-    let appData = { bracket: {}, schedule: {}, news: {}, staff: {} };
+    let appData = { brackets: {}, schedule: {}, news: {}, staff: {} };
     let currentScheduleFilter = 'ALL';
 
     document.getElementById('current-year').textContent = new Date().getFullYear();
@@ -529,19 +481,12 @@
       checkAdminSession();
     });
 
-    window.openScoreModal = function(key, roundTitle, t1, s1, t2, s2) {
-      if (sessionStorage.getItem('blds_admin_logged_in') !== 'true') return;
-      document.getElementById('edit-match-key').value = key;
-      document.getElementById('score-modal-round').textContent = roundTitle;
-      document.getElementById('label-t1').textContent = t1 || 'TBD';
-      document.getElementById('input-s1').value = s1 || 0;
-      document.getElementById('label-t2').textContent = t2 || 'TBD';
-      document.getElementById('input-s2').value = s2 || 0;
-      document.getElementById('score-modal').classList.remove('hidden');
+    window.openAdminModal = function() {
+      document.getElementById('admin-modal').classList.remove('hidden');
     }
 
-    window.closeScoreModal = function() {
-      document.getElementById('score-modal').classList.add('hidden');
+    window.closeAdminModal = function() {
+      document.getElementById('admin-modal').classList.add('hidden');
     }
 
     window.handleDirectLogin = function(e) {
@@ -549,6 +494,7 @@
       const passwordInput = document.getElementById('modal-password').value.trim();
 
       if (passwordInput === ADMIN_PASSWORD) {
+        // Pakai sessionStorage biar otomatis logout kalau browser ditutup
         sessionStorage.setItem('blds_admin_logged_in', 'true');
         alert("Login Admin Berhasil!");
         closeAdminModal();
@@ -580,7 +526,7 @@
       renderStaff();
       renderNews();
       renderSchedule();
-      renderBracketHQ();
+      renderBrackets();
     }
 
     window.deleteItem = function(path, key) {
@@ -591,153 +537,71 @@
       }
     }
 
-    window.setupBracketTeams = function(e) {
-      e.preventDefault();
-      const title = document.getElementById('brk-title').value;
-      const rawTeams = document.getElementById('brk-teams').value;
-      
-      const teamList = rawTeams.split(/[\n,]+/).map(t => t.trim()).filter(t => t.length > 0);
-
-      if (teamList.length < 2) {
-        alert("Masukkan minimal 2 tim untuk membuat bracket!");
-        return;
-      }
-
-      let numRounds = Math.ceil(Math.log2(teamList.length));
-      let totalBracketSlots = Math.pow(2, numRounds);
-
-      while (teamList.length < totalBracketSlots) {
-        teamList.push("BYE");
-      }
-
-      let matches = {};
-      let matchIdCounter = 1;
-
-      for (let i = 0; i < teamList.length; i += 2) {
-        let matchKey = `R1_M${matchIdCounter}`;
-        matches[matchKey] = {
-          round: 1,
-          matchNum: matchIdCounter,
-          t1: teamList[i],
-          s1: 0,
-          t2: teamList[i+1],
-          s2: 0,
-          nextMatchKey: `R2_M${Math.ceil(matchIdCounter/2)}`,
-          slotInNext: (matchIdCounter % 2 !== 0) ? 't1' : 't2'
-        };
-
-        if (teamList[i+1] === "BYE") {
-          matches[matchKey].s1 = 1;
-        }
-
-        matchIdCounter++;
-      }
-
-      let currentRoundSlots = totalBracketSlots / 2;
-      for (let r = 2; r <= numRounds; r++) {
-        currentRoundSlots /= 2;
-        for (let m = 1; m <= currentRoundSlots; m++) {
-          let matchKey = `R${r}_M${m}`;
-          matches[matchKey] = {
-            round: r,
-            matchNum: m,
-            t1: "TBD",
-            s1: 0,
-            t2: "TBD",
-            s2: 0,
-            nextMatchKey: (r < numRounds) ? `R${r+1}_M${Math.ceil(m/2)}` : null,
-            slotInNext: (m % 2 !== 0) ? 't1' : 't2'
-          };
-        }
-      }
-
-      Object.keys(matches).forEach(k => {
-        let match = matches[k];
-        if (match.t2 === "BYE" && match.nextMatchKey) {
-          matches[match.nextMatchKey][match.slotInNext] = match.t1;
-        }
-      });
-
-      set(ref(db, 'site/bracket'), {
-        title: title,
-        numRounds: numRounds,
-        matches: matches
-      }).then(() => {
-        alert("Bracket HQ berhasil digenerate!");
-        document.getElementById('form-bracket-setup').reset();
-      }).catch(err => alert("Error: " + err.message));
-    }
-
-    window.saveMatchScore = function(e) {
-      e.preventDefault();
-      const matchKey = document.getElementById('edit-match-key').value;
-      const s1 = parseInt(document.getElementById('input-s1').value) || 0;
-      const s2 = parseInt(document.getElementById('input-s2').value) || 0;
-
-      const currentMatch = appData.bracket.matches[matchKey];
-      if (!currentMatch) return;
-
-      let updates = {};
-      updates[`site/bracket/matches/${matchKey}/s1`] = s1;
-      updates[`site/bracket/matches/${matchKey}/s2`] = s2;
-
-      let winner = null;
-      if (s1 > s2) winner = currentMatch.t1;
-      else if (s2 > s1) winner = currentMatch.t2;
-
-      if (winner && winner !== "TBD" && winner !== "BYE" && currentMatch.nextMatchKey) {
-        updates[`site/bracket/matches/${currentMatch.nextMatchKey}/${currentMatch.slotInNext}`] = winner;
-      }
-
-      update(ref(db), updates)
-        .then(() => {
-          alert("Skor diperbarui!");
-          closeScoreModal();
-        })
-        .catch(err => alert("Gagal update skor: " + err.message));
-    }
-
-    window.resetBracket = function() {
-      if (confirm("Yakin mau hapus seluruh data Bracket HQ?")) {
-        remove(ref(db, 'site/bracket'))
-          .then(() => alert("Bracket berhasil di-reset!"))
-          .catch(err => alert("Gagal: " + err.message));
-      }
-    }
-
     window.addStaff = function(e) {
       e.preventDefault();
-      push(ref(db, 'site/staff'), {
-        name: document.getElementById('staff-name').value,
-        role: document.getElementById('staff-role').value,
-        photoUrl: document.getElementById('staff-photo').value,
-        desc: document.getElementById('staff-desc').value
-      }).then(() => { alert('Staff disimpan!'); document.getElementById('form-staff').reset(); });
+      const name = document.getElementById('staff-name').value;
+      const role = document.getElementById('staff-role').value;
+      const photoUrl = document.getElementById('staff-photo').value;
+      const desc = document.getElementById('staff-desc').value;
+
+      push(ref(db, 'site/staff'), { name, role, photoUrl, desc })
+        .then(() => {
+          alert('Staff berhasil ditambahkan!');
+          document.getElementById('form-staff').reset();
+        })
+        .catch(err => alert('Gagal: ' + err.message));
     }
 
     window.addNews = function(e) {
       e.preventDefault();
-      push(ref(db, 'site/news'), {
-        title: document.getElementById('news-title').value,
-        category: document.getElementById('news-category').value,
-        date: document.getElementById('news-date').value,
-        imageUrl: document.getElementById('news-image').value,
-        summary: document.getElementById('news-summary').value
-      }).then(() => { alert('Berita dipublish!'); document.getElementById('form-news').reset(); });
+      const title = document.getElementById('news-title').value;
+      const category = document.getElementById('news-category').value;
+      const date = document.getElementById('news-date').value;
+      const imageUrl = document.getElementById('news-image').value;
+      const summary = document.getElementById('news-summary').value;
+
+      push(ref(db, 'site/news'), { title, category, date, imageUrl, summary })
+        .then(() => {
+          alert('Berita berhasil ditambahkan!');
+          document.getElementById('form-news').reset();
+        })
+        .catch(err => alert('Gagal: ' + err.message));
     }
 
     window.addSchedule = function(e) {
       e.preventDefault();
-      push(ref(db, 'site/schedule'), {
-        eventName: document.getElementById('sched-event').value,
-        game: document.getElementById('sched-game').value,
-        date: document.getElementById('sched-date').value,
-        time: document.getElementById('sched-time').value,
-        teamA: document.getElementById('sched-t1').value,
-        teamB: document.getElementById('sched-t2').value,
-        status: document.getElementById('sched-status').value,
-        streamUrl: document.getElementById('sched-stream').value
-      }).then(() => { alert('Jadwal ditambahkan!'); document.getElementById('form-schedule').reset(); });
+      const eventName = document.getElementById('sched-event').value;
+      const game = document.getElementById('sched-game').value;
+      const date = document.getElementById('sched-date').value;
+      const time = document.getElementById('sched-time').value;
+      const teamA = document.getElementById('sched-t1').value;
+      const teamB = document.getElementById('sched-t2').value;
+      const status = document.getElementById('sched-status').value;
+      const streamUrl = document.getElementById('sched-stream').value;
+
+      push(ref(db, 'site/schedule'), { eventName, game, date, time, teamA, teamB, status, streamUrl })
+        .then(() => {
+          alert('Jadwal berhasil ditambahkan!');
+          document.getElementById('form-schedule').reset();
+        })
+        .catch(err => alert('Gagal: ' + err.message));
+    }
+
+    window.addBracket = function(e) {
+      e.preventDefault();
+      const title = document.getElementById('brk-title').value;
+      const round = document.getElementById('brk-round').value;
+      const t1 = document.getElementById('brk-t1').value;
+      const s1 = document.getElementById('brk-s1').value;
+      const t2 = document.getElementById('brk-t2').value;
+      const s2 = document.getElementById('brk-s2').value;
+
+      push(ref(db, 'site/brackets'), { title, round, t1, s1, t2, s2 })
+        .then(() => {
+          alert('Bracket Match berhasil ditambahkan!');
+          document.getElementById('form-bracket').reset();
+        })
+        .catch(err => alert('Gagal: ' + err.message));
     }
 
     function setupMenu() {
@@ -790,9 +654,9 @@
     }
 
     function bindFirebaseListeners() {
-      onValue(ref(db, 'site/bracket'), (snapshot) => {
-        appData.bracket = snapshot.val() || {};
-        renderBracketHQ();
+      onValue(ref(db, 'site/brackets'), (snapshot) => {
+        appData.brackets = snapshot.val() || {};
+        renderBrackets();
       });
       onValue(ref(db, 'site/schedule'), (snapshot) => {
         appData.schedule = snapshot.val() || {};
@@ -808,73 +672,87 @@
       });
     }
 
-    function renderBracketHQ() {
+    // Render Brackets ala Bracket HQ (Kolom Berjenjang Round demi Round)
+    function renderBrackets() {
       const container = document.getElementById('brackets-container');
-      const titleElem = document.getElementById('bracket-tournament-title');
-      const bracketData = appData.bracket;
+      const items = appData.brackets;
+      const keys = Object.keys(items);
       const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
 
-      if (!bracketData || !bracketData.matches) {
-        titleElem.textContent = "NO ACTIVE TOURNAMENT";
-        container.innerHTML = `<div class="m-auto text-center py-16"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TIM TERDAFTAR DI BRACKET</p></div>`;
+      if (keys.length === 0) {
+        container.innerHTML = `<div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p></div>`;
         return;
       }
 
-      titleElem.textContent = bracketData.title || "TOURNAMENT BRACKET";
-      const numRounds = bracketData.numRounds || 1;
-      const matches = bracketData.matches;
+      // Kelompokkan berdasarkan round
+      let qf = [];
+      let sf = [];
+      let gf = [];
 
-      let html = '';
+      keys.forEach(k => {
+        const item = items[k];
+        item.key = k;
+        if (item.round === 'Quarterfinal') qf.push(item);
+        else if (item.round === 'Semifinal') sf.push(item);
+        else if (item.round === 'Grand Final') gf.push(item);
+        else qf.push(item); // Default masuk QF jika tidak dipilih
+      });
 
-      for (let r = 1; r <= numRounds; r++) {
-        let roundTitle = `ROUND ${r}`;
-        if (r === numRounds) roundTitle = "GRAND FINAL 🏆";
-        else if (r === numRounds - 1) roundTitle = "SEMIFINALS";
-        else if (r === numRounds - 2) roundTitle = "QUARTERFINALS";
+      function renderMatchCard(item) {
+        const s1 = parseInt(item.s1) || 0;
+        const s2 = parseInt(item.s2) || 0;
+        const t1Winner = s1 > s2;
+        const t2Winner = s2 > s1;
 
-        let roundMatches = Object.keys(matches)
-          .filter(k => matches[k].round === r)
-          .map(k => ({ key: k, ...matches[k] }));
+        return `
+          <div class="bg-blds-card border border-blds-border p-4 rounded-xl space-y-3 relative group hover:border-white/40 shadow-xl">
+            ${isAdmin ? `<button onclick="deleteItem('brackets', '${item.key}')" class="absolute top-2 right-2 px-2 py-0.5 bg-red-600/30 border border-red-500 text-red-400 text-[9px] rounded hover:bg-red-600 hover:text-white">Hapus</button>` : ''}
+            
+            <div class="text-[10px] font-orbitron text-blds-muted tracking-widest uppercase pb-1 border-b border-blds-border">${item.title || 'Match'}</div>
 
-        html += `
-          <div class="bracket-round-col space-y-6 flex-1 min-w-[220px]">
-            <div class="text-center font-orbitron font-bold text-xs tracking-widest text-blds-muted bg-blds-card p-2.5 rounded-lg border border-blds-border uppercase">${roundTitle}</div>
-            <div class="flex flex-col justify-around flex-1 space-y-6">
-              ${roundMatches.map(m => {
-                const s1 = parseInt(m.s1) || 0;
-                const s2 = parseInt(m.s2) || 0;
-                const played = s1 > 0 || s2 > 0;
-                const t1Win = played && s1 > s2;
-                const t2Win = played && s2 > s1;
-
-                return `
-                  <div onclick="${isAdmin ? `openScoreModal('${m.key}', '${roundTitle}', '${m.t1}', ${s1}, '${m.t2}', ${s2})` : ''}" 
-                       class="bg-blds-black border border-blds-border rounded-xl p-3 space-y-2 relative shadow-lg ${isAdmin ? 'cursor-pointer hover:border-white/60' : ''} group">
-                    
-                    ${isAdmin ? `<div class="absolute -top-2 -right-2 bg-white text-black text-[9px] font-orbitron px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">Edit Score</div>` : ''}
-
-                    <div class="flex justify-between items-center p-2 rounded ${t1Win ? 'bg-white/10 border border-white text-white font-bold glow-border' : 'bg-blds-card text-gray-300 border border-transparent'}">
-                      <span class="text-xs font-orbitron truncate flex items-center gap-1.5 max-w-[120px]">
-                        <span>${m.t1 \vert{}\vert{} 'TBD'}</span>${t1Win ? '👑' : ''}
-                      </span>
-                      <span class="text-xs font-orbitron px-2 py-0.5 bg-blds-black rounded text-white">${s1}</span>
-                    </div>
-
-                    <div class="flex justify-between items-center p-2 rounded ${t2Win ? 'bg-white/10 border border-white text-white font-bold glow-border' : 'bg-blds-card text-gray-300 border border-transparent'}">
-                      <span class="text-xs font-orbitron truncate flex items-center gap-1.5 max-w-[120px]">
-                        <span>${m.t2 \vert{}\vert{} 'TBD'}</span>${t2Win ? '👑' : ''}
-                      </span>
-                      <span class="text-xs font-orbitron px-2 py-0.5 bg-blds-black rounded text-white">${s2}</span>
-                    </div>
-                  </div>
-                `;
-              }).join('')}
+            <div class="space-y-1.5 text-xs font-orbitron">
+              <!-- Team 1 -->
+              <div class="flex justify-between items-center p-2.5 rounded bg-blds-black border ${t1Winner ? 'border-white text-white font-bold glow-border' : 'border-blds-border text-gray-400'}">
+                <span class="flex items-center gap-1.5 truncate"><span>${item.t1}</span> ${t1Winner ? '👑' : ''}</span>
+                <span class="px-2 py-0.5 bg-white/5 rounded text-white">${item.s1}</span>
+              </div>
+              <!-- Team 2 -->
+              <div class="flex justify-between items-center p-2.5 rounded bg-blds-black border ${t2Winner ? 'border-white text-white font-bold glow-border' : 'border-blds-border text-gray-400'}">
+                <span class="flex items-center gap-1.5 truncate"><span>${item.t2}</span> ${t2Winner ? '👑' : ''}</span>
+                <span class="px-2 py-0.5 bg-white/5 rounded text-white">${item.s2}</span>
+              </div>
             </div>
           </div>
         `;
       }
 
-      container.innerHTML = html;
+      container.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 min-w-[800px]">
+          <!-- Kolom 1: Quarterfinals -->
+          <div class="space-y-4">
+            <div class="text-center font-orbitron font-bold text-xs tracking-widest text-blds-muted bg-blds-card p-2.5 rounded-lg border border-blds-border">QUARTERFINALS</div>
+            <div class="space-y-4">
+              ${qf.length > 0 ? qf.map(renderMatchCard).join('') : '<p class="text-center text-xs text-blds-muted py-8 font-orbitron">Tidak ada match</p>'}
+            </div>
+          </div>
+
+          <!-- Kolom 2: Semifinals -->
+          <div class="space-y-4 md:mt-12">
+            <div class="text-center font-orbitron font-bold text-xs tracking-widest text-blds-muted bg-blds-card p-2.5 rounded-lg border border-blds-border">SEMIFINALS</div>
+            <div class="space-y-4">
+              ${sf.length > 0 ? sf.map(renderMatchCard).join('') : '<p class="text-center text-xs text-blds-muted py-8 font-orbitron">Tidak ada match</p>'}
+            </div>
+          </div>
+
+          <!-- Kolom 3: Grand Final -->
+          <div class="space-y-4 md:mt-24">
+            <div class="text-center font-orbitron font-bold text-xs tracking-widest text-white bg-blds-card p-2.5 rounded-lg border border-white/30 glow-border">GRAND FINAL 🏆</div>
+            <div class="space-y-4">
+              ${gf.length > 0 ? gf.map(renderMatchCard).join('') : '<p class="text-center text-xs text-blds-muted py-8 font-orbitron">Tidak ada match</p>'}
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     function renderSchedule() {
@@ -882,7 +760,9 @@
       let items = Object.keys(appData.schedule).map(k => ({ key: k, ...appData.schedule[k] }));
       const isAdmin = sessionStorage.getItem('blds_admin_logged_in') === 'true';
 
-      if (currentScheduleFilter !== 'ALL') items = items.filter(i => i.status === currentScheduleFilter);
+      if (currentScheduleFilter !== 'ALL') {
+        items = items.filter(i => i.status === currentScheduleFilter);
+      }
 
       if (items.length === 0) {
         container.innerHTML = `<div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">TIDAK ADA JADWAL PERTANDINGAN TERSEDIA</p></div>`;
