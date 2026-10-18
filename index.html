@@ -358,25 +358,21 @@
             </form>
           </div>
 
-          <!-- 4. Form Tambah Bracket -->
+          <!-- 4. Form Tambah Bracket (Bebas Tim & Skor) -->
           <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
-            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">🏆 TAMBAH BRACKET</h3>
+            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">🏆 TAMBAH BRACKET MATCH</h3>
             <form id="form-bracket" onsubmit="addBracket(event)" class="space-y-3 text-xs">
-              <input type="text" id="brk-title" placeholder="Nama Tournament" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <input type="text" id="brk-game" placeholder="Game" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="brk-title" placeholder="Nama Tournament / Event" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="brk-round" placeholder="Babak (Quarterfinal / Semifinal / Final)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <div class="grid grid-cols-2 gap-2">
-                <input type="text" id="brk-qf-t1" placeholder="QF Tim 1" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-                <input type="text" id="brk-qf-t2" placeholder="QF Tim 2" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+                <input type="text" id="brk-t1" placeholder="Tim 1" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+                <input type="number" id="brk-s1" placeholder="Skor 1" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               </div>
               <div class="grid grid-cols-2 gap-2">
-                <input type="text" id="brk-sf-t1" placeholder="SF Tim 1" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-                <input type="text" id="brk-sf-t2" placeholder="SF Tim 2" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+                <input type="text" id="brk-t2" placeholder="Tim 2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+                <input type="number" id="brk-s2" placeholder="Skor 2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               </div>
-              <div class="grid grid-cols-2 gap-2">
-                <input type="text" id="brk-f-t1" placeholder="Final Tim 1" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-                <input type="text" id="brk-f-t2" placeholder="Final Tim 2" class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              </div>
-              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">TAMBAH BRACKET</button>
+              <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">TAMBAH MATCH BRACKET</button>
             </form>
           </div>
 
@@ -465,7 +461,6 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // KREDENSIAL ADMIN SECRET
     const ADMIN_PASSWORD = "BLDSACCESS";
 
     let appData = { brackets: {}, schedule: {}, news: {}, staff: {} };
@@ -481,7 +476,6 @@
       checkAdminSession();
     });
 
-    // Modal Control Functions
     window.openAdminModal = function() {
       document.getElementById('admin-modal').classList.remove('hidden');
     }
@@ -490,7 +484,6 @@
       document.getElementById('admin-modal').classList.add('hidden');
     }
 
-    // Direct Login Handler
     window.handleDirectLogin = function(e) {
       e.preventDefault();
       const passwordInput = document.getElementById('modal-password').value.trim();
@@ -530,7 +523,6 @@
       renderBrackets();
     }
 
-    // Helper Hapus Item (Khusus Admin)
     window.deleteItem = function(path, key) {
       if (confirm('Yakin mau hapus data ini?')) {
         remove(ref(db, `site/${path}/${key}`))
@@ -539,7 +531,6 @@
       }
     }
 
-    // 1. Admin Action: Add Staff
     window.addStaff = function(e) {
       e.preventDefault();
       const name = document.getElementById('staff-name').value;
@@ -555,7 +546,6 @@
         .catch(err => alert('Gagal: ' + err.message));
     }
 
-    // 2. Admin Action: Add News
     window.addNews = function(e) {
       e.preventDefault();
       const title = document.getElementById('news-title').value;
@@ -572,7 +562,6 @@
         .catch(err => alert('Gagal: ' + err.message));
     }
 
-    // 3. Admin Action: Add Schedule
     window.addSchedule = function(e) {
       e.preventDefault();
       const eventName = document.getElementById('sched-event').value;
@@ -592,27 +581,24 @@
         .catch(err => alert('Gagal: ' + err.message));
     }
 
-    // 4. Admin Action: Add Bracket
+    // Dynamic Bracket Match Adder
     window.addBracket = function(e) {
       e.preventDefault();
       const title = document.getElementById('brk-title').value;
-      const game = document.getElementById('brk-game').value;
-      const qf_t1 = document.getElementById('brk-qf-t1').value;
-      const qf_t2 = document.getElementById('brk-qf-t2').value;
-      const sf_t1 = document.getElementById('brk-sf-t1').value;
-      const sf_t2 = document.getElementById('brk-sf-t2').value;
-      const f_t1 = document.getElementById('brk-f-t1').value;
-      const f_t2 = document.getElementById('brk-f-t2').value;
+      const round = document.getElementById('brk-round').value;
+      const t1 = document.getElementById('brk-t1').value;
+      const s1 = document.getElementById('brk-s1').value;
+      const t2 = document.getElementById('brk-t2').value;
+      const s2 = document.getElementById('brk-s2').value;
 
-      push(ref(db, 'site/brackets'), { title, game, qf_t1, qf_t2, sf_t1, sf_t2, f_t1, f_t2, status: 'LIVE' })
+      push(ref(db, 'site/brackets'), { title, round, t1, s1, t2, s2 })
         .then(() => {
-          alert('Bracket berhasil ditambahkan!');
+          alert('Bracket Match berhasil ditambahkan!');
           document.getElementById('form-bracket').reset();
         })
         .catch(err => alert('Gagal: ' + err.message));
     }
 
-    // Menu & Visual FX
     function setupMenu() {
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -662,7 +648,6 @@
       });
     }
 
-    // Realtime Database Render Functions
     function bindFirebaseListeners() {
       onValue(ref(db, 'site/brackets'), (snapshot) => {
         appData.brackets = snapshot.val() || {};
@@ -682,6 +667,7 @@
       });
     }
 
+    // Render Brackets Dynamically with Winner Highlight Crown 👑
     function renderBrackets() {
       const container = document.getElementById('brackets-container');
       const keys = Object.keys(appData.brackets);
@@ -692,44 +678,38 @@
         return;
       }
 
-      container.innerHTML = keys.map(key => {
+      container.innerHTML = `<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">` + keys.map(key => {
         const item = appData.brackets[key];
+        const s1 = parseInt(item.s1) || 0;
+        const s2 = parseInt(item.s2) || 0;
+        const t1Winner = s1 > s2;
+        const t2Winner = s2 > s1;
+
         return `
-          <div class="bg-blds-card border border-blds-border p-6 rounded-xl space-y-6 relative group">
-            ${isAdmin ? `<button onclick="deleteItem('brackets', '${key}')" class="absolute top-4 right-4 px-3 py-1 bg-red-600/30 border border-red-500 text-red-400 text-xs rounded hover:bg-red-600 hover:text-white">Hapus Bracket</button>` : ''}
-            <div class="flex flex-wrap justify-between items-center border-b border-blds-border pb-4 gap-2">
-              <div>
-                <span class="text-xs font-orbitron text-blds-muted tracking-widest">${item.game || 'E-SPORTS'}</span>
-                <h3 class="font-orbitron font-bold text-xl text-white">${item.title || 'Tournament'}</h3>
-              </div>
-              <span class="text-xs px-3 py-1 bg-white/10 text-white rounded-full font-orbitron">${item.status || 'UPCOMING'}</span>
+          <div class="bg-blds-card border border-blds-border p-6 rounded-xl space-y-4 relative group hover:border-white/30">
+            ${isAdmin ? `<button onclick="deleteItem('brackets', '${key}')" class="absolute top-4 right-4 px-2.5 py-1 bg-red-600/30 border border-red-500 text-red-400 text-[10px] rounded hover:bg-red-600 hover:text-white">Hapus</button>` : ''}
+            
+            <div class="border-b border-blds-border pb-3">
+              <span class="text-[10px] font-orbitron px-2.5 py-0.5 bg-white/10 text-white rounded uppercase tracking-wider">${item.round || 'MATCH'}</span>
+              <h3 class="font-orbitron font-bold text-base text-white mt-2">${item.title}</h3>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
-              <div class="space-y-4">
-                <span class="text-xs font-orbitron text-blds-muted block text-center">QUARTERFINAL</span>
-                <div class="p-3 bg-blds-black border border-blds-border rounded-lg text-xs space-y-2">
-                  <div class="flex justify-between text-white"><span>${item.qf_t1 || 'Team A'}</span></div>
-                  <div class="flex justify-between text-gray-300"><span>${item.qf_t2 || 'Team B'}</span></div>
-                </div>
+
+            <div class="space-y-2 text-xs font-orbitron">
+              <!-- Team 1 -->
+              <div class="flex justify-between items-center p-3 rounded bg-blds-black border ${t1Winner ? 'border-white/60 glow-border font-bold text-white' : 'border-blds-border text-gray-400'}">
+                <span class="flex items-center gap-2">${item.t1} ${t1Winner ? '👑 <span class="text-[9px] text-green-400 font-sans font-normal">(Winner)</span>' : ''}</span>
+                <span class="text-sm px-2.5 py-0.5 bg-white/5 rounded text-white">${item.s1}</span>
               </div>
-              <div class="space-y-4">
-                <span class="text-xs font-orbitron text-blds-muted block text-center">SEMIFINAL</span>
-                <div class="p-3 bg-blds-black border border-blds-border rounded-lg text-xs space-y-2">
-                  <div class="flex justify-between text-white"><span>${item.sf_t1 || 'TBD'}</span></div>
-                  <div class="flex justify-between text-gray-300"><span>${item.sf_t2 || 'TBD'}</span></div>
-                </div>
-              </div>
-              <div class="space-y-4">
-                <span class="text-xs font-orbitron text-blds-muted block text-center">GRAND FINAL</span>
-                <div class="p-3 bg-blds-black border border-white/30 glow-border rounded-lg text-xs space-y-2">
-                  <div class="flex justify-between text-white font-bold"><span>${item.f_t1 || 'TBD'}</span></div>
-                  <div class="flex justify-between text-gray-300"><span>${item.f_t2 || 'TBD'}</span></div>
-                </div>
+              
+              <!-- Team 2 -->
+              <div class="flex justify-between items-center p-3 rounded bg-blds-black border ${t2Winner ? 'border-white/60 glow-border font-bold text-white' : 'border-blds-border text-gray-400'}">
+                <span class="flex items-center gap-2">${item.t2} ${t2Winner ? '👑 <span class="text-[9px] text-green-400 font-sans font-normal">(Winner)</span>' : ''}</span>
+                <span class="text-sm px-2.5 py-0.5 bg-white/5 rounded text-white">${item.s2}</span>
               </div>
             </div>
           </div>
         `;
-      }).join('');
+      }).join('') + `</div>`;
     }
 
     function renderSchedule() {
