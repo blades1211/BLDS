@@ -351,17 +351,17 @@
               <input type="text" id="news-title" placeholder="Judul Berita" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <input type="text" id="news-category" placeholder="Kategori (ANNOUNCEMENT)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <input type="text" id="news-date" placeholder="Tanggal (Misal: 19 Okt 2026)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
-              <input type="url" id="news-image" placeholder="URL Gambar Cover" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="url" id="news-image" placeholder="URL Gambar Sampul" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <textarea id="news-summary" placeholder="Isi / Ringkasan Berita" rows="2" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white"></textarea>
               <button type="submit" class="w-full py-2.5 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">PUBLISH BERITA</button>
             </form>
           </div>
 
-          <!-- 4. Form Tambah Jadwal -->
+          <!-- 4. Form Tambah Jadwal / Tournament Match -->
           <div class="bg-blds-black p-5 rounded-xl border border-blds-border space-y-4">
-            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📅 TAMBAH JADWAL</h3>
+            <h3 class="font-orbitron font-bold text-sm text-white flex items-center gap-2">📅 TAMBAH JADWAL / TOURNAMENT</h3>
             <form id="form-schedule" onsubmit="addSchedule(event)" class="space-y-3 text-xs">
-              <input type="text" id="sched-event" placeholder="Nama Event" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="sched-event" placeholder="Nama Event / Tournament" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <input type="text" id="sched-game" placeholder="Game" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
               <div class="grid grid-cols-2 gap-2">
                 <input type="text" id="sched-date" placeholder="Tgl (19 Okt)" required class="w-full p-2.5 bg-blds-card border border-blds-border rounded text-white" />
@@ -426,9 +426,9 @@
     </div>
   </div>
 
-  <!-- ==================== POP-UP MODAL LOGIN ADMIN ==================== -->
-  <div id="admin-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-blds-card border border-white/20 p-6 rounded-2xl w-full max-w-md space-y-6 glow-box relative">
+  <!-- ==================== POP-UP MODAL LOGIN ADMIN (TRANSPARAN / GLASSMORPHISM) ==================== -->
+  <div id="admin-modal" class="fixed inset-0 bg-black/50 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-black/40 border border-white/20 backdrop-blur-2xl p-6 rounded-2xl w-full max-w-md space-y-6 glow-box relative shadow-2xl">
       <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-blds-muted hover:text-white text-xl">&times;</button>
       
       <div class="text-center space-y-1">
@@ -439,10 +439,10 @@
       <form onsubmit="handleDirectLogin(event)" class="space-y-4 text-xs font-sans">
         <div class="space-y-1">
           <label class="text-blds-muted font-orbitron text-[10px]">ADMIN PASSWORD</label>
-          <input type="password" id="modal-password" placeholder="Masukkan password admin..." required class="w-full p-3 bg-blds-black border border-blds-border rounded text-white focus:border-white focus:outline-none" />
+          <input type="password" id="modal-password" placeholder="Masukkan password admin..." required class="w-full p-3 bg-white/5 border border-white/20 rounded text-white placeholder-gray-400 focus:border-white focus:outline-none backdrop-blur-md" />
         </div>
 
-        <button type="submit" class="w-full py-3 bg-white text-black font-orbitron font-bold rounded text-xs tracking-wider hover:bg-gray-200">
+        <button type="submit" class="w-full py-3 bg-white/90 hover:bg-white text-black font-orbitron font-bold rounded text-xs tracking-wider transition-all shadow-lg">
           LOGIN ADMIN
         </button>
       </form>
@@ -460,9 +460,9 @@
         <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
         <p class="text-[11px] text-gray-400 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
         
-        <!-- Tombol Admin Access -->
+        <!-- Tombol Admin Access Transparan (Glassmorphism) -->
         <div class="pt-3">
-          <button id="admin-login-btn" onclick="openAdminModal()" type="button" class="cursor-pointer inline-block px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/30 rounded text-[11px] font-orbitron text-white transition-all shadow-md active:scale-95">
+          <button id="admin-login-btn" onclick="openAdminModal()" type="button" class="cursor-pointer inline-block px-4 py-2 bg-white/5 hover:bg-white/15 border border-white/20 backdrop-blur-md rounded-lg text-[11px] font-orbitron text-white transition-all shadow-lg active:scale-95">
             🔐 Admin Access
           </button>
         </div>
