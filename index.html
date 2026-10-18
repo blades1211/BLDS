@@ -38,99 +38,43 @@
   </script>
 
   <style>
-    /* Smooth Scroll Behavior */
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #030304; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #52525b; }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #030304;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #27272a;
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #52525b;
-    }
-
-    /* Global Glow Effects for Every Text */
     body, p, span, h1, h2, h3, h4, h5, h6, a, label, th, td, li {
       text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
     }
+    .glow-title { text-shadow: 0 0 18px rgba(255, 255, 255, 0.6), 0 0 35px rgba(255, 255, 255, 0.2) !important; }
+    .glow-sub { text-shadow: 0 0 12px rgba(255, 255, 255, 0.4) !important; }
+    .glow-box { box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.12); }
+    .glow-border { border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 0 20px rgba(255, 255, 255, 0.08); }
 
-    .glow-title {
-      text-shadow: 0 0 18px rgba(255, 255, 255, 0.6), 0 0 35px rgba(255, 255, 255, 0.2) !important;
-    }
-    .glow-sub {
-      text-shadow: 0 0 12px rgba(255, 255, 255, 0.4) !important;
-    }
-    .glow-box {
-      box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.12);
-    }
-    .glow-border {
-      border-color: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
-    }
-
-    /* Natural Soft Floating & Natural Glow Animation for Logo */
     @keyframes floatSlowNatural {
-      0%, 100% {
-        transform: translateY(0px);
-        filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 24px rgba(255, 255, 255, 0.1));
-      }
-      50% {
-        transform: translateY(-10px);
-        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 35px rgba(255, 255, 255, 0.2));
-      }
+      0%, 100% { transform: translateY(0px); filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3)); }
+      50% { transform: translateY(-10px); filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5)); }
     }
-    .animate-float-logo {
-      animation: floatSlowNatural 6s ease-in-out infinite;
-    }
+    .animate-float-logo { animation: floatSlowNatural 6s ease-in-out infinite; }
 
-    /* Diamond FX Click Effect (Straight Upright ♦) */
     @keyframes diamondHit {
-      0% {
-        transform: scale(0.3);
-        opacity: 0;
-      }
-      25% {
-        transform: scale(1.3);
-        opacity: 1;
-      }
+      0% { transform: scale(0.3); opacity: 0; }
+      25% { transform: scale(1.3); opacity: 1; }
       50% { transform: scale(1); }
-      75% {
-        transform: scale(1.5);
-        opacity: 0.7;
-      }
-      100% {
-        transform: scale(2.2);
-        opacity: 0;
-      }
+      75% { transform: scale(1.5); opacity: 0.7; }
+      100% { transform: scale(2.2); opacity: 0; }
     }
-
     .diamond-fx-active {
-      position: absolute;
-      pointer-events: none;
-      color: #ffffff;
-      font-size: 1.5rem;
-      animation: diamondHit 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-      z-index: 50;
+      position: absolute; pointer-events: none; color: #ffffff; font-size: 1.5rem;
+      animation: diamondHit 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards; z-index: 50;
     }
 
-    /* Grid Overlay BG */
     .bg-grid-pattern {
       background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     }
-
-    /* Smooth Transitions */
     * {
       transition-property: color, background-color, border-color, transform, opacity, box-shadow, max-height, visibility;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -147,8 +91,6 @@
   <!-- ==================== PUBLIC HEADER / NAVBAR ==================== -->
   <header id="main-header" class="fixed top-0 left-0 right-0 z-40 bg-blds-black/90 backdrop-blur-xl border-b border-blds-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
-      <!-- Brand Logo & Name -->
       <a href="#home" class="flex items-center gap-3 group">
         <img src="logo.png" alt="BLDS Logo" class="h-10 w-10 object-contain animate-float-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/100/000000/FFFFFF?text=BLDS';" />
         <div class="flex flex-col">
@@ -157,7 +99,6 @@
         </div>
       </a>
 
-      <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold tracking-widest font-orbitron">
         <a href="#home" class="hover:text-white text-blds-muted hover:glow-sub">HOME</a>
         <a href="#about" class="hover:text-white text-blds-muted hover:glow-sub">ABOUT</a>
@@ -167,7 +108,6 @@
         <a href="#staff" class="hover:text-white text-blds-muted hover:glow-sub">STAFF</a>
       </nav>
 
-      <!-- Mobile Toggle Toggle Button -->
       <div class="flex items-center gap-4">
         <button id="menu-btn" class="md:hidden p-2.5 text-white hover:text-blds-muted focus:outline-none rounded-lg border border-blds-border bg-blds-card active:scale-95 transition-all" aria-label="Toggle Menu">
           <svg id="hamburger-svg" class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -175,10 +115,8 @@
           </svg>
         </button>
       </div>
-
     </div>
 
-    <!-- Mobile Drawer Overlay (Smooth Slide Down) -->
     <div id="mobile-menu" class="md:hidden bg-blds-black/98 border-b border-blds-border px-6 overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out font-orbitron text-center backdrop-blur-2xl">
       <div class="py-6 space-y-4">
         <a href="#home" class="mobile-link block py-2.5 text-blds-muted hover:text-white text-sm">HOME</a>
@@ -197,26 +135,19 @@
     <!-- HERO SECTION -->
     <section id="home" class="min-h-[calc(100vh-5rem)] flex items-center justify-center relative bg-grid-pattern py-20 px-4">
       <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
-        
-        <!-- Animated Floating Hero Logo -->
         <div class="relative mb-8">
           <div class="absolute inset-0 bg-white/10 rounded-full blur-3xl transform scale-125 pointer-events-none"></div>
           <img src="logo.png" alt="BLDS Emblem" class="w-36 h-36 sm:w-48 sm:h-48 object-contain animate-float-logo relative z-10" onerror="this.onerror=null; this.src='https://via.placeholder.com/200/000000/FFFFFF?text=BLDS';" />
         </div>
-
         <h1 class="font-orbitron font-black text-4xl sm:text-6xl md:text-7xl tracking-widest text-white glow-title uppercase mb-4">
           BLACKLIGHT DOMINIONS
         </h1>
-        
         <p class="font-rajdhani font-bold text-lg sm:text-2xl text-blds-muted tracking-widest uppercase mb-8 glow-sub">
           UNITED BEYOND THE ECLIPSE
         </p>
-
         <p class="max-w-2xl text-sm sm:text-base text-gray-300 mb-10 leading-relaxed font-sans">
           Ekosistem esports dan komunitas profesional yang bergerak dalam persatuan, keteguhan, dan potensi tanpa batas.
         </p>
-
-        <!-- Action Buttons -->
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a href="#bracket" class="blds-btn relative inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-orbitron font-bold text-xs tracking-widest uppercase rounded-lg shadow-lg hover:bg-gray-200 overflow-hidden">
             <span>LIHAT BRACKET</span>
@@ -225,66 +156,54 @@
             <span>JADWAL TANDING</span>
           </a>
         </div>
-
       </div>
     </section>
 
     <!-- ABOUT SECTION -->
     <section id="about" class="py-24 px-4 bg-blds-black border-t border-blds-border">
       <div class="max-w-6xl mx-auto space-y-20">
-        
-        <!-- Section Header -->
         <div class="text-center space-y-3">
           <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">ABOUT BLDS</h2>
           <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
         </div>
 
-        <!-- History Timeline -->
         <div class="space-y-8">
           <h3 class="font-orbitron font-semibold text-xl tracking-wider text-center text-white mb-10">JOURNEY TIMELINE</h3>
           <div class="relative border-l-2 border-blds-border max-w-3xl mx-auto pl-6 sm:pl-10 space-y-12">
-            
             <div class="relative group">
               <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
               <span class="text-xs font-orbitron text-blds-muted tracking-widest">3 MEI 2023</span>
               <h4 class="font-orbitron font-bold text-lg text-white mt-1">THE BEGINNING</h4>
               <p class="text-sm text-gray-300 mt-1 font-sans">Langkah awal terbentuknya fondasi utama perjalanan sejarah BLDS.</p>
             </div>
-
             <div class="relative group">
               <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
               <span class="text-xs font-orbitron text-blds-muted tracking-widest">15 MEI 2024</span>
               <h4 class="font-orbitron font-bold text-lg text-white mt-1">WHATSAPP COMMUNITY</h4>
               <p class="text-sm text-gray-300 mt-1 font-sans">Penggunaan platform WhatsApp sebagai wadah awal interaksi harian antar-anggota.</p>
             </div>
-
             <div class="relative group">
               <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
               <span class="text-xs font-orbitron text-blds-muted tracking-widest">12 SEPTEMBER 2024</span>
               <h4 class="font-orbitron font-bold text-lg text-white mt-1">DISCORD EXPANSION</h4>
               <p class="text-sm text-gray-300 mt-1 font-sans">Peluncuran Server Discord resmi guna memperluas jangkauan komunikasi dan kegiatan esports.</p>
             </div>
-
             <div class="relative group">
               <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
               <span class="text-xs font-orbitron text-blds-muted tracking-widest">20 AGUSTUS 2025</span>
               <h4 class="font-orbitron font-bold text-lg text-white mt-1">MAJOR IDENTITY RENEWAL</h4>
               <p class="text-sm text-gray-300 mt-1 font-sans">Fase renovasi total branding dan struktur ekosistem digital BLDS.</p>
             </div>
-
             <div class="relative group">
               <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-blds-black glow-box"></div>
               <span class="text-xs font-orbitron text-blds-muted tracking-widest">2026 & BEYOND</span>
               <h4 class="font-orbitron font-bold text-lg text-white mt-1">FUTURE HORIZON</h4>
               <p class="text-sm text-gray-300 mt-1 font-sans">Pengembangan berkelanjutan kompetisi, talent, dan ekosistem esports digital.</p>
             </div>
-
           </div>
         </div>
 
-        <!-- Vision & Mission Grid -->
         <div class="grid md:grid-cols-2 gap-8">
-          
           <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-4 hover:border-white/40">
             <h3 class="font-orbitron font-bold text-xl text-white tracking-wider flex items-center gap-3">
               <span class="text-white">♦</span> VISION
@@ -293,7 +212,6 @@
               Menjadi komunitas yang solid, dikenal melalui identitasnya, dan terus berkembang dengan membangun lingkungan yang mendorong kebersamaan, kreativitas, kompetisi, serta potensi setiap Dominioner.
             </p>
           </div>
-
           <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-4 hover:border-white/40">
             <h3 class="font-orbitron font-bold text-xl text-white tracking-wider flex items-center gap-3">
               <span class="text-white">♦</span> MISSION
@@ -306,32 +224,7 @@
               <li><strong class="text-white">Leave a Legacy:</strong> Membangun nilai untuk masa depan.</li>
             </ul>
           </div>
-
         </div>
-
-        <!-- Identity Concept -->
-        <div class="bg-blds-card border border-blds-border p-8 rounded-xl space-y-6">
-          <h3 class="font-orbitron font-bold text-xl text-white tracking-wider text-center">CORE IDENTITY</h3>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
-              <h4 class="font-orbitron text-white font-semibold text-sm mb-2">BLACK & WHITE</h4>
-              <p class="text-xs text-gray-300 font-sans">Dua sisi berbeda yang bersatu menjadi kesatuan utuh.</p>
-            </div>
-            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
-              <h4 class="font-orbitron text-white font-semibold text-sm mb-2">THE ECLIPSE</h4>
-              <p class="text-xs text-gray-300 font-sans">Melambangkan transformasi dan perjalanan menuju masa depan.</p>
-            </div>
-            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
-              <h4 class="font-orbitron text-white font-semibold text-sm mb-2">DOMINIONERS</h4>
-              <p class="text-xs text-gray-300 font-sans">Sebutan kehormatan bagi seluruh anggota keluarga BLDS.</p>
-            </div>
-            <div class="p-4 border border-blds-border rounded-lg bg-blds-black/50 hover:border-white/30">
-              <h4 class="font-orbitron text-white font-semibold text-sm mb-2">UNITED BEYOND</h4>
-              <p class="text-xs text-gray-300 font-sans">Semangat untuk terus tumbuh dan bersatu melampaui batas.</p>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -342,8 +235,6 @@
           <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">TOURNAMENT BRACKETS</h2>
           <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
         </div>
-
-        <!-- Dynamic Brackets Container (Firebase Loaded) -->
         <div id="brackets-container" class="space-y-12">
           <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
             <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p>
@@ -359,16 +250,12 @@
           <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">MATCH SCHEDULE</h2>
           <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
         </div>
-
-        <!-- Filter Buttons -->
         <div class="flex justify-center gap-3 font-orbitron text-xs tracking-wider">
           <button onclick="filterSchedule('ALL')" class="schedule-tab px-4 py-2 border border-white text-white bg-white/10 rounded-lg">ALL</button>
           <button onclick="filterSchedule('UPCOMING')" class="schedule-tab px-4 py-2 border border-blds-border text-blds-muted hover:border-white rounded-lg">UPCOMING</button>
           <button onclick="filterSchedule('LIVE')" class="schedule-tab px-4 py-2 border border-blds-border text-blds-muted hover:border-white rounded-lg">LIVE</button>
           <button onclick="filterSchedule('COMPLETED')" class="schedule-tab px-4 py-2 border border-blds-border text-blds-muted hover:border-white rounded-lg">COMPLETED</button>
         </div>
-
-        <!-- Schedule Container (Firebase Loaded) -->
         <div id="schedule-container" class="space-y-4">
           <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
             <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">TIDAK ADA JADWAL PERTANDINGAN TERSEDIA</p>
@@ -384,8 +271,6 @@
           <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">NEWS & ANNOUNCEMENTS</h2>
           <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
         </div>
-
-        <!-- News Container (Firebase Loaded) -->
         <div id="news-container" class="grid md:grid-cols-3 gap-8">
           <div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
             <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p>
@@ -401,8 +286,6 @@
           <h2 class="font-orbitron font-bold text-3xl sm:text-4xl tracking-wider text-white glow-title uppercase">OFFICIAL STAFF</h2>
           <div class="h-1 w-20 bg-white mx-auto rounded-full glow-box"></div>
         </div>
-
-        <!-- Staff Container (Firebase Loaded) -->
         <div id="staff-container" class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
             <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p>
@@ -411,13 +294,66 @@
       </div>
     </section>
 
+    <!-- ==================== ADMIN DASHBOARD (KHUSUS MICHAEL) ==================== -->
+    <section id="admin-dashboard-section" class="py-20 px-4 bg-blds-card border-t-2 border-white" style="display: none;">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-blds-black p-6 rounded-xl border border-blds-border">
+          <div>
+            <h2 class="font-orbitron font-bold text-xl text-white">⚙️ ADMIN CONTROL PANEL</h2>
+            <p class="text-xs text-blds-muted font-sans">Login sebagai: <span id="admin-email-display" class="text-white font-semibold"></span></p>
+          </div>
+          <button onclick="logoutAdmin()" class="px-5 py-2.5 bg-red-600/20 border border-red-500 text-red-400 hover:bg-red-600 hover:text-white rounded-lg text-xs font-orbitron tracking-wider">
+            LOGOUT ADMIN
+          </button>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Form Tambah Berita -->
+          <div class="bg-blds-black p-6 rounded-xl border border-blds-border space-y-4">
+            <h3 class="font-orbitron font-bold text-sm text-white">➕ TAMBAH BERITA</h3>
+            <form id="form-news" onsubmit="addNews(event)" class="space-y-3 text-xs">
+              <input type="text" id="news-title" placeholder="Judul Berita" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="news-category" placeholder="Kategori (Misal: TOURNAMENT)" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="news-date" placeholder="Tanggal (Misal: 19 Okt 2026)" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="url" id="news-image" placeholder="URL Gambar Cover" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+              <textarea id="news-summary" placeholder="Isi / Ringkasan Berita" rows="3" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white"></textarea>
+              <button type="submit" class="w-full py-3 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">PUBLISH BERITA</button>
+            </form>
+          </div>
+
+          <!-- Form Tambah Jadwal -->
+          <div class="bg-blds-black p-6 rounded-xl border border-blds-border space-y-4">
+            <h3 class="font-orbitron font-bold text-sm text-white">➕ TAMBAH JADWAL MATCH</h3>
+            <form id="form-schedule" onsubmit="addSchedule(event)" class="space-y-3 text-xs">
+              <input type="text" id="sched-event" placeholder="Nama Event (Misal: Grand Final Cup)" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+              <input type="text" id="sched-game" placeholder="Game (Misal: Mobile Legends)" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" id="sched-date" placeholder="Tanggal (19 Okt)" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+                <input type="text" id="sched-time" placeholder="Waktu (19:00 WIB)" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" id="sched-t1" placeholder="Tim A" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+                <input type="text" id="sched-t2" placeholder="Tim B" required class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+              </div>
+              <select id="sched-status" class="w-full p-3 bg-blds-card border border-blds-border rounded text-white">
+                <option value="UPCOMING">UPCOMING</option>
+                <option value="LIVE">LIVE</option>
+                <option value="COMPLETED">COMPLETED</option>
+              </select>
+              <input type="url" id="sched-stream" placeholder="URL Live Streaming (Opsional)" class="w-full p-3 bg-blds-card border border-blds-border rounded text-white" />
+              <button type="submit" class="w-full py-3 bg-white text-black font-orbitron font-bold rounded hover:bg-gray-200">TAMBAH JADWAL</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="relative z-10 bg-blds-black border-t border-blds-border py-12 px-4">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-      
-      <!-- Brand & Copyright -->
       <div class="space-y-2">
         <div class="flex items-center justify-center md:justify-start gap-3">
           <img src="logo.png" alt="BLDS Footer Emblem" class="w-8 h-8 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/80/000000/FFFFFF?text=BLDS';" />
@@ -425,38 +361,36 @@
         </div>
         <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
         <p class="text-[11px] text-gray-400 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
+        <!-- Tombol Admin Tersembunyi -->
+        <div class="pt-2">
+          <button id="admin-login-btn" onclick="loginAdmin()" class="text-[10px] font-orbitron text-blds-muted hover:text-white underline">
+            🔐 Admin Login
+          </button>
+        </div>
       </div>
 
-      <!-- Official Social Links (Logo/Icon Only) -->
       <div class="flex items-center justify-center gap-6">
-        <!-- Discord Logo Icon -->
         <a href="https://discord.gg/r4dM4QFteV" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full bg-blds-card border border-blds-border hover:border-white hover:text-white text-blds-muted group" title="Discord">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
         </a>
-
-        <!-- WhatsApp Logo Icon -->
         <a href="https://chat.whatsapp.com/LYhSQn3vXhO6qpVWyoJEoR?s=cl&p=a&ilr=1" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full bg-blds-card border border-blds-border hover:border-white hover:text-white text-blds-muted group" title="WhatsApp">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
         </a>
-
-        <!-- Instagram Logo Icon -->
         <a href="https://www.instagram.com/blacklightdominions?exln=YjZvbnRlaHd2cGU=" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full bg-blds-card border border-blds-border hover:border-white hover:text-white text-blds-muted group" title="Instagram">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-
-        <!-- TikTok Logo Icon -->
         <a href="https://www.tiktok.com/@blacklightdominions?_r=1&_t=ZS-9Ab57EC6WAM" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full bg-blds-card border border-blds-border hover:border-white hover:text-white text-blds-muted group" title="TikTok">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.242V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002-.001a2.895 2.895 0 0 1 3.144-4.53v-3.49a6.382 6.382 0 0 0-5.26 6.25c0 3.535 2.863 6.398 6.398 6.398 3.535 0 6.398-2.863 6.398-6.398V9.213a8.198 8.198 0 0 0 4.77 1.528v-3.47a4.767 4.767 0 0 1-1.034-.585z"/></svg>
         </a>
       </div>
-
     </div>
   </footer>
 
   <!-- ==================== FIREBASE SDK & APPLICATION LOGIC ==================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, onValue, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
     // Firebase Configuration
     const firebaseConfig = {
@@ -469,34 +403,107 @@
       appId: "YOUR_APP_ID"
     };
 
-    // Initialize App & DB
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-    // Global Cache
-    let appData = {
-      brackets: {},
-      schedule: {},
-      news: {},
-      staff: {}
-    };
+    // EMAIL ADMIN (Hanya email lu yang bisa akses)
+    const ADMIN_EMAIL = "michaelmichaellorenzo5@gmail.com";
 
+    let appData = { brackets: {}, schedule: {}, news: {}, staff: {} };
     let currentScheduleFilter = 'ALL';
 
-    // Set Copyright Year
     document.getElementById('current-year').textContent = new Date().getFullYear();
-
-    // Init Dynamic Particles
     initParticles();
 
-    // Init Logic on DOM Load
     window.addEventListener('DOMContentLoaded', () => {
       setupMenu();
       bindFirebaseListeners();
       setupDiamondEffects();
+      setupAuthListener();
     });
 
-    // Hamburger Mobile Menu Toggle with Smooth Slide Transition
+    // Login & Auth Functions
+    window.loginAdmin = function() {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          if (result.user.email === ADMIN_EMAIL) {
+            alert("Login Admin Berhasil, Selamat Datang Michael!");
+            location.href = "#admin-dashboard-section";
+          } else {
+            alert("Akses Ditolak: Lu bukan Admin!");
+            signOut(auth);
+          }
+        })
+        .catch((error) => {
+          console.error("Gagal login:", error);
+          alert("Gagal login Google: " + error.message);
+        });
+    }
+
+    window.logoutAdmin = function() {
+      signOut(auth).then(() => {
+        alert("Berhasil Logout Admin");
+        location.reload();
+      });
+    }
+
+    function setupAuthListener() {
+      onAuthStateChanged(auth, (user) => {
+        const adminSection = document.getElementById('admin-dashboard-section');
+        const adminEmailDisplay = document.getElementById('admin-email-display');
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+
+        if (user && user.email === ADMIN_EMAIL) {
+          if (adminSection) adminSection.style.display = 'block';
+          if (adminEmailDisplay) adminEmailDisplay.textContent = user.email;
+          if (adminLoginBtn) adminLoginBtn.style.display = 'none';
+        } else {
+          if (adminSection) adminSection.style.display = 'none';
+          if (adminLoginBtn) adminLoginBtn.style.display = 'inline-block';
+        }
+      });
+    }
+
+    // Admin Action: Add News
+    window.addNews = function(e) {
+      e.preventDefault();
+      const title = document.getElementById('news-title').value;
+      const category = document.getElementById('news-category').value;
+      const date = document.getElementById('news-date').value;
+      const imageUrl = document.getElementById('news-image').value;
+      const summary = document.getElementById('news-summary').value;
+
+      push(ref(db, 'site/news'), { title, category, date, imageUrl, summary })
+        .then(() => {
+          alert('Berita berhasil ditambahkan!');
+          document.getElementById('form-news').reset();
+        })
+        .catch(err => alert('Gagal: ' + err.message));
+    }
+
+    // Admin Action: Add Schedule
+    window.addSchedule = function(e) {
+      e.preventDefault();
+      const eventName = document.getElementById('sched-event').value;
+      const game = document.getElementById('sched-game').value;
+      const date = document.getElementById('sched-date').value;
+      const time = document.getElementById('sched-time').value;
+      const teamA = document.getElementById('sched-t1').value;
+      const teamB = document.getElementById('sched-t2').value;
+      const status = document.getElementById('sched-status').value;
+      const streamUrl = document.getElementById('sched-stream').value;
+
+      push(ref(db, 'site/schedule'), { eventName, game, date, time, teamA, teamB, status, streamUrl })
+        .then(() => {
+          alert('Jadwal berhasil ditambahkan!');
+          document.getElementById('form-schedule').reset();
+        })
+        .catch(err => alert('Gagal: ' + err.message));
+    }
+
+    // Hamburger Mobile Menu Toggle
     function setupMenu() {
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -527,7 +534,6 @@
       });
     }
 
-    // Interactive Button Diamond Hit Effect (Straight Upright ♦)
     function setupDiamondEffects() {
       document.body.addEventListener('click', (e) => {
         const btn = e.target.closest('.blds-btn, button, a');
@@ -543,9 +549,7 @@
         btn.style.position = 'relative';
         btn.appendChild(diamond);
 
-        setTimeout(() => {
-          diamond.remove();
-        }, 700);
+        setTimeout(() => diamond.remove(), 700);
       });
     }
 
@@ -572,16 +576,12 @@
       });
     }
 
-    // Render Brackets
     function renderBrackets() {
       const container = document.getElementById('brackets-container');
       const keys = Object.keys(appData.brackets);
 
       if (keys.length === 0) {
-        container.innerHTML = `
-          <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
-            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p>
-          </div>`;
+        container.innerHTML = `<div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p></div>`;
         return;
       }
 
@@ -596,8 +596,7 @@
               </div>
               <span class="text-xs px-3 py-1 bg-white/10 text-white rounded-full font-orbitron">${item.status || 'UPCOMING'}</span>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-6 relative">
+            <div class="grid md:grid-cols-3 gap-6">
               <div class="space-y-4">
                 <span class="text-xs font-orbitron text-blds-muted block text-center">QUARTERFINAL</span>
                 <div class="p-3 bg-blds-black border border-blds-border rounded-lg text-xs space-y-2">
@@ -605,7 +604,6 @@
                   <div class="flex justify-between text-gray-300"><span>${item.qf_t2 || 'Team B'}</span><span>${item.qf_s2 || '0'}</span></div>
                 </div>
               </div>
-
               <div class="space-y-4">
                 <span class="text-xs font-orbitron text-blds-muted block text-center">SEMIFINAL</span>
                 <div class="p-3 bg-blds-black border border-blds-border rounded-lg text-xs space-y-2">
@@ -613,7 +611,6 @@
                   <div class="flex justify-between text-gray-300"><span>${item.sf_t2 || 'TBD'}</span><span>${item.sf_s2 || '0'}</span></div>
                 </div>
               </div>
-
               <div class="space-y-4">
                 <span class="text-xs font-orbitron text-blds-muted block text-center">GRAND FINAL</span>
                 <div class="p-3 bg-blds-black border border-white/30 glow-border rounded-lg text-xs space-y-2">
@@ -627,7 +624,6 @@
       }).join('');
     }
 
-    // Render Schedule
     function renderSchedule() {
       const container = document.getElementById('schedule-container');
       let items = Object.keys(appData.schedule).map(k => ({ key: k, ...appData.schedule[k] }));
@@ -637,10 +633,7 @@
       }
 
       if (items.length === 0) {
-        container.innerHTML = `
-          <div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
-            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">TIDAK ADA JADWAL PERTANDINGAN TERSEDIA</p>
-          </div>`;
+        container.innerHTML = `<div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">TIDAK ADA JADWAL PERTANDINGAN TERSEDIA</p></div>`;
         return;
       }
 
@@ -668,16 +661,12 @@
       renderSchedule();
     }
 
-    // Render News
     function renderNews() {
       const container = document.getElementById('news-container');
       const items = Object.keys(appData.news).map(k => ({ key: k, ...appData.news[k] }));
 
       if (items.length === 0) {
-        container.innerHTML = `
-          <div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
-            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p>
-          </div>`;
+        container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p></div>`;
         return;
       }
 
@@ -698,16 +687,12 @@
       `).join('');
     }
 
-    // Render Staff
     function renderStaff() {
       const container = document.getElementById('staff-container');
       const items = Object.keys(appData.staff).map(k => ({ key: k, ...appData.staff[k] }));
 
       if (items.length === 0) {
-        container.innerHTML = `
-          <div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50">
-            <p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p>
-          </div>`;
+        container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p></div>`;
         return;
       }
 
@@ -723,7 +708,6 @@
       `).join('');
     }
 
-    // Dynamic Floating Background Particles
     function initParticles() {
       const canvas = document.getElementById('bg-particles');
       const ctx = canvas.getContext('2d');
