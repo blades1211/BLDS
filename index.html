@@ -294,13 +294,13 @@
       </div>
     </section>
 
-    <!-- ==================== ADMIN DASHBOARD (KHUSUS MICHAEL) ==================== -->
+    <!-- ==================== ADMIN DASHBOARD ==================== -->
     <section id="admin-dashboard-section" class="py-20 px-4 bg-blds-card border-t-2 border-white" style="display: none;">
       <div class="max-w-5xl mx-auto space-y-10">
         <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-blds-black p-6 rounded-xl border border-blds-border">
           <div>
             <h2 class="font-orbitron font-bold text-xl text-white">⚙️ ADMIN CONTROL PANEL</h2>
-            <p class="text-xs text-blds-muted font-sans">Login sebagai: <span id="admin-email-display" class="text-white font-semibold"></span></p>
+            <p class="text-xs text-blds-muted font-sans">Status: <span id="admin-email-display" class="text-green-400 font-semibold">Active Admin Session</span></p>
           </div>
           <button onclick="logoutAdmin()" class="px-5 py-2.5 bg-red-600/20 border border-red-500 text-red-400 hover:bg-red-600 hover:text-white rounded-lg text-xs font-orbitron tracking-wider">
             LOGOUT ADMIN
@@ -351,6 +351,34 @@
 
   </main>
 
+  <!-- ==================== POP-UP MODAL LOGIN ADMIN ==================== -->
+  <div id="admin-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-blds-card border border-white/20 p-6 rounded-2xl w-full max-w-md space-y-6 glow-box relative">
+      <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-blds-muted hover:text-white text-xl">&times;</button>
+      
+      <div class="text-center space-y-1">
+        <h3 class="font-orbitron font-bold text-lg text-white">ADMIN AUTHENTICATION</h3>
+        <p class="text-xs text-blds-muted font-sans">Masukkan kredensial khusus Admin BLDS</p>
+      </div>
+
+      <form onsubmit="handleDirectLogin(event)" class="space-y-4 text-xs font-sans">
+        <div class="space-y-1">
+          <label class="text-blds-muted font-orbitron text-[10px]">GMAIL ADMIN</label>
+          <input type="email" id="modal-email" placeholder="michaelmichaellorenzo5@gmail.com" required class="w-full p-3 bg-blds-black border border-blds-border rounded text-white focus:border-white focus:outline-none" />
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-blds-muted font-orbitron text-[10px]">ADMIN PASSWORD</label>
+          <input type="password" id="modal-password" placeholder="Masukkan password admin..." required class="w-full p-3 bg-blds-black border border-blds-border rounded text-white focus:border-white focus:outline-none" />
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-white text-black font-orbitron font-bold rounded text-xs tracking-wider hover:bg-gray-200">
+          LOGIN ADMIN
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- ==================== FOOTER ==================== -->
   <footer class="relative z-10 bg-blds-black border-t border-blds-border py-12 px-4">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
@@ -361,10 +389,11 @@
         </div>
         <p class="font-rajdhani text-xs text-blds-muted">United Beyond the Eclipse</p>
         <p class="text-[11px] text-gray-400 font-sans">© <span id="current-year"></span> BlacklightDominions. All rights reserved.</p>
-        <!-- Tombol Admin Tersembunyi -->
-        <div class="pt-2">
-          <button id="admin-login-btn" onclick="loginAdmin()" class="text-[10px] font-orbitron text-blds-muted hover:text-white underline">
-            🔐 Admin Login
+        
+        <!-- Tombol Admin Login Transparan / Samar -->
+        <div class="pt-3">
+          <button id="admin-login-btn" onclick="openAdminModal()" class="text-[10px] font-orbitron text-white/20 hover:text-white/80 transition-opacity underline">
+            🔐 Admin Access
           </button>
         </div>
       </div>
@@ -389,27 +418,26 @@
   <!-- ==================== FIREBASE SDK & APPLICATION LOGIC ==================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getDatabase, ref, onValue, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getDatabase, ref, onValue, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-    // Firebase Configuration
+    // Data Config Asli Firebase
     const firebaseConfig = {
+      apiKey: "AIzaSyDYIySEcpbvCwMpXgvB-ggDZH",
+      authDomain: "blds-official.firebaseapp.com",
       databaseURL: "https://blds-official-default-rtdb.asia-southeast1.firebasedatabase.app/",
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
+      projectId: "blds-official",
+      storageBucket: "blds-official.appspot.com",
+      messagingSenderId: "526403741538",
+      appId: "1:526403741538:web:40f6abf8cda607f3f6ee3b",
+      measurementId: "G-8YCZ245W01"
     };
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-    const auth = getAuth(app);
-    const provider = new GoogleAuthProvider();
 
-    // EMAIL ADMIN (Hanya email lu yang bisa akses)
+    // KREDENSIAL ADMIN
     const ADMIN_EMAIL = "michaelmichaellorenzo5@gmail.com";
+    const ADMIN_PASSWORD = "BLDSACCESS";
 
     let appData = { brackets: {}, schedule: {}, news: {}, staff: {} };
     let currentScheduleFilter = 'ALL';
@@ -421,49 +449,53 @@
       setupMenu();
       bindFirebaseListeners();
       setupDiamondEffects();
-      setupAuthListener();
+      checkAdminSession();
     });
 
-    // Login & Auth Functions
-    window.loginAdmin = function() {
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          if (result.user.email === ADMIN_EMAIL) {
-            alert("Login Admin Berhasil, Selamat Datang Michael!");
-            location.href = "#admin-dashboard-section";
-          } else {
-            alert("Akses Ditolak: Lu bukan Admin!");
-            signOut(auth);
-          }
-        })
-        .catch((error) => {
-          console.error("Gagal login:", error);
-          alert("Gagal login Google: " + error.message);
-        });
+    // Modal Control Functions
+    window.openAdminModal = function() {
+      document.getElementById('admin-modal').classList.remove('hidden');
+    }
+
+    window.closeAdminModal = function() {
+      document.getElementById('admin-modal').classList.add('hidden');
+    }
+
+    // Direct Login Handler
+    window.handleDirectLogin = function(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('modal-email').value.trim();
+      const passwordInput = document.getElementById('modal-password').value.trim();
+
+      if (emailInput === ADMIN_EMAIL && passwordInput === ADMIN_PASSWORD) {
+        localStorage.setItem('blds_admin_logged_in', 'true');
+        alert("Login Admin Berhasil! Selamat Datang Michael.");
+        closeAdminModal();
+        checkAdminSession();
+        location.href = "#admin-dashboard-section";
+      } else {
+        alert("Akses Ditolak: Email atau Password Admin Salah!");
+      }
     }
 
     window.logoutAdmin = function() {
-      signOut(auth).then(() => {
-        alert("Berhasil Logout Admin");
-        location.reload();
-      });
+      localStorage.removeItem('blds_admin_logged_in');
+      alert("Berhasil Logout Admin");
+      checkAdminSession();
     }
 
-    function setupAuthListener() {
-      onAuthStateChanged(auth, (user) => {
-        const adminSection = document.getElementById('admin-dashboard-section');
-        const adminEmailDisplay = document.getElementById('admin-email-display');
-        const adminLoginBtn = document.getElementById('admin-login-btn');
+    function checkAdminSession() {
+      const isLoggedIn = localStorage.getItem('blds_admin_logged_in') === 'true';
+      const adminSection = document.getElementById('admin-dashboard-section');
+      const adminLoginBtn = document.getElementById('admin-login-btn');
 
-        if (user && user.email === ADMIN_EMAIL) {
-          if (adminSection) adminSection.style.display = 'block';
-          if (adminEmailDisplay) adminEmailDisplay.textContent = user.email;
-          if (adminLoginBtn) adminLoginBtn.style.display = 'none';
-        } else {
-          if (adminSection) adminSection.style.display = 'none';
-          if (adminLoginBtn) adminLoginBtn.style.display = 'inline-block';
-        }
-      });
+      if (isLoggedIn) {
+        if (adminSection) adminSection.style.display = 'block';
+        if (adminLoginBtn) adminLoginBtn.style.display = 'none';
+      } else {
+        if (adminSection) adminSection.style.display = 'none';
+        if (adminLoginBtn) adminLoginBtn.style.display = 'inline-block';
+      }
     }
 
     // Admin Action: Add News
@@ -503,7 +535,7 @@
         .catch(err => alert('Gagal: ' + err.message));
     }
 
-    // Hamburger Mobile Menu Toggle
+    // Menu & Visual FX
     function setupMenu() {
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -553,23 +585,20 @@
       });
     }
 
-    // Realtime Database Listeners
+    // Realtime Database Render Functions
     function bindFirebaseListeners() {
       onValue(ref(db, 'site/brackets'), (snapshot) => {
         appData.brackets = snapshot.val() || {};
         renderBrackets();
       });
-
       onValue(ref(db, 'site/schedule'), (snapshot) => {
         appData.schedule = snapshot.val() || {};
         renderSchedule();
       });
-
       onValue(ref(db, 'site/news'), (snapshot) => {
         appData.news = snapshot.val() || {};
         renderNews();
       });
-
       onValue(ref(db, 'site/staff'), (snapshot) => {
         appData.staff = snapshot.val() || {};
         renderStaff();
@@ -579,12 +608,10 @@
     function renderBrackets() {
       const container = document.getElementById('brackets-container');
       const keys = Object.keys(appData.brackets);
-
       if (keys.length === 0) {
         container.innerHTML = `<div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA TOURNAMENT BRACKET DITERBITKAN</p></div>`;
         return;
       }
-
       container.innerHTML = keys.map(key => {
         const item = appData.brackets[key];
         return `
@@ -627,16 +654,13 @@
     function renderSchedule() {
       const container = document.getElementById('schedule-container');
       let items = Object.keys(appData.schedule).map(k => ({ key: k, ...appData.schedule[k] }));
-
       if (currentScheduleFilter !== 'ALL') {
         items = items.filter(i => i.status === currentScheduleFilter);
       }
-
       if (items.length === 0) {
         container.innerHTML = `<div class="text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">TIDAK ADA JADWAL PERTANDINGAN TERSEDIA</p></div>`;
         return;
       }
-
       container.innerHTML = items.map(item => `
         <div class="bg-blds-card border border-blds-border p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4 hover:border-white/30">
           <div class="flex items-center gap-4 w-full md:w-auto">
@@ -664,12 +688,10 @@
     function renderNews() {
       const container = document.getElementById('news-container');
       const items = Object.keys(appData.news).map(k => ({ key: k, ...appData.news[k] }));
-
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA BERITA DIPUBLIKASIKAN</p></div>`;
         return;
       }
-
       container.innerHTML = items.map(item => `
         <article class="bg-blds-card border border-blds-border rounded-xl overflow-hidden flex flex-col justify-between hover:border-white/30">
           <img src="${item.imageUrl || 'https://via.placeholder.com/600x350/0f0f10/ffffff?text=BLDS+NEWS'}" alt="Cover" class="w-full h-48 object-cover" />
@@ -690,12 +712,10 @@
     function renderStaff() {
       const container = document.getElementById('staff-container');
       const items = Object.keys(appData.staff).map(k => ({ key: k, ...appData.staff[k] }));
-
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-16 border border-dashed border-blds-border rounded-xl bg-blds-card/50"><p class="font-orbitron text-blds-muted text-sm tracking-widest uppercase">BELUM ADA DATA STAFF DITAMPILKAN</p></div>`;
         return;
       }
-
       container.innerHTML = items.map(item => `
         <div class="bg-blds-card border border-blds-border p-6 rounded-xl text-center space-y-4 hover:border-white/30">
           <img src="${item.photoUrl || 'https://via.placeholder.com/150/1f1f22/ffffff?text=STAFF'}" alt="${item.name}" class="w-24 h-24 mx-auto rounded-full object-cover border-2 border-blds-border" />
@@ -712,14 +732,12 @@
       const canvas = document.getElementById('bg-particles');
       const ctx = canvas.getContext('2d');
       let particles = [];
-
       function resize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       }
       resize();
       window.addEventListener('resize', resize);
-
       for (let i = 0; i < 45; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -729,24 +747,20 @@
           opacity: Math.random() * 0.4 + 0.15
         });
       }
-
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = '#ffffff';
-
         particles.forEach(p => {
           ctx.globalAlpha = p.opacity;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
           ctx.fill();
-
           p.y -= p.speedY;
           if (p.y < 0) {
             p.y = canvas.height;
             p.x = Math.random() * canvas.width;
           }
         });
-
         requestAnimationFrame(animate);
       }
       animate();
